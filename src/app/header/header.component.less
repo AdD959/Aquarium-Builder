@@ -1,0 +1,77 @@
+@import '../../styles.less';
+
+div#navWrapper {
+  width: 100%;
+  background-color: @primary-color;
+  color: @primary-text-color;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+
+  #siteTitle {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+  > div {
+    box-sizing: content-box;
+    position: relative;
+    height: auto;
+
+    > ul {
+      padding: 0;
+      height: auto;
+    }
+
+    li,
+    > a {
+      padding: 0 30px;
+      height: 40px;
+      display: flex;
+      align-items: center;
+      cursor: pointer;
+
+      &:hover {
+        background-color: @primary-color-highlight;
+      }
+    }
+
+    &#siteNav > ul {
+      display: flex;
+    }
+
+    &#userNav {
+      > ul {
+        position: absolute;
+        right: 0;
+
+        > li {
+          background-color: #ededed;
+          border-bottom: solid whitesmoke 1px;
+          text-align: center;
+          color: @secondary-text-color;
+          cursor: pointer;
+
+          &:hover {
+            background-color: grey;
+            color: white;
+          }
+        }
+      }
+    }
+  }
+}
+
+// //Need to add burger icon
+@media only screen and (max-width: 768px) {
+  #siteNav {
+    display: none;
+  }
+
+  div#navWrapper {
+    justify-content: flex-end;
+  }
+}
