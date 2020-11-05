@@ -9,6 +9,8 @@ import { BuyComponent } from './buy/buy.component';
 import { WikiComponent } from './wiki/wiki.component';
 import { DropdownDirective } from './shared/dropdown.directive';
 import { SpeciesComponent } from './species/species.component';
+import { SpeciesListComponent } from './species/species-list/species-list.component';
+import { SpeciesService } from './species/species.service';
 
 @NgModule({
   declarations: [
@@ -18,13 +20,16 @@ import { SpeciesComponent } from './species/species.component';
     BuyComponent,
     WikiComponent,
     DropdownDirective,
-    SpeciesComponent
+    SpeciesComponent,
+    SpeciesListComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule
   ],
-  providers: [],
+  providers: [
+    SpeciesService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

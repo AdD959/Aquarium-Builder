@@ -1,0 +1,13 @@
+<section class="species-list">
+  <div class="species-wrapper" *ngFor="let species of speciesList">
+    <img class="type" src="../../../assets/images/Type-Fish.png" style="filter: invert(100%)" alt="">
+    <div class="fish-image-wrapper">
+      <img src="{{ species.heroImg }}" alt="" srcset="" />
+    </div>
+    <div class="species-info">
+      <h1>{{ species.name }}</h1>
+      <p class="species-description">{{ species.description }}</p>
+      <h2 class="species-size">{{ species.size | uppercase }}</h2>
+    </div>
+  </div>
+</section>
