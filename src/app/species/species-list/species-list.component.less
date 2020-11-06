@@ -26,9 +26,39 @@ section.species-list {
         width: 100%;
         height: 150px;
         position: relative;
-        background: linear-gradient(315deg, #009ffd 0%, white 100%);
         border-radius: 100%;
         border: solid white 3px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background: linear-gradient(-30deg, #1787ca, #cbefc4);
+
+
+        &.saltwater {
+          background: linear-gradient(#009ffd 0%, #1b2348 100%);
+
+          &::before {
+            content: "";
+            width: 10px;
+            height: 10px;
+            background-color: white;
+            bottom: 0;
+            right: 0;
+            z-index: 30;
+            position: absolute;
+          }
+
+          &::after {
+            content: "";
+            width: 8px;
+            height: 8px;
+            background-color: white;
+            bottom: 7px;
+            right: 5px;
+            z-index: 30;
+            position: absolute;
+          }
+        }
 
         > img {
           width: 100%;
@@ -64,6 +94,26 @@ section.species-list {
           align-self: flex-end;
           cursor: pointer;
           margin-bottom: 5px;
+          position: relative;
+          z-index: 1;
+
+          &::after {
+            content: '';
+            position: absolute;
+            z-index: -1;
+            right: 0;
+            width: 0%;
+            height: 2px;
+            background-color: @primary-color-highlight;
+            transition-duration: 0.2s;
+            display: block;
+          }
+
+          &:hover {
+            &::after {
+              width: 100%;
+            }
+          }
         }
 
         .species-description {
@@ -116,7 +166,7 @@ section.species-list {
         }
 
         .species-size {
-          margin: 0;
+          margin: 15px 0 0 0;
         }
       }
     }
@@ -128,7 +178,7 @@ section.species-list {
       background-color: white;
 
       &.expanded {
-        width: 500px;
+        background-color: red;
       }
     }
 

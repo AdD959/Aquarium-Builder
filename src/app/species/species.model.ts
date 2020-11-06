@@ -8,6 +8,7 @@ export class Species {
   public lifeSpan?: number;
   public difficulty?: string;
   public aggression?: number;
+  public waterType?: string;
 
   constructor(name: string, type: string) {
     this.name = name;

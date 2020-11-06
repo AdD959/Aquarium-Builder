@@ -44,9 +44,35 @@ section.species-list .species-wrapper .highlight .fish-image-wrapper {
   width: 100%;
   height: 150px;
   position: relative;
-  background: linear-gradient(315deg, #009ffd 0%, white 100%);
   border-radius: 100%;
   border: solid white 3px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(-30deg, #1787ca, #cbefc4);
+}
+section.species-list .species-wrapper .highlight .fish-image-wrapper.saltwater {
+  background: linear-gradient(#009ffd 0%, #1b2348 100%);
+}
+section.species-list .species-wrapper .highlight .fish-image-wrapper.saltwater::before {
+  content: "";
+  width: 10px;
+  height: 10px;
+  background-color: white;
+  bottom: 0;
+  right: 0;
+  z-index: 30;
+  position: absolute;
+}
+section.species-list .species-wrapper .highlight .fish-image-wrapper.saltwater::after {
+  content: "";
+  width: 8px;
+  height: 8px;
+  background-color: white;
+  bottom: 7px;
+  right: 5px;
+  z-index: 30;
+  position: absolute;
 }
 section.species-list .species-wrapper .highlight .fish-image-wrapper > img {
   width: 100%;
@@ -77,6 +103,22 @@ section.species-list .species-wrapper .highlight .species-info .more-info {
   align-self: flex-end;
   cursor: pointer;
   margin-bottom: 5px;
+  position: relative;
+  z-index: 1;
+}
+section.species-list .species-wrapper .highlight .species-info .more-info::after {
+  content: '';
+  position: absolute;
+  z-index: -1;
+  right: 0;
+  width: 0%;
+  height: 2px;
+  background-color: #193c5a;
+  transition-duration: 0.2s;
+  display: block;
+}
+section.species-list .species-wrapper .highlight .species-info .more-info:hover::after {
+  width: 100%;
 }
 section.species-list .species-wrapper .highlight .species-info .species-description {
   margin: 0;
@@ -122,7 +164,7 @@ section.species-list .species-wrapper .highlight .two-group .add-to-tank > h1 {
   margin: 0;
 }
 section.species-list .species-wrapper .highlight .two-group .species-size {
-  margin: 0;
+  margin: 15px 0 0 0;
 }
 section.species-list .species-wrapper .more-info-wrapper {
   height: 111%;
@@ -131,7 +173,7 @@ section.species-list .species-wrapper .more-info-wrapper {
   background-color: white;
 }
 section.species-list .species-wrapper .more-info-wrapper.expanded {
-  width: 500px;
+  background-color: red;
 }
 section.species-list .species-wrapper:hover {
   transform: translateY(-5px);

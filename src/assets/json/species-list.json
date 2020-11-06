@@ -37,7 +37,8 @@
     "difficulty": "hard",
     "size": "small",
     "description": "Very small fish that only thrives when in shoals. It's scales brightness indicates its health.",
-    "heroImg": "/../../assets/images/banded-butterflyfish.svg"
+    "heroImg": "/../../assets/images/banded-butterflyfish.svg",
+    "waterType": "saltwater"
   },
   {
     "id": 4,
@@ -107,7 +108,8 @@
     "difficulty": "medium",
     "size": "small",
     "description": "",
-    "heroImg": "/../../assets/images/bleekers-parrotfish.svg"
+    "heroImg": "/../../assets/images/bleekers-parrotfish.svg",
+    "waterType": "saltwater"
   },
   {
     "id": 11,
@@ -117,7 +119,8 @@
     "difficulty": "medium",
     "size": "small",
     "description": "",
-    "heroImg": "/../../assets/images/blood-parrot.svg"
+    "heroImg": "/../../assets/images/blood-parrot.svg",
+    "waterType": "saltwater"
   },
   {
     "id": 12,
@@ -407,7 +410,8 @@
     "difficulty": "easy",
     "size": "small",
     "description": "",
-    "heroImg": "/../../assets/images/freshwater-butterflyfish.svg"
+    "heroImg": "/../../assets/images/freshwater-butterflyfish.svg",
+    "waterType": "saltwater"
   },
   {
     "id": 41,
@@ -557,7 +561,8 @@
     "difficulty": "easy",
     "size": "small",
     "description": "",
-    "heroImg": "/../../assets/images/iridescent-shark.svg"
+    "heroImg": "/../../assets/images/iridescent-shark.svg",
+    "waterType": "saltwater"
   },
   {
     "id": 56,
@@ -797,7 +802,8 @@
     "difficulty": "easy",
     "size": "small",
     "description": "",
-    "heroImg": "/../../assets/images/puffer-fish.svg"
+    "heroImg": "/../../assets/images/puffer-fish.svg",
+    "waterType": "saltwater"
   },
   {
     "id": 80,
@@ -877,7 +883,8 @@
     "difficulty": "easy",
     "size": "small",
     "description": "",
-    "heroImg": "/../../assets/images/red-tailed-black-shark.svg"
+    "heroImg": "/../../assets/images/red-tailed-black-shark.svg",
+    "waterType": "saltwater"
   },
   {
     "id": 88,
@@ -887,7 +894,8 @@
     "difficulty": "easy",
     "size": "small",
     "description": "",
-    "heroImg": "/../../assets/images/regal-bluetang.svg"
+    "heroImg": "/../../assets/images/regal-bluetang.svg",
+    "waterType": "saltwater"
   },
   {
     "id": 89,
@@ -937,7 +945,8 @@
     "difficulty": "easy",
     "size": "small",
     "description": "",
-    "heroImg": "/../../assets/images/seahorse.svg"
+    "heroImg": "/../../assets/images/seahorse.svg",
+    "waterType": "saltwater"
   },
   {
     "id": 94,
@@ -961,7 +970,7 @@
   },
   {
     "id": 96,
-    "name": "Siler Dollar Fish",
+    "name": "Silver Dollar Fish",
     "type": "fish",
     "lifeSpan": 11,
     "difficulty": "easy",
@@ -1077,7 +1086,8 @@
     "difficulty": "easy",
     "size": "small",
     "description": "",
-    "heroImg": "/../../assets/images/threadfin-butterfly-fish.svg"
+    "heroImg": "/../../assets/images/threadfin-butterfly-fish.svg",
+    "waterType": "saltwater"
   },
   {
     "id": 108,
@@ -1167,7 +1177,8 @@
     "difficulty": "easy",
     "size": "small",
     "description": "",
-    "heroImg": "/../../assets/images/yellow-longnose-butterflyfish.svg"
+    "heroImg": "/../../assets/images/yellow-longnose-butterflyfish.svg",
+    "waterType": "saltwater"
   },
   {
     "id": 117,

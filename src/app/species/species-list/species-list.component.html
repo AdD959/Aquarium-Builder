@@ -12,8 +12,8 @@
           <h1>+</h1>
         </div>
       </div>
-      <div class="fish-image-wrapper">
-        <img src="{{ species.heroImg }}" alt="" srcset="" />
+      <div class="fish-image-wrapper {{ species.waterType }}">
+        <img [src]="species.heroImg" alt="" srcset="" />
       </div>
       <div class="species-info">
         <h1>{{ species.name }}</h1>
