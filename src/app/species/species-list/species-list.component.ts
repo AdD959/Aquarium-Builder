@@ -9,6 +9,8 @@ import { SpeciesService } from '../species.service';
 })
 export class SpeciesListComponent implements OnInit {
   speciesList: Species[];
+  expanded = false;
+
 
   constructor(
     private speciesService: SpeciesService
@@ -16,5 +18,9 @@ export class SpeciesListComponent implements OnInit {
 
   ngOnInit() {
     this.speciesList = this.speciesService.getAllSpecies();
+  }
+
+  expandMoreInfo() {
+    this.expanded = !this.expanded;
   }
 }

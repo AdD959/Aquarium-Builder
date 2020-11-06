@@ -6,7 +6,7 @@ export class Species {
   public description?: string;
   public heroImg?: string;
   public lifeSpan?: number;
-  public difficulty?: number;
+  public difficulty?: string;
   public aggression?: number;
 
   constructor(name: string, type: string) {

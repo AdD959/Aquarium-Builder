@@ -29,44 +29,56 @@ section.species-list {
   flex-wrap: wrap;
 }
 section.species-list .species-wrapper {
-  padding: 10px;
+  padding: 20px;
   border-radius: 10px;
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   background-color: #2a2a72;
   background-image: linear-gradient(#2a2a72 0%, #428bca 24%);
   align-items: center;
   box-shadow: -1px 15px 30px -6px #c4c4c4;
   border: solid white 3px;
+  transition-duration: 0.5s;
 }
-section.species-list .species-wrapper .fish-image-wrapper {
-  width: 250px;
+section.species-list .species-wrapper .highlight .fish-image-wrapper {
+  width: 100%;
   height: 150px;
   position: relative;
   background: linear-gradient(315deg, #009ffd 0%, white 100%);
   border-radius: 100%;
+  border: solid white 3px;
 }
-section.species-list .species-wrapper .fish-image-wrapper > img {
+section.species-list .species-wrapper .highlight .fish-image-wrapper > img {
   width: 100%;
   max-height: 150px;
+  position: absolute;
+  left: 0;
+  transition-duration: 0.5s;
 }
-section.species-list .species-wrapper .type {
-  width: 50px;
+section.species-list .species-wrapper .highlight .type {
+  width: 30px;
   align-self: flex-start;
 }
-section.species-list .species-wrapper .species-info {
+section.species-list .species-wrapper .highlight .species-info {
   width: 220px;
   text-align: left;
   display: flex;
   flex-direction: column;
 }
-section.species-list .species-wrapper .species-info h1 {
+section.species-list .species-wrapper .highlight .species-info h1 {
+  margin: 10px 0px;
+  font-weight: normal;
+}
+section.species-list .species-wrapper .highlight .species-info h2 {
   margin: 10px 0px;
 }
-section.species-list .species-wrapper .species-info h2 {
-  margin: 10px 0px;
+section.species-list .species-wrapper .highlight .species-info .more-info {
+  font-size: 12px;
+  align-self: flex-end;
+  cursor: pointer;
+  margin-bottom: 5px;
 }
-section.species-list .species-wrapper .species-info .species-description {
+section.species-list .species-wrapper .highlight .species-info .species-description {
   margin: 0;
   box-sizing: border-box;
   width: 100%;
@@ -75,9 +87,65 @@ section.species-list .species-wrapper .species-info .species-description {
   padding: 10px;
   border-radius: 5px;
 }
-section.species-list .species-wrapper .species-info .species-size {
-  align-self: flex-end;
+section.species-list .species-wrapper .highlight .two-group {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+section.species-list .species-wrapper .highlight .two-group .difficulty-rating {
+  margin-top: 10px;
+  height: 100%;
+  display: flex;
+  align-items: center;
+}
+section.species-list .species-wrapper .highlight .two-group .difficulty-rating .d-rating {
+  width: 10px;
+  height: 10px;
+  border: solid white 3px;
+  border-radius: 100%;
+  margin: 0 5px;
+  margin-top: 10px;
+}
+section.species-list .species-wrapper .highlight .two-group .add-to-tank {
+  height: 30px;
+  width: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: -15px;
+  margin-right: -15px;
+  cursor: pointer;
+}
+section.species-list .species-wrapper .highlight .two-group .add-to-tank > h1 {
+  line-height: 10px;
+  margin: 0;
+}
+section.species-list .species-wrapper .highlight .two-group .species-size {
+  margin: 0;
+}
+section.species-list .species-wrapper .more-info-wrapper {
+  height: 111%;
+  width: 0px;
+  margin-left: 10px;
+  background-color: white;
+}
+section.species-list .species-wrapper .more-info-wrapper.expanded {
+  width: 500px;
 }
 section.species-list .species-wrapper:hover {
   transform: translateY(-5px);
+}
+section.species-list .species-wrapper:hover .fish-image-wrapper > img {
+  transform: translateY(10px) rotate(5deg);
+  transform-origin: center center;
+}
+.easy {
+  background-color: #14ad14;
+}
+.medium {
+  background-color: #f9a700;
+}
+.hard {
+  background-color: #c50000;
 }
