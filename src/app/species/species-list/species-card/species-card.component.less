@@ -1,0 +1,205 @@
+@import '../../../../styles.less';
+
+@transition-duration: 0.5s;
+
+.species-wrapper {
+  padding: 20px;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: row;
+  background-color: #2a2a72;
+  background: linear-gradient(#2a2a72 0%, @primary-color 24%);
+  align-items: center;
+  box-shadow: -1px 15px 30px -6px rgba(196, 196, 196, 1);
+  border: solid white 3px;
+  transition-duration: @transition-duration;
+  height: auto;
+
+  .more-info-wrapper {
+    width: 0px;
+    transition-duration: @transition-duration;
+  }
+
+  // &.expanded {
+  //   position: fixed;
+  //   z-index: 100;
+
+  //   .more-info-wrapper {
+  //     height: 500px;
+  //     width: 500px;
+  //     background-color: white;
+  //     margin-left: 10px;
+  //     position: relative;
+  //   }
+  // }
+
+  .highlight {
+    .fish-image-wrapper {
+      width: 100%;
+      height: 150px;
+      position: relative;
+      border-radius: 100%;
+      border: solid white 3px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: linear-gradient(-30deg, #1787ca, #cbefc4);
+      transition-duration: 2s;
+
+      // &::before {
+      //   content: "";
+      //   position: absolute;
+      //   width: 100%;
+      //   height: 100%;
+      //   border-radius: inherit;
+      //   background-color: black;
+      // }
+
+      // &.expanded {
+      //   @keyframes swimAway {
+      //     0% { transform: rotate(-50deg) translateX(50px);}
+      //     100% { transform: translateX(-100vw);}
+      //   }
+      //   > img {
+      //     animation: swimAway 2s ease-in;
+      //   }
+      // }
+
+      &.saltwater {
+        background: linear-gradient(#009ffd 0%, #1b2348 100%);
+      }
+
+      > img {
+        width: 100%;
+        max-height: 150px;
+        position: absolute;
+        left: 0;
+        transition-duration: @transition-duration + 1;
+      }
+    }
+
+    .type {
+      width: 30px;
+      align-self: flex-start;
+    }
+
+    .species-info {
+      width: 220px;
+      text-align: left;
+      display: flex;
+      flex-direction: column;
+
+      h1 {
+        margin: 10px 0px;
+        font-weight: normal;
+      }
+
+      h2 {
+        margin: 10px 0px;
+      }
+
+      .more-info {
+        font-size: 12px;
+        align-self: flex-end;
+        cursor: pointer;
+        margin-bottom: 5px;
+        position: relative;
+        z-index: 1;
+
+        &::after {
+          content: '';
+          position: absolute;
+          z-index: -1;
+          right: 0;
+          width: 0%;
+          height: 2px;
+          background-color: @primary-color-highlight;
+          transition-duration: 0.2s;
+          display: block;
+        }
+
+        &:hover {
+          &::after {
+            width: 100%;
+          }
+        }
+      }
+
+      .species-description {
+        margin: 0;
+        box-sizing: border-box;
+        width: 100%;
+        height: 100px;
+        background-color: darken(@primary-color, 5%);
+        padding: 10px;
+        border-radius: 5px;
+      }
+    }
+
+    .two-group {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+
+      .difficulty-rating {
+        margin-top: 10px;
+        height: 100%;
+        display: flex;
+        align-items: center;
+
+        .d-rating {
+          width: 10px;
+          height: 10px;
+          border: solid white 3px;
+          border-radius: 100%;
+          margin: 0 5px;
+          margin-top: 10px;
+        }
+      }
+
+      .add-to-tank {
+        height: 30px;
+        width: 30px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-top: -15px;
+        margin-right: -15px;
+        cursor: pointer;
+
+        > h1 {
+          line-height: 10px;
+          margin: 0;
+        }
+      }
+
+      .species-size {
+        margin: 15px 0 0 0;
+      }
+    }
+  }
+
+  &:hover {
+    transform: translateY(-5px);
+
+    .fish-image-wrapper {
+      > img {
+        transform: translateY(10px) rotate(5deg);
+        transform-origin: center center;
+      }
+    }
+  }
+}
+
+.easy {
+  background-color: #14ad14;
+}
+
+.medium {
+  background-color: #f9a700;
+}
+
+.hard {
+  background-color: #c50000;
+}

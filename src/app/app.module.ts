@@ -11,6 +11,7 @@ import { DropdownDirective } from './shared/dropdown.directive';
 import { SpeciesComponent } from './species/species.component';
 import { SpeciesListComponent } from './species/species-list/species-list.component';
 import { SpeciesService } from './species/species.service';
+import { SpeciesCardComponent } from './species/species-list/species-card/species-card.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { SpeciesService } from './species/species.service';
     WikiComponent,
     DropdownDirective,
     SpeciesComponent,
-    SpeciesListComponent
+    SpeciesListComponent,
+    SpeciesCardComponent
   ],
   imports: [
     BrowserModule,

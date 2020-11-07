@@ -1,34 +1,5 @@
 <section class="species-list">
-  <div class="species-wrapper" *ngFor="let species of speciesList">
-    <div class="highlight"  [ngClass]="expanded ? 'expanded' : ''">
-      <div class="two-group">
-        <img
-          class="type"
-          src="../../../assets/images/Type-Fish.png"
-          style="filter: invert(100%)"
-          alt=""
-        />
-        <div class="add-to-tank">
-          <h1>+</h1>
-        </div>
-      </div>
-      <div class="fish-image-wrapper {{ species.waterType }}">
-        <img [src]="species.heroImg" alt="" srcset="" />
-      </div>
-      <div class="species-info">
-        <h1>{{ species.name }}</h1>
-        <span class="more-info" (click)="expandMoreInfo()">+ more information</span>
-        <p class="species-description">{{ species.description }}</p>
-        <div class="two-group">
-          <span class="difficulty-rating">
-            <div class="d-rating {{ species.difficulty }}"></div>
-            <div class="d-rating {{ species.difficulty }}"></div>
-            <div class="d-rating {{ species.difficulty }}"></div>
-          </span>
-          <h2 class="species-size">{{ species.size | uppercase }}</h2>
-        </div>
-      </div>
-    </div>
-    <div class="more-info-wrapper"></div>
-  </div>
+  <app-species-card
+  *ngFor="let speciesCard of speciesList"
+  [species]="speciesCard"></app-species-card>
 </section>

@@ -7,7 +7,7 @@ export class SpeciesService {
   private species: Species[] = speciesListJson;
 
   getAllSpecies() {
-    return this.species.slice();
+    return this.species.slice(0, 10);
   }
 
   setSpecies(species: Species[]) {
