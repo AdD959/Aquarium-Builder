@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Subscription } from 'rxjs';
 import { Species } from '../species.model';
 import { SpeciesService } from '../species.service';
 
@@ -9,6 +10,7 @@ import { SpeciesService } from '../species.service';
 })
 export class SpeciesListComponent implements OnInit {
   speciesList: Species[];
+  subscription: Subscription;
 
   constructor(
     private speciesService: SpeciesService

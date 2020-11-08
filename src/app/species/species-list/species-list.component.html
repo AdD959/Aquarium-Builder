@@ -1,5 +1,5 @@
 <section class="species-list">
   <app-species-card
-  *ngFor="let speciesCard of speciesList"
+  *ngFor="let speciesCard of speciesList; let i = index"
   [species]="speciesCard"></app-species-card>
 </section>

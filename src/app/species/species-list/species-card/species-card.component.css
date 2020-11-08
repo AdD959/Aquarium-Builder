@@ -59,7 +59,7 @@ ul {
   max-height: 150px;
   position: absolute;
   left: 0;
-  transition-duration: 1.5s;
+  z-index: 100;
 }
 .species-wrapper .highlight .type {
   width: 30px;
@@ -145,13 +145,6 @@ ul {
 }
 .species-wrapper .highlight .two-group .species-size {
   margin: 15px 0 0 0;
-}
-.species-wrapper:hover {
-  transform: translateY(-5px);
-}
-.species-wrapper:hover .fish-image-wrapper > img {
-  transform: translateY(10px) rotate(5deg);
-  transform-origin: center center;
 }
 .easy {
   background-color: #14ad14;

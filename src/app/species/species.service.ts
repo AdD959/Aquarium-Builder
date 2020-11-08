@@ -1,10 +1,12 @@
 import { Injectable } from '@angular/core';
 import { Species } from './species.model';
 import speciesListJson from '../../assets/json/species-list.json';
+import { Subject } from 'rxjs';
 
 @Injectable()
 export class SpeciesService {
   private species: Species[] = speciesListJson;
+  viewMoreInfo = new Subject<number>();
 
   getAllSpecies() {
     return this.species.slice(0, 10);

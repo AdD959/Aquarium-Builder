@@ -20,19 +20,6 @@
     transition-duration: @transition-duration;
   }
 
-  // &.expanded {
-  //   position: fixed;
-  //   z-index: 100;
-
-  //   .more-info-wrapper {
-  //     height: 500px;
-  //     width: 500px;
-  //     background-color: white;
-  //     margin-left: 10px;
-  //     position: relative;
-  //   }
-  // }
-
   .highlight {
     .fish-image-wrapper {
       width: 100%;
@@ -46,25 +33,6 @@
       background: linear-gradient(-30deg, #1787ca, #cbefc4);
       transition-duration: 2s;
 
-      // &::before {
-      //   content: "";
-      //   position: absolute;
-      //   width: 100%;
-      //   height: 100%;
-      //   border-radius: inherit;
-      //   background-color: black;
-      // }
-
-      // &.expanded {
-      //   @keyframes swimAway {
-      //     0% { transform: rotate(-50deg) translateX(50px);}
-      //     100% { transform: translateX(-100vw);}
-      //   }
-      //   > img {
-      //     animation: swimAway 2s ease-in;
-      //   }
-      // }
-
       &.saltwater {
         background: linear-gradient(#009ffd 0%, #1b2348 100%);
       }
@@ -74,7 +42,7 @@
         max-height: 150px;
         position: absolute;
         left: 0;
-        transition-duration: @transition-duration + 1;
+        z-index: 100;
       }
     }
 
@@ -180,16 +148,9 @@
     }
   }
 
-  &:hover {
-    transform: translateY(-5px);
-
-    .fish-image-wrapper {
-      > img {
-        transform: translateY(10px) rotate(5deg);
-        transform-origin: center center;
-      }
-    }
-  }
+  // &:hover {
+  //   transform: translateY(-5px);
+  // }
 }
 
 .easy {
