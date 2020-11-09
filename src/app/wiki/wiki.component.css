@@ -1,0 +1,22 @@
+#wikiWrapper {
+  height: 100vh;
+  width: 100%;
+  display: flex;
+  position: relative;
+  background: #6bb7c8;
+  padding: 130px;
+  box-sizing: border-box;
+}
+#wikiWrapper.saltwater {
+  background: #2a6894;
+}
+#wikiWrapper .imgWrapper {
+  display: block;
+  width: 50%;
+  height: 100%;
+}
+#wikiWrapper .infoWrapper {
+  display: block;
+  width: auto;
+  height: 100%;
+}

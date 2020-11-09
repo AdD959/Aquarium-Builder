@@ -1,7 +1,16 @@
-import { AfterViewInit, Component, ElementRef, Input, OnInit, ViewChild } from '@angular/core';
+import {
+  AfterViewInit,
+  Component,
+  ElementRef,
+  Input,
+  OnInit,
+  ViewChild,
+} from '@angular/core';
 import { Species } from '../../species.model';
 import { TimelineMax } from 'gsap';
 import { SpeciesService } from '../../species.service';
+import { Router } from '@angular/router';
+import { delay } from 'rxjs/operators';
 
 @Component({
   selector: 'app-species-card',
@@ -9,64 +18,85 @@ import { SpeciesService } from '../../species.service';
   styleUrls: ['./species-card.component.less'],
 })
 export class SpeciesCardComponent implements OnInit, AfterViewInit {
-  @ViewChild('imgRef', {static: false}) imageReference;
-  @ViewChild('imgRefWrapper', {static: false}) imageWrapperReference;
-  @ViewChild('card', {static: false}) card;
-  tlm = new TimelineMax({paused: true});
-  fishLeavetlm = new TimelineMax({ paused: true});
-  cardShift = new TimelineMax({ paused: true});
+  @ViewChild('imgRef', { static: false }) imageReference;
+  @ViewChild('imgRefBubble', { static: false }) imageBubbleReference;
+  @ViewChild('card', { static: false }) card;
+  @ViewChild('moreInfoDiv', { static: false }) moreInfoDiv;
+  fishHoverRotate = new TimelineMax({ paused: true });
+  fishLeavetlm = new TimelineMax({ paused: true });
+  cardShift = new TimelineMax({ paused: true });
   moreInfoActive = false;
+  remove = '';
   @Input() species: Species;
+  @Input() objIndex: number;
 
-  constructor(private speciesService: SpeciesService) {}
+  constructor(private speciesService: SpeciesService, private router: Router) {}
   ngAfterViewInit(): void {
-    this.tlm.to(this.imageReference.nativeElement, 1, {
+    this.fishHoverRotate.to(this.imageReference.nativeElement, 1, {
       rotate: 5,
-      y: 10
+      y: 10,
     });
 
     this.cardShift.to(this.card.nativeElement, 0.1, {
       y: -10,
-      ease: 'none'
+      ease: 'none',
     });
   }
 
-
   ngOnInit() {}
 
-  swimAway(imgRef, imgRefWrapper) {
+  swimAway() {
+    this.moreInfoDiv.nativeElement.style.display = 'none';
     const image = this.imageReference.nativeElement;
-    const imageWrapper = this.imageWrapperReference.nativeElement;
+    const imageBubble = this.imageBubbleReference.nativeElement;
+    const bagColourChange = this.species.waterType === 'saltwater' ? '#2a6894' : ' #6bb7c8';
 
     this.moreInfoActive = true;
-    this.tlm.pause();
+    this.fishHoverRotate.kill();
+    this.cardShift.kill();
     this.fishLeavetlm
       .to(image, 0.5, {
         rotate: -20,
         x: 100,
-        y: -100
+        y: -100,
       })
       .to(image, 1, {
         x: -window.innerWidth,
-        y: 300,
-        ease: 'power1.in'
+        y: 400,
+        rotate: -40,
+        ease: 'power1.in',
+        onComplete: () => {
+          this.router.navigate(['/wiki', { id: this.objIndex }]);
+        },
       })
-      .to(imageWrapper, 1, {
-        scale: 20,
-        duration: 1
-      }, 0)
+      .to(
+        imageBubble,
+        0, {
+          background: bagColourChange
+        },
+        0
+      )
+      .to(
+        imageBubble,
+        1,
+        {
+          scale: 20,
+          duration: 1,
+        },
+        0
+      )
       .play();
   }
 
-  bump(imgRef, imgWrapper) {
-    if (!this.fishLeavetlm.isActive()) {
-      this.tlm.play();
+  bump() {
+    if (!this.fishLeavetlm.isActive() && !this.moreInfoActive) {
+      this.fishHoverRotate.play();
     }
   }
 
-  bumpReverse(imgRef, imgWrapper) {
-    if (!this.fishLeavetlm.isActive()) {
-      this.tlm.reverse();
+  bumpReverse() {
+    if (!this.fishLeavetlm.isActive() && !this.moreInfoActive) {
+      this.fishHoverRotate.reverse();
     }
   }
 
@@ -80,5 +110,9 @@ export class SpeciesCardComponent implements OnInit, AfterViewInit {
     if (!this.moreInfoActive) {
       this.cardShift.reverse();
     }
+  }
+
+  animateToWiki() {
+    this.speciesService.fireViewMoreInfoEvent(this.objIndex);
   }
 }

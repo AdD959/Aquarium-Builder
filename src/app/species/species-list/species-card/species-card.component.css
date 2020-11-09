@@ -32,12 +32,10 @@ ul {
   align-items: center;
   box-shadow: -1px 15px 30px -6px #c4c4c4;
   border: solid white 3px;
-  transition-duration: 0.5s;
   height: auto;
 }
 .species-wrapper .more-info-wrapper {
   width: 0px;
-  transition-duration: 0.5s;
 }
 .species-wrapper .highlight .fish-image-wrapper {
   width: 100%;
@@ -49,7 +47,12 @@ ul {
   justify-content: center;
   align-items: center;
   background: linear-gradient(-30deg, #1787ca, #cbefc4);
-  transition-duration: 2s;
+}
+.species-wrapper .highlight .fish-image-wrapper .fish-image-bubble {
+  width: 100%;
+  height: 100%;
+  border-radius: inherit;
+  background: inherit;
 }
 .species-wrapper .highlight .fish-image-wrapper.saltwater {
   background: linear-gradient(#009ffd 0%, #1b2348 100%);
@@ -154,4 +157,7 @@ ul {
 }
 .hard {
   background-color: #c50000;
+}
+.remove {
+  opacity: 0;
 }

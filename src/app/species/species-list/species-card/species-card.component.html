@@ -1,8 +1,9 @@
 <div
 #card
 class="species-wrapper"
-(mouseover)="bump(imgRef, imgRefWrapper); cardBump(card)"
-(mouseout)="bumpReverse(imgRef, imgRefWrapper); cardBumpReverse(card)">
+(mouseover)="bump(); cardBump()"
+(mouseout)="bumpReverse(); cardBumpReverse()"
+[ngClass]="remove">
   <div class="highlight">
     <div class="two-group">
       <img
@@ -18,13 +19,13 @@ class="species-wrapper"
     <div
       class="fish-image-wrapper"
       [ngClass]="species.waterType"
-      #imgRefWrapper
     >
+      <div class="fish-image-bubble" #imgRefBubble></div>
       <img #imgRef src="{{ species.heroImg }}" alt="error" srcset="" />
     </div>
     <div class="species-info">
       <h1>{{ species.name }}</h1>
-      <span class="more-info" (click)="swimAway(imgRef, imgRefWrapper)"
+      <span #moreInfoDiv class="more-info" (click)="swimAway(); animateToWiki()"
         >+ more information</span
       >
       <p class="species-description">{{ species.description }}</p>

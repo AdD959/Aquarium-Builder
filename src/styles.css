@@ -6,6 +6,10 @@ body {
   font-family: 'Roboto', sans-serif;
   background: #E2DDDE;
   overflow-x: hidden;
+  height: 100%;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
 }
 a {
   text-decoration: none;

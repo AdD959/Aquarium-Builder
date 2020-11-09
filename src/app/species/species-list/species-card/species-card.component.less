@@ -1,7 +1,5 @@
 @import '../../../../styles.less';
 
-@transition-duration: 0.5s;
-
 .species-wrapper {
   padding: 20px;
   border-radius: 10px;
@@ -12,12 +10,10 @@
   align-items: center;
   box-shadow: -1px 15px 30px -6px rgba(196, 196, 196, 1);
   border: solid white 3px;
-  transition-duration: @transition-duration;
   height: auto;
 
   .more-info-wrapper {
     width: 0px;
-    transition-duration: @transition-duration;
   }
 
   .highlight {
@@ -31,7 +27,13 @@
       justify-content: center;
       align-items: center;
       background: linear-gradient(-30deg, #1787ca, #cbefc4);
-      transition-duration: 2s;
+
+      .fish-image-bubble {
+        width: 100%;
+        height: 100%;
+        border-radius: inherit;
+        background: inherit;
+      }
 
       &.saltwater {
         background: linear-gradient(#009ffd 0%, #1b2348 100%);
@@ -163,4 +165,8 @@
 
 .hard {
   background-color: #c50000;
+}
+
+.remove {
+  opacity: 0;
 }

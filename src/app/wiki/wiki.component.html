@@ -1,2 +1,11 @@
-<p>wiki works!</p>
-<app-species-list></app-species-list>
+<div
+#wikiWrapper id="wikiWrapper"
+[ngClass]="species.waterType">
+  <div class="imgWrapper">
+    <img #speciesImage [src]="species.heroImg" alt="">
+  </div>
+  <div class="infoWrapper">
+    <h1>{{ species.name }}</h1>
+    <h2>{{ species.waterType }}</h2>
+  </div>
+</div>
