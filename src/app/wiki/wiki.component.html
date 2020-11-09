@@ -1,11 +1,30 @@
-<div
-#wikiWrapper id="wikiWrapper"
-[ngClass]="species.waterType">
+<div #wikiWrapper id="wikiWrapper" [ngClass]="species.waterType">
   <div class="imgWrapper">
-    <img #speciesImage [src]="species.heroImg" alt="">
+    <img #speciesImage [src]="species.heroImg" alt="" />
+    <img [src]="species.heroImg" alt="" />
+    <img [src]="species.heroImg" alt="" />
+    <img [src]="species.heroImg" alt="" />
   </div>
-  <div class="infoWrapper">
+  <div #infoWrapper class="infoWrapper">
     <h1>{{ species.name }}</h1>
-    <h2>{{ species.waterType }}</h2>
+    <h2>{{ species.difficulty }}</h2>
+    <nav>
+      <ul id="tabs">
+        <li>Food</li>
+        <li>Social</li>
+        <li>Extra Requirements</li>
+      </ul>
+    </nav>
+    <p>
+      Lorem ipsum dolor sit amet consectetur adipisicing elit. Impedit labore
+      non iure debitis mollitia molestias voluptate provident qui, voluptatum,
+      ea praesentium voluptas perferendis! Veniam cum voluptatibus est tenetur
+      qui repellat neque harum ullam doloremque possimus doloribus repellendus
+      quod adipisci quis quibusdam, voluptate non illo sit dolor a ex sint
+      voluptatum. Consectetur labore nulla quisquam magni animi impedit eius
+      incidunt natus!
+    </p>
+    <h2>Tank Size</h2>
+    <h3>Large</h3>
   </div>
 </div>
