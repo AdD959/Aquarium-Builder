@@ -31,7 +31,11 @@ export class SpeciesCardComponent implements OnInit, AfterViewInit {
   @Input() species: Species;
   @Input() objIndex: number;
 
-  constructor(private speciesService: SpeciesService, private router: Router, private _ngZone: NgZone) {}
+  constructor(
+    private speciesService: SpeciesService,
+    private router: Router,
+    private ngZone: NgZone
+  ) {}
   ngAfterViewInit(): void {
     this.fishHoverRotate.to(this.imageReference.nativeElement, 1, {
       rotate: 5,
@@ -50,7 +54,8 @@ export class SpeciesCardComponent implements OnInit, AfterViewInit {
     this.moreInfoDiv.nativeElement.style.display = 'none';
     const image = this.imageReference.nativeElement;
     const imageBubble = this.imageBubbleReference.nativeElement;
-    const bagColourChange = this.species.waterType === 'saltwater' ? '#012b5f' : '#9bdeec';
+    const bagColourChange =
+      this.species.waterType === 'saltwater' ? '#012b5f' : '#9bdeec';
 
     this.moreInfoActive = true;
     this.fishHoverRotate.kill();
@@ -67,15 +72,16 @@ export class SpeciesCardComponent implements OnInit, AfterViewInit {
         rotate: -40,
         ease: 'power1.in',
         onComplete: () => {
-          this._ngZone.run(() => {
+          this.ngZone.run(() => {
             this.router.navigate(['/wiki', { id: this.objIndex }]);
           });
         },
       })
       .to(
         imageBubble,
-        0, {
-          background: bagColourChange
+        0,
+        {
+          background: bagColourChange,
         },
         0
       )

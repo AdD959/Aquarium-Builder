@@ -55,6 +55,82 @@ ul {
   width: 60%;
   height: 100%;
 }
+#wikiWrapper .infoWrapper .topRow {
+  display: flex;
+  justify-content: space-between;
+}
+#wikiWrapper .infoWrapper .topRow > .buttonWrapper {
+  width: 0;
+  height: 0;
+  position: relative;
+}
+#wikiWrapper .infoWrapper .topRow > .buttonWrapper::after {
+  content: 'Add to tank!';
+  position: absolute;
+  width: 108px;
+  background-color: crimson;
+  color: white;
+  height: 0;
+  top: -23px;
+  justify-content: center;
+  align-items: center;
+  opacity: 0.8;
+  display: flex;
+  left: 41px;
+  overflow: hidden;
+  transition-duration: 0.2s;
+}
+#wikiWrapper .infoWrapper .topRow > .buttonWrapper:hover::after {
+  height: 31px;
+}
+#wikiWrapper .infoWrapper .topRow svg#addBtn {
+  width: 50px;
+  fill: white;
+  cursor: pointer;
+  position: relative;
+}
+@keyframes rotating {
+  from {
+    transform: rotate(0deg) scale(0.8);
+  }
+  to {
+    transform: rotate(180deg) scale(0.8);
+  }
+}
+#wikiWrapper .infoWrapper .topRow svg#addBtn #cross > polygon {
+  fill: #0099b5;
+}
+#wikiWrapper .infoWrapper .topRow svg#addBtn #decor {
+  transform-origin: center center;
+  transform: scale(0.8);
+  position: relative;
+}
+#wikiWrapper .infoWrapper .topRow svg#addBtn:hover > #decor {
+  animation: rotating 3s linear infinite;
+}
+#wikiWrapper .infoWrapper .topRow #photographs {
+  display: flex;
+  justify-content: flex-end;
+  position: relative;
+  margin: 0 0 0 auto;
+}
+#wikiWrapper .infoWrapper .topRow #photographs > img {
+  width: 125px;
+  height: 125px;
+  -o-object-fit: cover;
+  margin: -8px;
+  object-fit: cover;
+  border-radius: 70px;
+  box-sizing: border-box;
+  cursor: zoom-in;
+}
+#wikiWrapper .infoWrapper .topRow #photographs > img.zoomed {
+  width: 400px;
+  height: 400px;
+  float: left;
+  position: fixed;
+  border-radius: 60px;
+}
 #wikiWrapper .infoWrapper > nav ul {
   list-style: none;
   display: flex;

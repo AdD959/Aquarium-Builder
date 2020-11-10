@@ -21,6 +21,9 @@ import { TimelineMax, gsap } from 'gsap';
 export class WikiComponent implements OnInit, AfterViewInit {
   id: number;
   species: Species;
+  photoUrls: string[] = [];
+  // zoomed = false;
+  zoomed = new Array(4);
 
   @ViewChild('speciesImage', { static: false }) speciesImage;
   @ViewChild('wikiWrapper', { static: false }) wikiWrapper: ElementRef;
@@ -33,10 +36,33 @@ export class WikiComponent implements OnInit, AfterViewInit {
     this.route.params.subscribe((params: Params) => {
       this.id = params.id;
     });
+    this.zoomed.fill(false);
   }
 
   ngOnInit() {
     this.species = this.speciesService.getSpecies(this.id);
+    this.getPhotos(this.id);
+  }
+
+  // NeedsBackendDev
+  getPhotos(id: number) {
+    console.log(id);
+    let i: number;
+    for (i = 1; i <= 4; i++) {
+      let photoUrl: string;
+      if (id == 3) {
+        photoUrl = `../assets/images/photos/${id}/${i}.jpg`;
+      } else {
+        photoUrl = '../assets/images/placeholders/imgPlaceholder.png';
+      }
+      this.photoUrls.push(photoUrl);
+    }
+  }
+
+  zoomToggle(i: number) {
+    const oldVal = this.zoomed[i];
+    this.zoomed.forEach((val, index) => { this.zoomed[index] = false; });
+    this.zoomed[i] = !oldVal;
   }
 
   ngAfterViewInit(): void {
