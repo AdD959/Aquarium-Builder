@@ -12,6 +12,9 @@ import { SpeciesComponent } from './species/species.component';
 import { SpeciesListComponent } from './species/species-list/species-list.component';
 import { SpeciesService } from './species/species.service';
 import { SpeciesCardComponent } from './species/species-list/species-card/species-card.component';
+import { MyTankSidebarComponent } from './my-tank-sidebar/my-tank-sidebar.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
 
 @NgModule({
   declarations: [
@@ -23,11 +26,13 @@ import { SpeciesCardComponent } from './species/species-list/species-card/specie
     DropdownDirective,
     SpeciesComponent,
     SpeciesListComponent,
-    SpeciesCardComponent
+    SpeciesCardComponent,
+    MyTankSidebarComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    BrowserAnimationsModule
   ],
   providers: [
     SpeciesService

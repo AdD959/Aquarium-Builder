@@ -1,0 +1,27 @@
+#router-holder {
+  display: flex;
+
+  #my-tank {
+    width: 200px;
+    height: 56px;
+    background: crimson;
+    position: fixed;
+    top: 200px;
+    right: -63px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    font-size: 2em;
+    border-radius: 20px;
+    color: white;
+    font-weight: bold;
+    padding-left: 20px;
+    transition-duration: 0.2s;
+    z-index: 100;
+    cursor: pointer;
+
+    &:hover {
+      transform: translateX(-30px);
+    }
+  }
+}

@@ -1,3 +1,7 @@
 
 <app-header></app-header>
-<router-outlet></router-outlet>
+<div id="router-holder">
+  <div id="my-tank" (click)="toggleMyTank()">My Tank</div>
+  <router-outlet></router-outlet>
+  <app-my-tank-sidebar *ngIf="myTankExpanded"></app-my-tank-sidebar>
+</div>

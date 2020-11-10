@@ -1,0 +1,9 @@
+#my-tank-sidebar {
+  height: 100%;
+  width: 350px;
+  background: white;
+  transition-duration: 0.5s;
+}
+#my-tank-sidebar.visible {
+  width: 350px;
+}
