@@ -6,12 +6,12 @@ import {
   OnInit,
   NgZone,
   ViewChild,
+  Renderer2,
 } from '@angular/core';
 import { Species } from '../../species.model';
 import { TimelineMax } from 'gsap';
 import { SpeciesService } from '../../species.service';
 import { Router } from '@angular/router';
-import { delay } from 'rxjs/operators';
 
 @Component({
   selector: 'app-species-card',
@@ -49,6 +49,15 @@ export class SpeciesCardComponent implements OnInit, AfterViewInit {
   }
 
   ngOnInit() {}
+
+  animateAddToTank(img: any) {
+    const tlm = new TimelineMax();
+    tlm
+    .fromTo(img, 0.5, { rotateY: 180 },  { x: -100 })
+    .to(img, 0.5, { x: 1500, ease: 'none' })
+    .to(img, 0, { y: 20, opacity: 0, x: 0, rotateY: 0 })
+    .to(img, 1, { y: 0, opacity: 1});
+  }
 
   swimAway() {
     this.moreInfoDiv.nativeElement.style.display = 'none';

@@ -9,7 +9,7 @@ export class SpeciesService {
   viewMoreInfo = new Subject<number>();
 
   getAllSpecies() {
-    return this.species.slice();
+    return this.species.slice(0, 20);
   }
 
   setSpecies(species: Species[]) {
