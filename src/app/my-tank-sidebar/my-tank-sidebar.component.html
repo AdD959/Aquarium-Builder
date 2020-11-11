@@ -1,3 +1,11 @@
-<section id="my-tank-sidebar">
+<div
+id="my-tank-label"
+(click)="openMyTank()"
+class="{{ myTankExpanded ? 'change-label-position' : '' }}">My Tank</div>
+
+<section id="my-tank-sidebar" class="{{ myTankExpanded ? '' : 'hidden' }}">
+  <div
+  id="close"
+  (click)="closeMyTank()">X</div>
 
 </section>

@@ -1,9 +1,73 @@
+#my-tank-label {
+  width: 200px;
+  height: 56px;
+  background: #22283c;
+  position: fixed;
+  top: 200px;
+  right: -63px;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  font-size: 2em;
+  border-radius: 20px;
+  color: white;
+  font-weight: bold;
+  padding-left: 20px;
+  transition-duration: 0.2s;
+  z-index: 100;
+  cursor: pointer;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  -o-user-select: none;
+  user-select: none;
+}
+#my-tank-label:hover {
+  transform: translateX(-30px);
+}
+#my-tank-label.change-label-position {
+  top: 58px;
+  z-index: 300;
+  right: 86px;
+  padding-left: 0px;
+  justify-content: center;
+}
+#my-tank-label.change-label-position:hover {
+  transform: none;
+  cursor: unset;
+}
 #my-tank-sidebar {
-  height: 100%;
+  height: 80vh;
   width: 350px;
   background: white;
-  transition-duration: 0.5s;
+  right: 17px;
+  top: 82px;
+  position: fixed;
+  z-index: 200;
+  border-radius: 10px;
+  transition-duration: 0.2s;
 }
-#my-tank-sidebar.visible {
-  width: 350px;
+#my-tank-sidebar #close {
+  height: 30px;
+  width: 30px;
+  background-color: #d03a56;
+  color: white;
+  font-weight: bold;
+  border-radius: 100%;
+  display: inline-flex;
+  padding: 7px;
+  margin: 5px;
+  position: absolute;
+  left: -25px;
+  top: -25px;
+  z-index: 400;
+  justify-content: center;
+  align-items: center;
+  font-size: 28px;
+  cursor: pointer;
+}
+.hidden {
+  transform: translate(500px);
 }
