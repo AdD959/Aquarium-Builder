@@ -12,11 +12,12 @@ import { Species } from '../../species.model';
 import { TimelineMax } from 'gsap';
 import { SpeciesService } from '../../species.service';
 import { Router } from '@angular/router';
+import { SideBarService } from 'src/app/shared/sidebar.service';
 
 @Component({
   selector: 'app-species-card',
   templateUrl: './species-card.component.html',
-  styleUrls: ['./species-card.component.less'],
+  styleUrls: ['./species-card.component.less']
 })
 export class SpeciesCardComponent implements OnInit, AfterViewInit {
   @ViewChild('imgRef', { static: false }) imageReference;
@@ -34,8 +35,11 @@ export class SpeciesCardComponent implements OnInit, AfterViewInit {
   constructor(
     private speciesService: SpeciesService,
     private router: Router,
-    private ngZone: NgZone
+    private ngZone: NgZone,
+    private sideBarService: SideBarService
   ) {}
+
+
   ngAfterViewInit(): void {
     this.fishHoverRotate.to(this.imageReference.nativeElement, 1, {
       rotate: 5,
@@ -51,6 +55,7 @@ export class SpeciesCardComponent implements OnInit, AfterViewInit {
   ngOnInit() {}
 
   animateAddToTank(img: any) {
+    this.sideBarService.triggerSideBar();
     const tlm = new TimelineMax();
     tlm
     .fromTo(img, 0.5, { rotateY: 180 },  { x: -100 })

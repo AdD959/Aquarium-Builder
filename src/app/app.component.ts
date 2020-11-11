@@ -1,6 +1,7 @@
 import { animate, style, transition, trigger } from '@angular/animations';
 import { OnInit } from '@angular/core';
 import { Component } from '@angular/core';
+import { SideBarService } from './shared/sidebar.service';
 
 @Component({
   selector: 'app-root',
@@ -22,7 +23,11 @@ import { Component } from '@angular/core';
 export class AppComponent {
   myTankExpanded = false;
 
-  constructor() {}
+  constructor(private sideBarService: SideBarService) {
+    this.sideBarService.toggleSideBar.subscribe(() => {
+      this.myTankExpanded = true;
+    });
+  }
 
   toggleMyTank() {
     this.myTankExpanded = !this.myTankExpanded;

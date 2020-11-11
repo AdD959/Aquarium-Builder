@@ -14,6 +14,7 @@ import { SpeciesService } from './species/species.service';
 import { SpeciesCardComponent } from './species/species-list/species-card/species-card.component';
 import { MyTankSidebarComponent } from './my-tank-sidebar/my-tank-sidebar.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { SideBarService } from './shared/sidebar.service';
 
 
 @NgModule({
@@ -35,7 +36,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     BrowserAnimationsModule
   ],
   providers: [
-    SpeciesService
+    SpeciesService,
+    SideBarService
   ],
   bootstrap: [AppComponent]
 })
