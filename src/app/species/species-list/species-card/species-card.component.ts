@@ -41,30 +41,30 @@ export class SpeciesCardComponent implements OnInit, AfterViewInit {
 
 
   ngAfterViewInit(): void {
-    this.fishHoverRotate.to(this.imageReference.nativeElement, 1, {
+    this.fishHoverRotate.to(this.imageReference.nativeElement, 2, {
       rotate: 5,
       y: 10,
-    });
-
-    this.cardShift.to(this.card.nativeElement, 0.1, {
-      y: -10,
-      ease: 'none',
+      repeat: -1,
+      yoyo: true,
+      ease: 'power1.inOut'
     });
   }
 
   ngOnInit() {}
 
   animateAddToTank(img: any) {
+    this.fishHoverRotate.kill();
     this.sideBarService.triggerSideBar();
     const tlm = new TimelineMax();
     tlm
-    .fromTo(img, 0.5, { rotateY: 180 },  { x: -100 })
-    .to(img, 0.5, { x: 1500, ease: 'none' })
+    .fromTo(img, 0.5, {  zIndex: 500 },  { x: -100, y: 150, rotateY: 180 })
+    .to(img, 0.5, {  x: 1400, zIndex: 99, ease: 'none' })
     .to(img, 0, { y: 20, opacity: 0, x: 0, rotateY: 0 })
     .to(img, 1, { y: 0, opacity: 1});
   }
 
   swimAway() {
+    this.sideBarService.triggercloseSideBar();
     this.moreInfoDiv.nativeElement.style.display = 'none';
     const image = this.imageReference.nativeElement;
     const imageBubble = this.imageBubbleReference.nativeElement;

@@ -6,6 +6,10 @@ body {
   font-family: 'Roboto', sans-serif;
   background: #E2DDDE;
   overflow-x: hidden;
+  height: 100%;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
 }
 a {
   text-decoration: none;
@@ -33,6 +37,8 @@ ul {
   box-shadow: -1px 15px 30px -6px #c4c4c4;
   border: solid white 3px;
   height: auto;
+  transition-duration: 0.2s;
+  z-index: 40;
 }
 .species-wrapper .more-info-wrapper {
   width: 0px;
@@ -53,6 +59,8 @@ ul {
   height: 100%;
   border-radius: inherit;
   background: inherit;
+  position: relative;
+  z-index: 40;
 }
 .species-wrapper .highlight .fish-image-wrapper.saltwater {
   background: linear-gradient(#009ffd 0%, #1b2348 100%);
@@ -62,7 +70,7 @@ ul {
   max-height: 150px;
   position: absolute;
   left: 0;
-  z-index: 100;
+  z-index: 99;
 }
 .species-wrapper .highlight .type {
   width: 30px;
@@ -148,6 +156,13 @@ ul {
 }
 .species-wrapper .highlight .two-group .species-size {
   margin: 15px 0 0 0;
+}
+.species-wrapper:hover {
+  transform: translateY(-5px);
+  z-index: 40;
+}
+.species-wrapper:hover .highlight .fish-image-wrapper > img {
+  z-index: 400;
 }
 .easy {
   background-color: #14ad14;

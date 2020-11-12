@@ -11,6 +11,8 @@
   box-shadow: -1px 15px 30px -6px rgba(196, 196, 196, 1);
   border: solid white 3px;
   height: auto;
+  transition-duration: 0.2s;
+  z-index: 40;
 
   .more-info-wrapper {
     width: 0px;
@@ -33,6 +35,8 @@
         height: 100%;
         border-radius: inherit;
         background: inherit;
+        position: relative;
+        z-index: 40;
       }
 
       &.saltwater {
@@ -44,7 +48,7 @@
         max-height: 150px;
         position: absolute;
         left: 0;
-        z-index: 100;
+        z-index: 99;
       }
     }
 
@@ -149,10 +153,18 @@
       }
     }
   }
+  &:hover {
+    transform: translateY(-5px);
+    z-index: 40;
 
-  // &:hover {
-  //   transform: translateY(-5px);
-  // }
+    .highlight {
+      .fish-image-wrapper {
+        > img {
+          z-index: 400;
+        }
+      }
+    }
+  }
 }
 
 .easy {

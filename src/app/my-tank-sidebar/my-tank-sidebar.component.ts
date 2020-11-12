@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { SideBarService } from '../shared/sidebar.service';
 
 @Component({
@@ -9,11 +9,15 @@ import { SideBarService } from '../shared/sidebar.service';
 export class MyTankSidebarComponent implements OnInit {
   myTankExpanded = false;
   myTankLabelTriggered = false;
-
+  labelLowered = false;
 
   constructor(private sideBarService: SideBarService) {
     this.sideBarService.toggleSideBar.subscribe(() => {
       this.myTankExpanded = true;
+    });
+
+    this.sideBarService.closeSideBar.subscribe(() => {
+      this.myTankExpanded = false;
     });
   }
 
