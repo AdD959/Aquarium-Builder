@@ -1,6 +1,8 @@
 import { Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { SideBarService } from '../shared/sidebar.service';
 import { TimelineMax } from 'gsap';
+import { MyTankService } from '../my-tank/my-tank.service';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-my-tank-sidebar',
@@ -12,21 +14,32 @@ export class MyTankSidebarComponent implements OnInit {
   myTankLabelTriggered = false;
   labelLowered = false;
   selectedTank = 'M';
+  watchTank = new Subscription();
   tlmToTop = new TimelineMax();
   tlmToMid = new TimelineMax();
   tlmToBot = new TimelineMax();
+  residents = [];
 
   @ViewChild('smallIcon', { static: false }) smallIcon;
   @ViewChild('mediumIcon', { static: false }) mediumIcon;
   @ViewChild('largeIcon', { static: false }) largeIcon;
 
-  constructor(private sideBarService: SideBarService) {
+  constructor(
+    private sideBarService: SideBarService,
+    private myTankService: MyTankService
+  ) {
+    this.residents = this.myTankService.getMyTank();
+
     this.sideBarService.toggleSideBar.subscribe(() => {
       this.myTankExpanded = true;
     });
 
     this.sideBarService.closeSideBar.subscribe(() => {
       this.myTankExpanded = false;
+    });
+
+    this.myTankService.watchTank.subscribe((items) => {
+      this.updateList(items);
     });
   }
 
@@ -38,6 +51,10 @@ export class MyTankSidebarComponent implements OnInit {
 
   closeMyTank() {
     this.myTankExpanded = false;
+  }
+
+  updateList(items) {
+    console.log('updateList ran!');
   }
 
   selectTank(img: any) {

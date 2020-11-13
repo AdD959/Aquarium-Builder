@@ -4,6 +4,7 @@ export class ResidentListItem {
   public count: number;
   public space: number;
   public community: number;
+  public img: string;
 
   constructor() {}
 
