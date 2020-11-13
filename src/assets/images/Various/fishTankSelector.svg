@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 23.0.1, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<svg version="1.1" id="fishTankSelector" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px"
+	 y="0px" viewBox="0 0 468 468" style="enable-background:new 0 0 468 468;" xml:space="preserve">
+<style type="text/css">
+	.st0{clip-path:url(#tankBackground_1_);}
+	.st1{fill:#4D4D4D;}
+	.st2{fill:#C69C6D;}
+	.st3{fill:#666666;}
+	.st4{opacity:0.89;fill:#66C3EA;}
+	.st5{opacity:0.89;fill:#29ABE2;}
+	.st6{opacity:0.89;fill:#0071BC;}
+	.st7{opacity:0.65;}
+	.st8{fill:#D4C4B1;}
+	.st9{fill:#998675;}
+	.st10{fill:#C7B299;}
+	.st11{opacity:0.47;fill:#F2F2F2;}
+	.st12{fill:#808080;}
+</style>
+<g>
+	<defs>
+		<circle id="tankBackground" cx="234" cy="234" r="234"/>
+	</defs>
+	<use xlink:href="#tankBackground"  style="overflow:visible;fill:#29ABE2;"/>
+	<clipPath id="tankBackground_1_">
+		<use xlink:href="#tankBackground"  style="overflow:visible;"/>
+	</clipPath>
+	<g id="tanksGroup" class="st0">
+		<g id="tankImageLarge">
+			<g id="base">
+				<polygon class="st1" points="301.6,877 77,747.9 166.4,696.3 391,825.4 				"/>
+				<polygon class="st2" points="301.6,869.8 77,740.7 166.4,689.1 391,818.1 				"/>
+				<polygon class="st1" points="77,740.7 77,747.9 301.6,877 301.6,869.8 				"/>
+				<polygon class="st3" points="301.6,877 391,825.4 391,818.1 301.6,869.8 				"/>
+			</g>
+			<g id="water">
+				<polygon class="st4" points="301.6,766.8 77,637.8 166.4,586.2 391,715.2 				"/>
+				<polygon class="st5" points="77,740.7 77,637.8 301.6,766.8 301.6,869.8 				"/>
+				<polygon class="st6" points="301.6,766.8 391,715.2 391,818.1 301.6,869.8 				"/>
+			</g>
+			<g id="gravel" class="st7">
+				<polygon class="st1" points="301.6,869.5 77,740.4 166.4,688.8 391,817.8 				"/>
+				<polygon class="st8" points="301.6,862.2 77,733.5 166.4,681.9 391,810.6 				"/>
+				<polygon class="st9" points="77,733.5 77,740.8 301.6,869.8 301.6,862.2 				"/>
+				<polygon class="st10" points="301.6,869.8 391,817.8 391,810.6 301.6,862.2 				"/>
+			</g>
+			<g id="glass">
+				<polygon class="st11" points="166.4,573.2 77,624.9 77,733.5 166.4,681.9 391,810.6 391,702.3 				"/>
+				<polygon class="st11" points="77,740.7 77,624.8 301.6,753.9 301.6,869.8 				"/>
+				<polygon class="st11" points="140.7,777.5 176.4,798.1 143.1,663 107.4,642.4 				"/>
+				<polygon class="st11" points="120.6,765.9 132.9,773 99.6,637.9 87.3,630.8 				"/>
+				<polygon class="st11" points="301.6,753.9 391,702.3 391,818.1 301.6,869.8 				"/>
+			</g>
+			<g id="topper">
+				<polygon class="st12" points="77,624.9 166.4,573.2 166.4,566 77,617.6 				"/>
+				<polygon class="st3" points="80.9,627.1 170.3,575.4 170.3,568.2 80.9,619.8 				"/>
+				<polygon class="st1" points="166.3,570.5 166.4,577.7 387,704.5 387,697.3 				"/>
+				<polygon class="st12" points="301.5,750 387,699.9 387,692.6 301.5,742.8 				"/>
+				<polygon class="st3" points="301.6,753.9 391,702.3 391,695 301.6,746.7 				"/>
+				<polygon class="st1" points="77,617.6 77,624.8 301.6,753.9 301.6,746.7 				"/>
+				<polygon class="st12" points="77,617.6 81,615.3 305.6,744.4 301.6,746.7 				"/>
+				<polygon class="st12" points="162.4,568.3 166.4,566 391,695.1 387,697.4 				"/>
+			</g>
+			<polygon class="st11" points="240.5,834.7 276.2,855.3 242.9,720.2 207.2,699.6 			"/>
+		</g>
+		<g id="tank_1_">
+			<g id="base_1_">
+				<polygon class="st1" points="269.1,415.4 77.1,304.5 198.9,234.2 390.9,345 				"/>
+				<polygon class="st2" points="269.1,405.6 77.1,294.7 198.9,224.3 390.9,335.2 				"/>
+				<polygon class="st1" points="77.1,294.7 77.1,304.5 269.1,415.4 269.1,405.6 				"/>
+				<polygon class="st3" points="269.1,415.4 390.9,345 390.9,335.2 269.1,405.6 				"/>
+			</g>
+			<g id="water_1_">
+				<polygon class="st4" points="269.1,265.3 77.1,154.4 198.9,84.1 390.9,194.9 				"/>
+				<polygon class="st5" points="77.1,294.7 77.1,154.4 269.1,265.3 269.1,405.6 				"/>
+				<polygon class="st6" points="269.1,265.3 390.9,194.9 390.9,335.2 269.1,405.6 				"/>
+			</g>
+			<g id="gravel_1_" class="st7">
+				<polygon class="st1" points="269.1,405.1 77.1,294.2 198.9,223.9 390.9,334.8 				"/>
+				<polygon class="st8" points="269.1,395.3 77.1,284.8 198.9,214.5 390.9,324.9 				"/>
+				<polygon class="st9" points="77.1,284.9 77.1,294.7 269.1,405.6 269.1,395.3 				"/>
+				<polygon class="st10" points="269.1,405.6 390.9,334.8 390.9,324.9 269.1,395.3 				"/>
+			</g>
+			<g id="glass_1_">
+				<polygon class="st11" points="198.9,66.4 77.1,136.8 77.1,284.8 198.9,214.5 390.9,324.9 390.9,177.3 				"/>
+				<polygon class="st11" points="77.1,294.7 77.1,136.8 269.1,247.6 269.1,405.6 				"/>
+				<polygon class="st11" points="163.8,344.8 212.5,372.8 167.1,188.7 118.5,160.6 				"/>
+				<polygon class="st11" points="136.4,329 153.2,338.6 107.8,154.5 91,144.8 				"/>
+				<polygon class="st11" points="269.1,247.7 390.9,177.3 390.9,335.2 269.1,405.6 				"/>
+			</g>
+			<g id="topper_1_">
+				<polygon class="st12" points="77.1,136.8 198.9,66.4 198.9,56.6 77.1,127 				"/>
+				<polygon class="st3" points="82.3,139.8 204.2,69.5 204.2,59.6 82.3,130 				"/>
+				<polygon class="st1" points="198.8,62.7 198.9,72.5 385.4,180.3 385.4,170.5 				"/>
+				<polygon class="st12" points="263.6,244.4 385.4,174 385.4,164.2 263.6,234.5 				"/>
+				<polygon class="st3" points="269.1,247.6 390.9,177.3 390.9,167.4 269.1,237.8 				"/>
+				<polygon class="st1" points="77.1,126.9 77.1,136.8 269.1,247.6 269.1,237.8 				"/>
+				<polygon class="st12" points="77.1,127 82.5,123.8 274.5,234.7 269.1,237.8 				"/>
+				<polygon class="st12" points="193.4,59.7 198.8,56.6 390.9,167.5 385.4,170.6 				"/>
+			</g>
+		</g>
+		<g id="tank_2_">
+			<g id="base_2_">
+				<polygon class="st1" points="228.1,-85.6 118.1,-148.5 239.9,-218.8 349.9,-156 				"/>
+				<polygon class="st2" points="228.1,-95.4 118.1,-158.3 239.9,-228.7 349.9,-165.8 				"/>
+				<polygon class="st1" points="118.1,-158.3 118.1,-148.5 228.1,-85.6 228.1,-95.4 				"/>
+				<polygon class="st3" points="228.1,-85.6 349.9,-156 349.9,-165.8 228.1,-95.4 				"/>
+			</g>
+			<g id="water_2_">
+				<polygon class="st4" points="228.1,-235.7 118.1,-298.6 239.9,-368.9 349.9,-306.1 				"/>
+				<polygon class="st5" points="118.1,-158.3 118.1,-298.6 228.1,-235.7 228.1,-95.4 				"/>
+				<polygon class="st6" points="228.1,-235.7 349.9,-306.1 349.9,-165.8 228.1,-95.4 				"/>
+			</g>
+			<g id="gravel_2_" class="st7">
+				<polygon class="st1" points="228.1,-95.9 118.1,-158.8 239.9,-229.1 349.9,-166.2 				"/>
+				<polygon class="st8" points="228.1,-105.7 118.1,-168.2 239.9,-238.5 349.9,-176.1 				"/>
+				<polygon class="st9" points="118.1,-168.1 118.1,-158.3 228.1,-95.4 228.1,-105.7 				"/>
+				<polygon class="st10" points="228.1,-95.4 349.9,-166.2 349.9,-176.1 228.1,-105.7 				"/>
+			</g>
+			<g id="glass_2_">
+				<polygon class="st11" points="239.9,-386.6 118.1,-316.2 118.1,-168.2 239.9,-238.5 349.9,-176.1 349.9,-323.7 				"/>
+				<polygon class="st11" points="118.1,-158.3 118.1,-316.2 228.1,-253.4 228.1,-95.4 				"/>
+				<polygon class="st11" points="204.8,-108.2 218.5,-100.2 173.1,-284.3 159.5,-292.4 				"/>
+				<polygon class="st11" points="177.4,-124 194.2,-114.4 148.8,-298.5 132,-308.2 				"/>
+				<polygon class="st11" points="228.1,-253.3 349.9,-323.7 349.9,-165.8 228.1,-95.4 				"/>
+			</g>
+			<g id="topper_2_">
+				<polygon class="st12" points="118.1,-316.2 239.9,-386.6 239.9,-396.4 118.1,-326 				"/>
+				<polygon class="st3" points="123.3,-313.2 245.2,-383.5 245.2,-393.4 123.3,-323 				"/>
+				<polygon class="st1" points="239.8,-390.3 239.9,-380.5 344.4,-320.7 344.4,-330.5 				"/>
+				<polygon class="st12" points="222.6,-256.6 344.4,-327 344.4,-336.8 222.6,-266.5 				"/>
+				<polygon class="st3" points="228.1,-253.4 349.9,-323.7 349.9,-333.6 228.1,-263.2 				"/>
+				<polygon class="st1" points="118.1,-326.1 118.1,-316.2 228.1,-253.4 228.1,-263.2 				"/>
+				<polygon class="st12" points="118.1,-326 123.5,-329.2 233.5,-266.3 228.1,-263.2 				"/>
+				<polygon class="st12" points="234.4,-393.3 239.8,-396.4 349.9,-333.5 344.4,-330.4 				"/>
+			</g>
+		</g>
+	</g>
+</g>
+</svg>

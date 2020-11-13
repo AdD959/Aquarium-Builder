@@ -29,6 +29,7 @@ export class SpeciesCardComponent implements OnInit, AfterViewInit {
   cardShift = new TimelineMax({ paused: true });
   moreInfoActive = false;
   remove = '';
+  size: string;
   @Input() species: Species;
   @Input() objIndex: number;
 
@@ -37,7 +38,8 @@ export class SpeciesCardComponent implements OnInit, AfterViewInit {
     private router: Router,
     private ngZone: NgZone,
     private sideBarService: SideBarService
-  ) {}
+  ) {
+  }
 
 
   ngAfterViewInit(): void {
@@ -48,9 +50,20 @@ export class SpeciesCardComponent implements OnInit, AfterViewInit {
       yoyo: true,
       ease: 'power1.inOut'
     });
+
   }
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.getSpeciesSize();
+  }
+
+  getSpeciesSize() {
+    const i = this.species.size;
+    if (i < 5) { this.size = 'X-SMALL'; return; } else
+    if (i < 15) { this.size = 'SMALL'; return; } else
+    if (i < 50) { this.size = 'MEDIUM'; return; } else
+    if (i < 100) { this.size = 'LARGE'; return; } else { this.size = 'X-LARGE'; return; }
+  }
 
   animateAddToTank(img: any) {
     this.fishHoverRotate.kill();

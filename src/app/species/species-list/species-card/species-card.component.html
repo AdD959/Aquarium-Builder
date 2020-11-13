@@ -31,11 +31,13 @@ class="species-wrapper"
       <p class="species-description">{{ species.description }}</p>
       <div class="two-group">
         <span class="difficulty-rating">
-          <div class="d-rating {{ species.difficulty }}"></div>
-          <div class="d-rating {{ species.difficulty }}"></div>
-          <div class="d-rating {{ species.difficulty }}"></div>
+          <div class="d-rating" ngClass="{{ species.difficulty >= 1 ? 'easy' : '' }}"></div>
+          <div class="d-rating" ngClass="{{ species.difficulty >= 2 ? 'easy' : '' }}"></div>
+          <div class="d-rating" ngClass="{{ species.difficulty >= 3 ? 'medium' : '' }}"></div>
+          <div class="d-rating" ngClass="{{ species.difficulty >= 4 ? 'hard' : '' }}"></div>
+          <div class="d-rating" ngClass="{{ species.difficulty >= 5 ? 'hard' : '' }}"></div>
         </span>
-        <h2 class="species-size">{{ species.size | uppercase }}</h2>
+        <h2 class="species-size">{{ size }}</h2>
       </div>
     </div>
   </div>

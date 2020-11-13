@@ -1,3 +1,31 @@
+/* You can add global styles to this file, and also import other style files */
+html,
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Roboto', sans-serif;
+  background: #E2DDDE;
+  overflow-x: hidden;
+  height: 100%;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+}
+a {
+  text-decoration: none;
+  color: unset;
+  cursor: pointer;
+}
+ul {
+  margin: 0;
+  list-style: none;
+}
+.closedDropdown > ul {
+  display: none;
+}
+.active {
+  background-color: #193c5a;
+}
 #my-tank-label {
   width: 200px;
   height: 56px;
@@ -44,10 +72,12 @@
   background: white;
   right: 17px;
   top: 82px;
-  position: fixed;
+  position: absolute;
   z-index: 200;
   border-radius: 10px;
   transition-duration: 0.2s;
+  display: flex;
+  flex-direction: column;
 }
 #my-tank-sidebar #close {
   height: 30px;
@@ -67,6 +97,111 @@
   align-items: center;
   font-size: 28px;
   cursor: pointer;
+}
+#my-tank-sidebar #tankWrapper {
+  display: flex;
+  justify-content: center;
+  margin-top: 80px;
+  align-items: center;
+  flex-direction: column;
+}
+#my-tank-sidebar #tankWrapper #selection-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+#my-tank-sidebar #tankWrapper #selection-wrapper #fishTankSelector {
+  width: 80%;
+}
+#my-tank-sidebar #tankWrapper #selection-wrapper #tank-selector {
+  position: absolute;
+  right: 0;
+}
+#my-tank-sidebar #tankWrapper #selection-wrapper #tank-selector ul {
+  padding: 10px;
+}
+#my-tank-sidebar #tankWrapper #selection-wrapper #tank-selector ul > li {
+  margin: 5px 0;
+  width: 10px;
+  height: 10px;
+  background-color: lightgray;
+  border-radius: 100%;
+  position: relative;
+  cursor: pointer;
+}
+#my-tank-sidebar #tankWrapper #selection-wrapper #tank-selector ul > li.selected {
+  background-color: gray;
+}
+#my-tank-sidebar #tankWrapper #selection-wrapper #tank-selector ul > li > div {
+  position: absolute;
+  right: -24px;
+  top: -3px;
+}
+#my-tank-sidebar #residentsWrapper {
+  height: 100%;
+  width: 100%;
+  position: relative;
+  padding: 10px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  overflow-y: hidden;
+}
+#my-tank-sidebar #residentsWrapper #residentsList {
+  height: 100%;
+  width: 100%;
+  background-color: whitesmoke;
+  border-radius: 5px;
+  padding: 10px;
+  box-sizing: border-box;
+  overflow-y: scroll;
+}
+#my-tank-sidebar #residentsWrapper #residentsList .listItem {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  margin: 0 0 10px 0;
+}
+#my-tank-sidebar #residentsWrapper #residentsList .listItem .main {
+  width: 85%;
+  background-color: #428bca;
+  height: 40px;
+  border-radius: 5px;
+}
+#my-tank-sidebar #residentsWrapper #residentsList .listItem .delete {
+  width: 23px;
+  margin-left: 17px;
+}
+#my-tank-sidebar #moreInfo {
+  display: inline-flex;
+  justify-content: flex-end;
+  margin-right: 10px;
+  margin-top: -10px;
+  cursor: pointer;
+}
+#my-tank-sidebar #moreInfo div {
+  position: relative;
+  display: inline;
+}
+#my-tank-sidebar #moreInfo div::after {
+  content: '';
+  position: absolute;
+  z-index: -1;
+  right: 0;
+  width: 0%;
+  height: 2px;
+  background-color: #193c5a;
+  transition-duration: 0.2s;
+  display: block;
+}
+#my-tank-sidebar #moreInfo div:hover::after {
+  width: 100%;
+}
+h1 {
+  margin: 0;
+  font-weight: normal;
+  margin-bottom: 5px;
 }
 .hidden {
   transform: translate(500px);

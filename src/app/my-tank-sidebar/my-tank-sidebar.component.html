@@ -1,11 +1,665 @@
 <div
-id="my-tank-label"
-(click)="openMyTank()"
-class="{{ myTankExpanded ? 'change-label-position' : '' }}">My Tank</div>
+  id="my-tank-label"
+  (click)="openMyTank()"
+  class="{{ myTankExpanded ? 'change-label-position' : '' }}"
+>
+  My Tank
+</div>
 
 <section id="my-tank-sidebar" class="{{ myTankExpanded ? '' : 'hidden' }}">
-  <div
-  id="close"
-  (click)="closeMyTank()">X</div>
+  <div id="close" (click)="closeMyTank()">X</div>
+  <div id="tankWrapper">
+    <div id="selection-wrapper">
+      <!-- Generator: Adobe Illustrator 23.0.1, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+      <svg
+        version="1.1"
+        id="fishTankSelector"
+        xmlns="http://www.w3.org/2000/svg"
+        xmlns:xlink="http://www.w3.org/1999/xlink"
+        x="0px"
+        y="0px"
+        viewBox="0 0 468 468"
+        style="enable-background: new 0 0 468 468"
+        xml:space="preserve"
+      >
+        <style type="text/css">
+          .st0_unique {
+            clip-path: url(#SVGID_2_);
+          }
+          .st1 {
+            fill: #4d4d4d;
+          }
+          .st2 {
+            fill: #c69c6d;
+          }
+          .st3 {
+            fill: #666666;
+          }
+          .st4 {
+            opacity: 0.89;
+            fill: #66c3ea;
+            enable-background: new;
+          }
+          .st5 {
+            opacity: 0.89;
+            fill: #29abe2;
+            enable-background: new;
+          }
+          .st6 {
+            opacity: 0.89;
+            fill: #0071bc;
+            enable-background: new;
+          }
+          .st7 {
+            opacity: 0.65;
+          }
+          .st8 {
+            fill: #d4c4b1;
+          }
+          .st9 {
+            fill: #998675;
+          }
+          .st10 {
+            fill: #c7b299;
+          }
+          .st11 {
+            opacity: 0.47;
+            fill: #f2f2f2;
+            enable-background: new;
+          }
+          .st12 {
+            fill: #808080;
+          }
+        </style>
+        <g>
+          <defs>
+            <circle id="SVGID_1_" cx="234" cy="234" r="234" />
+          </defs>
+          <use
+            xlink:href="#SVGID_1_"
+            style="overflow: visible; fill: #29abe2"
+          />
+          <clipPath id="SVGID_2_">
+            <use xlink:href="#SVGID_1_" style="overflow: visible" />
+          </clipPath>
+          <g id="tanksGroup" class="st0_unique">
+            <g id="innerGroup">
+              <g id="fish-tank-large">
+                <g id="base">
+                  <polygon
+                    class="st1"
+                    points="301.6,830 77,700.9 166.4,649.3 391,778.4 					"
+                  />
+                  <polygon
+                    class="st2"
+                    points="301.6,822.8 77,693.7 166.4,642.1 391,771.1 					"
+                  />
+                  <polygon
+                    class="st1"
+                    points="77,693.7 77,700.9 301.6,830 301.6,822.8 					"
+                  />
+                  <polygon
+                    class="st3"
+                    points="301.6,830 391,778.4 391,771.1 301.6,822.8 					"
+                  />
+                </g>
+                <g id="water">
+                  <polygon
+                    class="st4"
+                    points="301.6,719.8 77,590.8 166.4,539.2 391,668.2 					"
+                  />
+                  <polygon
+                    class="st5"
+                    points="77,693.7 77,590.8 301.6,719.8 301.6,822.8 					"
+                  />
+                  <polygon
+                    class="st6"
+                    points="301.6,719.8 391,668.2 391,771.1 301.6,822.8 					"
+                  />
+                </g>
+                <g id="gravel" class="st7">
+                  <polygon
+                    class="st1"
+                    points="301.6,822.5 77,693.4 166.4,641.8 391,770.8 					"
+                  />
+                  <polygon
+                    class="st8"
+                    points="301.6,815.2 77,686.5 166.4,634.9 391,763.6 					"
+                  />
+                  <polygon
+                    class="st9"
+                    points="77,686.5 77,693.8 301.6,822.8 301.6,815.2 					"
+                  />
+                  <polygon
+                    class="st10"
+                    points="301.6,822.8 391,770.8 391,763.6 301.6,815.2 					"
+                  />
+                </g>
+                <g id="glass">
+                  <polygon
+                    class="st11"
+                    points="166.4,526.2 77,577.9 77,686.5 166.4,634.9 391,763.6 391,655.3 					"
+                  />
+                  <polygon
+                    class="st11"
+                    points="77,693.7 77,577.8 301.6,706.9 301.6,822.8 					"
+                  />
+                  <polygon
+                    class="st11"
+                    points="140.7,730.5 176.4,751.1 143.1,616 107.4,595.4 					"
+                  />
+                  <polygon
+                    class="st11"
+                    points="120.6,718.9 132.9,726 99.6,590.9 87.3,583.8 					"
+                  />
+                  <polygon
+                    class="st11"
+                    points="301.6,706.9 391,655.3 391,771.1 301.6,822.8 					"
+                  />
+                </g>
+                <g id="topper">
+                  <polygon
+                    class="st12"
+                    points="77,577.9 166.4,526.2 166.4,519 77,570.6 					"
+                  />
+                  <polygon
+                    class="st3"
+                    points="80.9,580.1 170.3,528.4 170.3,521.2 80.9,572.8 					"
+                  />
+                  <polygon
+                    class="st1"
+                    points="166.3,523.5 166.4,530.7 387,657.5 387,650.3 					"
+                  />
+                  <polygon
+                    class="st12"
+                    points="301.5,703 387,652.9 387,645.6 301.5,695.8 					"
+                  />
+                  <polygon
+                    class="st3"
+                    points="301.6,706.9 391,655.3 391,648 301.6,699.7 					"
+                  />
+                  <polygon
+                    class="st1"
+                    points="77,570.6 77,577.8 301.6,706.9 301.6,699.7 					"
+                  />
+                  <polygon
+                    class="st12"
+                    points="77,570.6 81,568.3 305.6,697.4 301.6,699.7 					"
+                  />
+                  <polygon
+                    class="st12"
+                    points="162.4,521.3 166.4,519 391,648.1 387,650.4 					"
+                  />
+                </g>
+                <polygon
+                  class="st11"
+                  points="240.5,787.7 276.2,808.3 242.9,673.2 207.2,652.6 				"
+                />
+              </g>
+              <g id="fish-tank-medium">
+                <g id="base_1_">
+                  <polygon
+                    class="st1"
+                    points="269.1,415.4 77.1,304.5 198.9,234.2 390.9,345 					"
+                  />
+                  <polygon
+                    class="st2"
+                    points="269.1,405.6 77.1,294.7 198.9,224.3 390.9,335.2 					"
+                  />
+                  <polygon
+                    class="st1"
+                    points="77.1,294.7 77.1,304.5 269.1,415.4 269.1,405.6 					"
+                  />
+                  <polygon
+                    class="st3"
+                    points="269.1,415.4 390.9,345 390.9,335.2 269.1,405.6 					"
+                  />
+                </g>
+                <g id="water_1_">
+                  <polygon
+                    class="st4"
+                    points="269.1,265.3 77.1,154.4 198.9,84.1 390.9,194.9 					"
+                  />
+                  <polygon
+                    class="st5"
+                    points="77.1,294.7 77.1,154.4 269.1,265.3 269.1,405.6 					"
+                  />
+                  <polygon
+                    class="st6"
+                    points="269.1,265.3 390.9,194.9 390.9,335.2 269.1,405.6 					"
+                  />
+                </g>
+                <g id="gravel_1_" class="st7">
+                  <polygon
+                    class="st1"
+                    points="269.1,405.1 77.1,294.2 198.9,223.9 390.9,334.8 					"
+                  />
+                  <polygon
+                    class="st8"
+                    points="269.1,395.3 77.1,284.8 198.9,214.5 390.9,324.9 					"
+                  />
+                  <polygon
+                    class="st9"
+                    points="77.1,284.9 77.1,294.7 269.1,405.6 269.1,395.3 					"
+                  />
+                  <polygon
+                    class="st10"
+                    points="269.1,405.6 390.9,334.8 390.9,324.9 269.1,395.3 					"
+                  />
+                </g>
+                <g id="glass_1_">
+                  <polygon
+                    class="st11"
+                    points="198.9,66.4 77.1,136.8 77.1,284.8 198.9,214.5 390.9,324.9 390.9,177.3 					"
+                  />
+                  <polygon
+                    class="st11"
+                    points="77.1,294.7 77.1,136.8 269.1,247.6 269.1,405.6 					"
+                  />
+                  <polygon
+                    class="st11"
+                    points="163.8,344.8 212.5,372.8 167.1,188.7 118.5,160.6 					"
+                  />
+                  <polygon
+                    class="st11"
+                    points="136.4,329 153.2,338.6 107.8,154.5 91,144.8 					"
+                  />
+                  <polygon
+                    class="st11"
+                    points="269.1,247.7 390.9,177.3 390.9,335.2 269.1,405.6 					"
+                  />
+                </g>
+                <g id="topper_1_">
+                  <polygon
+                    class="st12"
+                    points="77.1,136.8 198.9,66.4 198.9,56.6 77.1,127 					"
+                  />
+                  <polygon
+                    class="st3"
+                    points="82.3,139.8 204.2,69.5 204.2,59.6 82.3,130 					"
+                  />
+                  <polygon
+                    class="st1"
+                    points="198.8,62.7 198.9,72.5 385.4,180.3 385.4,170.5 					"
+                  />
+                  <polygon
+                    class="st12"
+                    points="263.6,244.4 385.4,174 385.4,164.2 263.6,234.5 					"
+                  />
+                  <polygon
+                    class="st3"
+                    points="269.1,247.6 390.9,177.3 390.9,167.4 269.1,237.8 					"
+                  />
+                  <polygon
+                    class="st1"
+                    points="77.1,126.9 77.1,136.8 269.1,247.6 269.1,237.8 					"
+                  />
+                  <polygon
+                    class="st12"
+                    points="77.1,127 82.5,123.8 274.5,234.7 269.1,237.8 					"
+                  />
+                  <polygon
+                    class="st12"
+                    points="193.4,59.7 198.8,56.6 390.9,167.5 385.4,170.6 					"
+                  />
+                </g>
+              </g>
+              <g id="fish-tank-small">
+                <g id="base_2_">
+                  <polygon
+                    class="st1"
+                    points="228.1,-48.6 118.1,-111.5 239.9,-181.8 349.9,-119 					"
+                  />
+                  <polygon
+                    class="st2"
+                    points="228.1,-58.4 118.1,-121.3 239.9,-191.7 349.9,-128.8 					"
+                  />
+                  <polygon
+                    class="st1"
+                    points="118.1,-121.3 118.1,-111.5 228.1,-48.6 228.1,-58.4 					"
+                  />
+                  <polygon
+                    class="st3"
+                    points="228.1,-48.6 349.9,-119 349.9,-128.8 228.1,-58.4 					"
+                  />
+                </g>
+                <g id="water_2_">
+                  <polygon
+                    class="st4"
+                    points="228.1,-198.7 118.1,-261.6 239.9,-331.9 349.9,-269.1 					"
+                  />
+                  <polygon
+                    class="st5"
+                    points="118.1,-121.3 118.1,-261.6 228.1,-198.7 228.1,-58.4 					"
+                  />
+                  <polygon
+                    class="st6"
+                    points="228.1,-198.7 349.9,-269.1 349.9,-128.8 228.1,-58.4 					"
+                  />
+                </g>
+                <g id="gravel_2_" class="st7">
+                  <polygon
+                    class="st1"
+                    points="228.1,-58.9 118.1,-121.8 239.9,-192.1 349.9,-129.2 					"
+                  />
+                  <polygon
+                    class="st8"
+                    points="228.1,-68.7 118.1,-131.2 239.9,-201.5 349.9,-139.1 					"
+                  />
+                  <polygon
+                    class="st9"
+                    points="118.1,-131.1 118.1,-121.3 228.1,-58.4 228.1,-68.7 					"
+                  />
+                  <polygon
+                    class="st10"
+                    points="228.1,-58.4 349.9,-129.2 349.9,-139.1 228.1,-68.7 					"
+                  />
+                </g>
+                <g id="glass_2_">
+                  <polygon
+                    class="st11"
+                    points="239.9,-349.6 118.1,-279.2 118.1,-131.2 239.9,-201.5 349.9,-139.1 349.9,-286.7 					"
+                  />
+                  <polygon
+                    class="st11"
+                    points="118.1,-121.3 118.1,-279.2 228.1,-216.4 228.1,-58.4 					"
+                  />
+                  <polygon
+                    class="st11"
+                    points="204.8,-71.2 218.5,-63.2 173.1,-247.3 159.5,-255.4 					"
+                  />
+                  <polygon
+                    class="st11"
+                    points="177.4,-87 194.2,-77.4 148.8,-261.5 132,-271.2 					"
+                  />
+                  <polygon
+                    class="st11"
+                    points="228.1,-216.3 349.9,-286.7 349.9,-128.8 228.1,-58.4 					"
+                  />
+                </g>
+                <g id="topper_2_">
+                  <polygon
+                    class="st12"
+                    points="118.1,-279.2 239.9,-349.6 239.9,-359.4 118.1,-289 					"
+                  />
+                  <polygon
+                    class="st3"
+                    points="123.3,-276.2 245.2,-346.5 245.2,-356.4 123.3,-286 					"
+                  />
+                  <polygon
+                    class="st1"
+                    points="239.8,-353.3 239.9,-343.5 344.4,-283.7 344.4,-293.5 					"
+                  />
+                  <polygon
+                    class="st12"
+                    points="222.6,-219.6 344.4,-290 344.4,-299.8 222.6,-229.5 					"
+                  />
+                  <polygon
+                    class="st3"
+                    points="228.1,-216.4 349.9,-286.7 349.9,-296.6 228.1,-226.2 					"
+                  />
+                  <polygon
+                    class="st1"
+                    points="118.1,-289.1 118.1,-279.2 228.1,-216.4 228.1,-226.2 					"
+                  />
+                  <polygon
+                    class="st12"
+                    points="118.1,-289 123.5,-292.2 233.5,-229.3 228.1,-226.2 					"
+                  />
+                  <polygon
+                    class="st12"
+                    points="234.4,-356.3 239.8,-359.4 349.9,-296.5 344.4,-293.4 					"
+                  />
+                </g>
+              </g>
+            </g>
+          </g>
+        </g>
+      </svg>
+      <div id="tank-selector">
+        <ul>
+          <li
+            #smallIcon
+            (click)="selectTank(smallIcon)"
+            id="small"
+            ngClass="{{ selectedTank == 'S' ? 'selected' : '' }}"
+          >
+            <div>{{ selectedTank == 'S' ? ' S' : '' }}</div>
+          </li>
+          <li
+            #mediumIcon
+            (click)="selectTank(mediumIcon)"
+            id="medium"
+            ngClass="{{ selectedTank == 'M' ? 'selected' : '' }}"
+          >
+            <div>{{ selectedTank == 'M' ? ' M' : '' }}</div>
+          </li>
+          <li
+            #largeIcon
+            (click)="selectTank(largeIcon)"
+            id="large"
+            ngClass="{{ selectedTank == 'L' ? 'selected' : '' }}"
+          >
+            <div>{{ selectedTank == 'L' ? ' L' : '' }}</div>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div id="moreInfo"><div>+ visit your tank</div></div>
+  <div id="residentsWrapper">
+    <h1>Residents</h1>
+    <div id="residentsList">
+      <div class="listItem">
+        <div class="main"></div>
+        <div class="delete">
+<!-- Generator: Adobe Illustrator 23.0.1, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<svg version="1.1" id="removeBtn" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 viewBox="0 0 146 146" style="enable-background:new 0 0 146 146;" xml:space="preserve">
+<style type="text/css">
+	.st0{fill:#C1272D;}
+	.st1{fill:#FFFFFF;}
+</style>
+<g id="removeBtnGroup">
+	<circle class="st0" cx="73" cy="73" r="73"/>
+	<path class="st1" d="M43.7,108.9c-1.7,0-3.4-0.6-4.7-1.9c-2.6-2.6-2.6-6.8,0-9.4L97.6,39c2.6-2.6,6.8-2.6,9.4,0
+		c2.6,2.6,2.6,6.8,0,9.4L48.4,107C47.1,108.3,45.4,108.9,43.7,108.9z"/>
+	<path class="st1" d="M102,109.2c-1.7,0-3.4-0.6-4.7-1.9L38.8,48.7c-2.6-2.6-2.6-6.8,0-9.4c2.6-2.6,6.8-2.6,9.4,0l58.5,58.5
+		c2.6,2.6,2.6,6.8,0,9.4C105.4,108.5,103.7,109.2,102,109.2z"/>
+</g>
+</svg>
 
+        </div>
+      </div>
+      <div class="listItem">
+        <div class="main"></div>
+        <div class="delete">
+<!-- Generator: Adobe Illustrator 23.0.1, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<svg version="1.1" id="removeBtn" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 viewBox="0 0 146 146" style="enable-background:new 0 0 146 146;" xml:space="preserve">
+<style type="text/css">
+	.st0{fill:#C1272D;}
+	.st1{fill:#FFFFFF;}
+</style>
+<g id="removeBtnGroup">
+	<circle class="st0" cx="73" cy="73" r="73"/>
+	<path class="st1" d="M43.7,108.9c-1.7,0-3.4-0.6-4.7-1.9c-2.6-2.6-2.6-6.8,0-9.4L97.6,39c2.6-2.6,6.8-2.6,9.4,0
+		c2.6,2.6,2.6,6.8,0,9.4L48.4,107C47.1,108.3,45.4,108.9,43.7,108.9z"/>
+	<path class="st1" d="M102,109.2c-1.7,0-3.4-0.6-4.7-1.9L38.8,48.7c-2.6-2.6-2.6-6.8,0-9.4c2.6-2.6,6.8-2.6,9.4,0l58.5,58.5
+		c2.6,2.6,2.6,6.8,0,9.4C105.4,108.5,103.7,109.2,102,109.2z"/>
+</g>
+</svg>
+
+        </div>
+      </div>
+      <div class="listItem">
+        <div class="main"></div>
+        <div class="delete">
+<!-- Generator: Adobe Illustrator 23.0.1, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<svg version="1.1" id="removeBtn" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 viewBox="0 0 146 146" style="enable-background:new 0 0 146 146;" xml:space="preserve">
+<style type="text/css">
+	.st0{fill:#C1272D;}
+	.st1{fill:#FFFFFF;}
+</style>
+<g id="removeBtnGroup">
+	<circle class="st0" cx="73" cy="73" r="73"/>
+	<path class="st1" d="M43.7,108.9c-1.7,0-3.4-0.6-4.7-1.9c-2.6-2.6-2.6-6.8,0-9.4L97.6,39c2.6-2.6,6.8-2.6,9.4,0
+		c2.6,2.6,2.6,6.8,0,9.4L48.4,107C47.1,108.3,45.4,108.9,43.7,108.9z"/>
+	<path class="st1" d="M102,109.2c-1.7,0-3.4-0.6-4.7-1.9L38.8,48.7c-2.6-2.6-2.6-6.8,0-9.4c2.6-2.6,6.8-2.6,9.4,0l58.5,58.5
+		c2.6,2.6,2.6,6.8,0,9.4C105.4,108.5,103.7,109.2,102,109.2z"/>
+</g>
+</svg>
+
+        </div>
+      </div>
+      <div class="listItem">
+        <div class="main"></div>
+        <div class="delete">
+<!-- Generator: Adobe Illustrator 23.0.1, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<svg version="1.1" id="removeBtn" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 viewBox="0 0 146 146" style="enable-background:new 0 0 146 146;" xml:space="preserve">
+<style type="text/css">
+	.st0{fill:#C1272D;}
+	.st1{fill:#FFFFFF;}
+</style>
+<g id="removeBtnGroup">
+	<circle class="st0" cx="73" cy="73" r="73"/>
+	<path class="st1" d="M43.7,108.9c-1.7,0-3.4-0.6-4.7-1.9c-2.6-2.6-2.6-6.8,0-9.4L97.6,39c2.6-2.6,6.8-2.6,9.4,0
+		c2.6,2.6,2.6,6.8,0,9.4L48.4,107C47.1,108.3,45.4,108.9,43.7,108.9z"/>
+	<path class="st1" d="M102,109.2c-1.7,0-3.4-0.6-4.7-1.9L38.8,48.7c-2.6-2.6-2.6-6.8,0-9.4c2.6-2.6,6.8-2.6,9.4,0l58.5,58.5
+		c2.6,2.6,2.6,6.8,0,9.4C105.4,108.5,103.7,109.2,102,109.2z"/>
+</g>
+</svg>
+
+        </div>
+      </div>
+      <div class="listItem">
+        <div class="main"></div>
+        <div class="delete">
+<!-- Generator: Adobe Illustrator 23.0.1, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<svg version="1.1" id="removeBtn" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 viewBox="0 0 146 146" style="enable-background:new 0 0 146 146;" xml:space="preserve">
+<style type="text/css">
+	.st0{fill:#C1272D;}
+	.st1{fill:#FFFFFF;}
+</style>
+<g id="removeBtnGroup">
+	<circle class="st0" cx="73" cy="73" r="73"/>
+	<path class="st1" d="M43.7,108.9c-1.7,0-3.4-0.6-4.7-1.9c-2.6-2.6-2.6-6.8,0-9.4L97.6,39c2.6-2.6,6.8-2.6,9.4,0
+		c2.6,2.6,2.6,6.8,0,9.4L48.4,107C47.1,108.3,45.4,108.9,43.7,108.9z"/>
+	<path class="st1" d="M102,109.2c-1.7,0-3.4-0.6-4.7-1.9L38.8,48.7c-2.6-2.6-2.6-6.8,0-9.4c2.6-2.6,6.8-2.6,9.4,0l58.5,58.5
+		c2.6,2.6,2.6,6.8,0,9.4C105.4,108.5,103.7,109.2,102,109.2z"/>
+</g>
+</svg>
+
+        </div>
+      </div>
+      <div class="listItem">
+        <div class="main"></div>
+        <div class="delete">
+<!-- Generator: Adobe Illustrator 23.0.1, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<svg version="1.1" id="removeBtn" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 viewBox="0 0 146 146" style="enable-background:new 0 0 146 146;" xml:space="preserve">
+<style type="text/css">
+	.st0{fill:#C1272D;}
+	.st1{fill:#FFFFFF;}
+</style>
+<g id="removeBtnGroup">
+	<circle class="st0" cx="73" cy="73" r="73"/>
+	<path class="st1" d="M43.7,108.9c-1.7,0-3.4-0.6-4.7-1.9c-2.6-2.6-2.6-6.8,0-9.4L97.6,39c2.6-2.6,6.8-2.6,9.4,0
+		c2.6,2.6,2.6,6.8,0,9.4L48.4,107C47.1,108.3,45.4,108.9,43.7,108.9z"/>
+	<path class="st1" d="M102,109.2c-1.7,0-3.4-0.6-4.7-1.9L38.8,48.7c-2.6-2.6-2.6-6.8,0-9.4c2.6-2.6,6.8-2.6,9.4,0l58.5,58.5
+		c2.6,2.6,2.6,6.8,0,9.4C105.4,108.5,103.7,109.2,102,109.2z"/>
+</g>
+</svg>
+
+        </div>
+      </div>
+      <div class="listItem">
+        <div class="main"></div>
+        <div class="delete">
+<!-- Generator: Adobe Illustrator 23.0.1, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<svg version="1.1" id="removeBtn" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 viewBox="0 0 146 146" style="enable-background:new 0 0 146 146;" xml:space="preserve">
+<style type="text/css">
+	.st0{fill:#C1272D;}
+	.st1{fill:#FFFFFF;}
+</style>
+<g id="removeBtnGroup">
+	<circle class="st0" cx="73" cy="73" r="73"/>
+	<path class="st1" d="M43.7,108.9c-1.7,0-3.4-0.6-4.7-1.9c-2.6-2.6-2.6-6.8,0-9.4L97.6,39c2.6-2.6,6.8-2.6,9.4,0
+		c2.6,2.6,2.6,6.8,0,9.4L48.4,107C47.1,108.3,45.4,108.9,43.7,108.9z"/>
+	<path class="st1" d="M102,109.2c-1.7,0-3.4-0.6-4.7-1.9L38.8,48.7c-2.6-2.6-2.6-6.8,0-9.4c2.6-2.6,6.8-2.6,9.4,0l58.5,58.5
+		c2.6,2.6,2.6,6.8,0,9.4C105.4,108.5,103.7,109.2,102,109.2z"/>
+</g>
+</svg>
+
+        </div>
+      </div>
+      <div class="listItem">
+        <div class="main"></div>
+        <div class="delete">
+<!-- Generator: Adobe Illustrator 23.0.1, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<svg version="1.1" id="removeBtn" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 viewBox="0 0 146 146" style="enable-background:new 0 0 146 146;" xml:space="preserve">
+<style type="text/css">
+	.st0{fill:#C1272D;}
+	.st1{fill:#FFFFFF;}
+</style>
+<g id="removeBtnGroup">
+	<circle class="st0" cx="73" cy="73" r="73"/>
+	<path class="st1" d="M43.7,108.9c-1.7,0-3.4-0.6-4.7-1.9c-2.6-2.6-2.6-6.8,0-9.4L97.6,39c2.6-2.6,6.8-2.6,9.4,0
+		c2.6,2.6,2.6,6.8,0,9.4L48.4,107C47.1,108.3,45.4,108.9,43.7,108.9z"/>
+	<path class="st1" d="M102,109.2c-1.7,0-3.4-0.6-4.7-1.9L38.8,48.7c-2.6-2.6-2.6-6.8,0-9.4c2.6-2.6,6.8-2.6,9.4,0l58.5,58.5
+		c2.6,2.6,2.6,6.8,0,9.4C105.4,108.5,103.7,109.2,102,109.2z"/>
+</g>
+</svg>
+
+        </div>
+      </div>
+      <div class="listItem">
+        <div class="main"></div>
+        <div class="delete">
+<!-- Generator: Adobe Illustrator 23.0.1, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<svg version="1.1" id="removeBtn" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 viewBox="0 0 146 146" style="enable-background:new 0 0 146 146;" xml:space="preserve">
+<style type="text/css">
+	.st0{fill:#C1272D;}
+	.st1{fill:#FFFFFF;}
+</style>
+<g id="removeBtnGroup">
+	<circle class="st0" cx="73" cy="73" r="73"/>
+	<path class="st1" d="M43.7,108.9c-1.7,0-3.4-0.6-4.7-1.9c-2.6-2.6-2.6-6.8,0-9.4L97.6,39c2.6-2.6,6.8-2.6,9.4,0
+		c2.6,2.6,2.6,6.8,0,9.4L48.4,107C47.1,108.3,45.4,108.9,43.7,108.9z"/>
+	<path class="st1" d="M102,109.2c-1.7,0-3.4-0.6-4.7-1.9L38.8,48.7c-2.6-2.6-2.6-6.8,0-9.4c2.6-2.6,6.8-2.6,9.4,0l58.5,58.5
+		c2.6,2.6,2.6,6.8,0,9.4C105.4,108.5,103.7,109.2,102,109.2z"/>
+</g>
+</svg>
+
+        </div>
+      </div>
+      <div class="listItem">
+        <div class="main"></div>
+        <div class="delete">
+<!-- Generator: Adobe Illustrator 23.0.1, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<svg version="1.1" id="removeBtn" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 viewBox="0 0 146 146" style="enable-background:new 0 0 146 146;" xml:space="preserve">
+<style type="text/css">
+	.st0{fill:#C1272D;}
+	.st1{fill:#FFFFFF;}
+</style>
+<g id="removeBtnGroup">
+	<circle class="st0" cx="73" cy="73" r="73"/>
+	<path class="st1" d="M43.7,108.9c-1.7,0-3.4-0.6-4.7-1.9c-2.6-2.6-2.6-6.8,0-9.4L97.6,39c2.6-2.6,6.8-2.6,9.4,0
+		c2.6,2.6,2.6,6.8,0,9.4L48.4,107C47.1,108.3,45.4,108.9,43.7,108.9z"/>
+	<path class="st1" d="M102,109.2c-1.7,0-3.4-0.6-4.7-1.9L38.8,48.7c-2.6-2.6-2.6-6.8,0-9.4c2.6-2.6,6.8-2.6,9.4,0l58.5,58.5
+		c2.6,2.6,2.6,6.8,0,9.4C105.4,108.5,103.7,109.2,102,109.2z"/>
+</g>
+</svg>
+
+        </div>
+      </div>
+    </div>
+  </div>
 </section>

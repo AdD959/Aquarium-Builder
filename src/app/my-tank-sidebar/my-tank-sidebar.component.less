@@ -1,3 +1,5 @@
+@import '../../styles.less';
+
 #my-tank-label {
   width: 200px;
   height: 56px;
@@ -35,7 +37,6 @@
     padding-left: 0px;
     justify-content: center;
 
-
     &:hover {
       transform: none;
       cursor: unset;
@@ -49,10 +50,12 @@
   background: white;
   right: 17px;
   top: 82px;
-  position: fixed;
+  position: absolute;
   z-index: 200;
   border-radius: 10px;
   transition-duration: 0.2s;
+  display: flex;
+  flex-direction: column;
 
   #close {
     height: 30px;
@@ -73,6 +76,129 @@
     font-size: 28px;
     cursor: pointer;
   }
+
+  #tankWrapper {
+    display: flex;
+    justify-content: center;
+    margin-top: 80px;
+    align-items: center;
+    flex-direction: column;
+
+    #selection-wrapper {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+
+      #fishTankSelector {
+        width: 80%;
+      }
+
+      #tank-selector {
+        position: absolute;
+        right: 0;
+        ul {
+          padding: 10px;
+          > li {
+            margin: 5px 0;
+            width: 10px;
+            height: 10px;
+            background-color: lightgray;
+            border-radius: 100%;
+            position: relative;
+            cursor: pointer;
+
+            &.selected {
+              background-color: gray;
+            }
+
+            > div {
+              position: absolute;
+              right: -24px;
+              top: -3px;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  #residentsWrapper {
+    height: 100%;
+    width: 100%;
+    position: relative;
+    padding: 10px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    overflow-y: hidden;
+
+    #residentsList {
+      height: 100%;
+      width: 100%;
+      background-color: whitesmoke;
+      border-radius: 5px;
+      padding: 10px;
+      box-sizing: border-box;
+      overflow-y: scroll;
+
+      .listItem {
+        width: 100%;
+        display: flex;
+        align-items: center;
+        margin: 0 0 10px 0;
+
+        .main {
+          width: 85%;
+          background-color: #428bca;
+          height: 40px;
+          border-radius: 5px;
+        }
+
+        .delete {
+          width: 23px;
+          margin-left: 17px;
+        }
+      }
+    }
+  }
+
+  #moreInfo {
+    display: inline-flex;
+    justify-content: flex-end;
+    margin-right: 10px;
+    margin-top: -10px;
+    cursor: pointer;
+
+    div {
+      position: relative;
+      display: inline;
+
+      &::after {
+        content: '';
+        position: absolute;
+        z-index: -1;
+        right: 0;
+        width: 0%;
+        height: 2px;
+        background-color: @primary-color-highlight;
+        transition-duration: 0.2s;
+        display: block;
+      }
+
+      &:hover {
+        &::after {
+          width: 100%;
+        }
+      }
+    }
+  }
+}
+
+h1 {
+  margin: 0;
+  font-weight: normal;
+  margin-bottom: 5px;
 }
 
 .hidden {

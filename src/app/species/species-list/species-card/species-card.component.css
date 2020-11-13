@@ -135,9 +135,9 @@ ul {
 .species-wrapper .highlight .two-group .difficulty-rating .d-rating {
   width: 10px;
   height: 10px;
-  border: solid white 3px;
+  border: solid white 2px;
   border-radius: 100%;
-  margin: 0 5px;
+  margin: 0 3px;
   margin-top: 10px;
 }
 .species-wrapper .highlight .two-group .add-to-tank {
