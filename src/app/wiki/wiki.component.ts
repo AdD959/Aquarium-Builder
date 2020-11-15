@@ -11,6 +11,7 @@ import { Species } from '../species/species.model';
 import { SpeciesService } from '../species/species.service';
 import { TimelineMax, gsap } from 'gsap';
 import { SideBarService } from '../shared/sidebar.service';
+import { MyTankService } from '../my-tank/my-tank.service';
 
 @Component({
   selector: 'app-wiki',
@@ -36,7 +37,8 @@ export class WikiComponent implements OnInit, AfterViewInit {
   constructor(
     private route: ActivatedRoute,
     private speciesService: SpeciesService,
-    private sideBarService: SideBarService
+    private sideBarService: SideBarService,
+    private myTankService: MyTankService
   ) {
     this.route.params.subscribe((params: Params) => {
       this.id = params.id;
@@ -61,6 +63,10 @@ export class WikiComponent implements OnInit, AfterViewInit {
       }
       this.photoUrls.push(photoUrl);
     }
+  }
+
+  addToTank() {
+    this.myTankService.addToTank(this.species.id);
   }
 
   animateAddToTank() {
@@ -130,7 +136,7 @@ export class WikiComponent implements OnInit, AfterViewInit {
       2,
       { rotateY: 180, x: -900, y: 500 },
       {
-        scale: 0.7,
+        scale: 0.8,
         rotate: -30,
         y: 0,
         x: 0,
