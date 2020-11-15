@@ -28,7 +28,7 @@ export class WikiComponent implements OnInit, AfterViewInit {
   fishMoveIn = new TimelineMax();
   fishBgMove = new TimelineMax();
   hoverTlm = new TimelineMax({ paused: true });
-  moveTlm = new TimelineMax({ paused: true});
+  moveTlm = new TimelineMax({ paused: true });
 
   @ViewChild('speciesImage', { static: false }) speciesImage;
   @ViewChild('wikiWrapper', { static: false }) wikiWrapper: ElementRef;
@@ -65,12 +65,9 @@ export class WikiComponent implements OnInit, AfterViewInit {
     }
   }
 
-  addToTank() {
-    this.myTankService.addToTank(this.species.id);
-  }
-
   animateAddToTank() {
     if (this.addBtnEnabled) {
+      this.myTankService.addToTank(this.species.id);
       this.hoverTlm.pause();
       this.sideBarService.triggerSideBar();
       this.moveTlm.restart();

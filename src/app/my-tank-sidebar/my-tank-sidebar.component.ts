@@ -10,7 +10,7 @@ import { Subscription } from 'rxjs';
   styleUrls: ['./my-tank-sidebar.component.less'],
 })
 export class MyTankSidebarComponent implements OnInit {
-  myTankExpanded = true;
+  myTankExpanded = false;
   myTankLabelTriggered = false;
   labelLowered = false;
   selectedTank = 'M';
@@ -50,9 +50,9 @@ export class MyTankSidebarComponent implements OnInit {
   filterDuplicates() {
     const counts = new Array();
     this.residentsFiltered = new Array();
+    this.residents.sort();
 
     this.residents.forEach((resident) => {
-      this.residents.sort();
       // have we seen this resident before
       if (counts.includes(resident)) {
         // if so add a count to its list

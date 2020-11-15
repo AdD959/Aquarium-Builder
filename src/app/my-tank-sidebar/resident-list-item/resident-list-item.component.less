@@ -4,6 +4,12 @@
   align-items: center;
   margin: 0 0 10px 0;
   transition-duration: 0.2s;
+  -webkit-touch-callout: none; /* iOS Safari */
+  -webkit-user-select: none; /* Safari */
+  -khtml-user-select: none; /* Konqueror HTML */
+  -moz-user-select: none; /* Old versions of Firefox */
+  -ms-user-select: none; /* Internet Explorer/Edge */
+  user-select: none;
 
   &:hover {
     transform: translateY(-2px);
@@ -76,14 +82,14 @@
 
         .number-recommended {
           position: absolute;
-          bottom: 7px;
-          right: 7px;
+          bottom: 9px;
+          right: 8px;
           font-size: 11px;
         }
 
         .divider {
           position: absolute;
-          left: 16px;
+          left: 18px;
           top: 10px;
           transform: rotate(22.5deg);
         }
@@ -122,3 +128,50 @@
     cursor: pointer;
   }
 }
+
+.good {
+  background-color: green !important;
+}
+
+.meh {
+  background-color: goldenrod !important;
+}
+
+.bad {
+  background-color: crimson !important;
+}
+
+.reworkNumbers {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+
+  > .number-current {
+    position: relative !important;
+    font-size: 21px !important;
+    left: unset !important;
+    top: unset !important;
+  }
+
+  > .divider {
+    display: none;
+  }
+
+  > .number-recommended {
+    display: none;
+  }
+}
+
+.reduce {
+  transform: rotate(45deg);
+  transform-origin: center;
+
+}
+
+.reduceAlt {
+  transform: rotate(-45deg);
+  transform-origin: center;
+
+}
+
