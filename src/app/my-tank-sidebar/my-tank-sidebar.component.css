@@ -58,7 +58,7 @@ ul {
 #my-tank-label.change-label-position {
   top: 58px;
   z-index: 300;
-  right: 86px;
+  right: 115px;
   padding-left: 0px;
   justify-content: center;
 }
@@ -68,7 +68,7 @@ ul {
 }
 #my-tank-sidebar {
   height: 80vh;
-  width: 350px;
+  width: 400px;
   background: white;
   right: 17px;
   top: 82px;
@@ -101,11 +101,13 @@ ul {
 #my-tank-sidebar #tankWrapper {
   display: flex;
   justify-content: center;
-  margin-top: 80px;
+  margin-top: 12%;
   align-items: center;
   flex-direction: column;
+  height: 30%;
 }
 #my-tank-sidebar #tankWrapper #selection-wrapper {
+  height: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -113,6 +115,7 @@ ul {
 }
 #my-tank-sidebar #tankWrapper #selection-wrapper #fishTankSelector {
   width: 80%;
+  height: 100%;
 }
 #my-tank-sidebar #tankWrapper #selection-wrapper #tank-selector {
   position: absolute;

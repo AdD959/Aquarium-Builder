@@ -69,7 +69,6 @@ export class WikiComponent implements OnInit, AfterViewInit {
       this.sideBarService.triggerSideBar();
       this.moveTlm.restart();
     }
-    console.log('not enabled');
   }
 
   zoomToggle(i: number) {

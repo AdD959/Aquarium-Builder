@@ -451,9 +451,8 @@
     <h1>Residents</h1>
     <div id="residentsList">
       <app-resident-list-item
-      *ngFor="let resident of residents; let i = index"
-      [id]="resident.speciesId"
-      [count]="resident.count"
+      *ngFor="let resident of residentsFiltered; let i = index"
+      [id]="resident.id" [count]="resident.count"
       ></app-resident-list-item>
     </div>
   </div>

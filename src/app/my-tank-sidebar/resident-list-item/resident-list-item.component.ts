@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { MyTankService } from 'src/app/my-tank/my-tank.service';
 import { Species } from 'src/app/species/species.model';
 import { SpeciesService } from 'src/app/species/species.service';
 import { ResidentListItem } from './resident-list-item.model';
@@ -19,7 +20,8 @@ export class ResidentListItemComponent implements OnInit, ResidentListItem {
   @Input() count: number;
 
   constructor(
-    private speciesService: SpeciesService
+    private speciesService: SpeciesService,
+    private myTankService: MyTankService
   ) { }
 
   ngOnInit() {
@@ -30,5 +32,9 @@ export class ResidentListItemComponent implements OnInit, ResidentListItem {
 
   ngOnViewInit() {
 
+  }
+
+  delete() {
+    this.myTankService.removeResident(this.id);
   }
 }

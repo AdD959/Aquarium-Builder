@@ -19,6 +19,7 @@ export class MyTankSidebarComponent implements OnInit {
   tlmToMid = new TimelineMax();
   tlmToBot = new TimelineMax();
   residents = [];
+  residentsFiltered = [];
 
   @ViewChild('smallIcon', { static: false }) smallIcon;
   @ViewChild('mediumIcon', { static: false }) mediumIcon;
@@ -28,7 +29,8 @@ export class MyTankSidebarComponent implements OnInit {
     private sideBarService: SideBarService,
     private myTankService: MyTankService
   ) {
-    this.residents = this.myTankService.getMyTank();
+    this.residents = this.myTankService.getMySpeciesArray();
+    this.filterDuplicates();
 
     this.sideBarService.toggleSideBar.subscribe(() => {
       this.myTankExpanded = true;
@@ -45,6 +47,29 @@ export class MyTankSidebarComponent implements OnInit {
 
   ngOnInit() {}
 
+  filterDuplicates() {
+    const counts = new Array();
+    this.residentsFiltered = new Array();
+
+    this.residents.forEach((resident) => {
+      this.residents.sort();
+      // have we seen this resident before
+      if (counts.includes(resident)) {
+        // if so add a count to its list
+        const found = this.residentsFiltered
+          .map((e) => {
+            return e.id;
+          })
+          .indexOf(resident);
+        this.residentsFiltered[found].count++;
+      } else {
+        // if not add the new resident to the list
+        this.residentsFiltered.push({ id: resident, count: 1 });
+        counts.push(resident);
+      }
+    });
+  }
+
   openMyTank() {
     this.myTankExpanded = true;
   }
@@ -54,7 +79,8 @@ export class MyTankSidebarComponent implements OnInit {
   }
 
   updateList(items) {
-    console.log('updateList ran!');
+    this.residents = items;
+    this.filterDuplicates();
   }
 
   selectTank(img: any) {

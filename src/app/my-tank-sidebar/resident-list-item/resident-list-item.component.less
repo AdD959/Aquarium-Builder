@@ -3,36 +3,122 @@
   display: flex;
   align-items: center;
   margin: 0 0 10px 0;
+  transition-duration: 0.2s;
+
+  &:hover {
+    transform: translateY(-2px);
+  }
 
   .main {
-    width: 85%;
+    width: 90%;
     background-color: #428bca;
-    height: 40px;
+    height: 60px;
     border-radius: 5px;
     display: flex;
     align-items: center;
+    justify-content: space-between;
 
     .species {
       display: flex;
+      align-items: center;
 
-      img {
-        width: 40px;
+      .thumbnailWrapper {
+        width: auto;
+        height: 100%;
+        background-color: whitesmoke;
+        border-radius: 100%;
         margin-left: 10px;
+        height: 48px;
+        display: flex;
+        align-items: center;
+
+        img {
+          width: 48px;
+        }
       }
 
       h2 {
         display: inline;
-        font-size: 12px;
+        font-size: 16px;
         color: white;
         font-weight: normal;
         margin-left: 10px;
+      }
+    }
+
+    .status {
+      display: flex;
+      width: 50%;
+      gap: 5px;
+      justify-content: flex-end;
+      padding-right: 5px;
+
+      .status-item {
+        width: 40px;
+        height: 40px;
+        background-color: transparent;
+        border: solid white 2px;
+        border-radius: 100%;
+        position: relative;
+        color: white;
+
+        .number-current {
+          left: 9px;
+          position: absolute;
+          top: 8px;
+          font-size: 11px;
+
+          &.adjusted {
+            left: 3px;
+            top: 9px;
+          }
+        }
+
+        .number-recommended {
+          position: absolute;
+          bottom: 7px;
+          right: 7px;
+          font-size: 11px;
+        }
+
+        .divider {
+          position: absolute;
+          left: 16px;
+          top: 10px;
+          transform: rotate(22.5deg);
+        }
+
+        &.space {
+          border-radius: 0%;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+
+          > img {
+            width: 20px;
+            color: white;
+            fill: white;
+            filter: invert(100%);
+          }
+        }
+
+        &.community {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+
+          > svg {
+            width: 67%;
+            fill: white;
+          }
+        }
       }
     }
   }
 
   .delete {
     width: 23px;
-    margin-left: 17px;
+    margin-left: 10px;
     cursor: pointer;
   }
 }

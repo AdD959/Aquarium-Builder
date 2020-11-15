@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { MyTank } from './my-tank.model';
+import { MyTankService } from './my-tank.service';
 
 @Component({
   selector: 'app-my-tank',
@@ -6,10 +8,17 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./my-tank.component.less']
 })
 export class MyTankComponent implements OnInit {
+  // @Input myTank;
+  myTank: MyTank;
 
-  constructor() { }
+  constructor(private myTankService: MyTankService) { }
 
   ngOnInit() {
+    this.myTank = this.myTankService.getMyTank();
   }
+
+  // removeResident(id: number) {
+  //   return;
+  // }
 
 }

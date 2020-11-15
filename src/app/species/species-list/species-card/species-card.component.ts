@@ -13,6 +13,7 @@ import { TimelineMax } from 'gsap';
 import { SpeciesService } from '../../species.service';
 import { Router } from '@angular/router';
 import { SideBarService } from 'src/app/shared/sidebar.service';
+import { MyTankService } from 'src/app/my-tank/my-tank.service';
 
 @Component({
   selector: 'app-species-card',
@@ -37,7 +38,8 @@ export class SpeciesCardComponent implements OnInit, AfterViewInit {
     private speciesService: SpeciesService,
     private router: Router,
     private ngZone: NgZone,
-    private sideBarService: SideBarService
+    private sideBarService: SideBarService,
+    private myTankService: MyTankService
   ) {
   }
 
@@ -74,6 +76,10 @@ export class SpeciesCardComponent implements OnInit, AfterViewInit {
     .to(img, 0.5, {  x: 1400, zIndex: 99, ease: 'none' })
     .to(img, 0, { y: 20, opacity: 0, x: 0, rotateY: 0 })
     .to(img, 1, { y: 0, opacity: 1});
+  }
+
+  addToTank() {
+    this.myTankService.addToTank(this.species.id);
   }
 
   swimAway() {
