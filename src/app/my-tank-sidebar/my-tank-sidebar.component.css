@@ -42,7 +42,7 @@ ul {
   font-weight: bold;
   padding-left: 20px;
   transition-duration: 0.5s;
-  z-index: 100;
+  z-index: 600;
   cursor: pointer;
   -webkit-touch-callout: none;
   -webkit-user-select: none;
@@ -57,7 +57,7 @@ ul {
 }
 #my-tank-label.change-label-position {
   top: 58px;
-  z-index: 300;
+  z-index: 600;
   right: 115px;
   padding-left: 0px;
   justify-content: center;
@@ -73,7 +73,7 @@ ul {
   right: 17px;
   top: 82px;
   position: absolute;
-  z-index: 200;
+  z-index: 550;
   border-radius: 10px;
   transition-duration: 0.2s;
   display: flex;

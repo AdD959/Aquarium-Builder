@@ -18,7 +18,7 @@ import { MyTankService } from 'src/app/my-tank/my-tank.service';
 @Component({
   selector: 'app-species-card',
   templateUrl: './species-card.component.html',
-  styleUrls: ['./species-card.component.less']
+  styleUrls: ['./species-card.component.less'],
 })
 export class SpeciesCardComponent implements OnInit, AfterViewInit {
   @ViewChild('imgRef', { static: false }) imageReference;
@@ -28,9 +28,11 @@ export class SpeciesCardComponent implements OnInit, AfterViewInit {
   fishHoverRotate = new TimelineMax({ paused: true });
   fishLeavetlm = new TimelineMax({ paused: true });
   cardShift = new TimelineMax({ paused: true });
+  addToTankTlm = new TimelineMax({ paused: true });
   moreInfoActive = false;
   remove = '';
   size: string;
+  speciesImg;
   @Input() species: Species;
   @Input() objIndex: number;
 
@@ -40,9 +42,7 @@ export class SpeciesCardComponent implements OnInit, AfterViewInit {
     private ngZone: NgZone,
     private sideBarService: SideBarService,
     private myTankService: MyTankService
-  ) {
-  }
-
+  ) {}
 
   ngAfterViewInit(): void {
     this.fishHoverRotate.to(this.imageReference.nativeElement, 2, {
@@ -50,9 +50,20 @@ export class SpeciesCardComponent implements OnInit, AfterViewInit {
       y: 10,
       repeat: -1,
       yoyo: true,
-      ease: 'power1.inOut'
+      ease: 'power1.inOut',
     });
 
+    this.speciesImg = this.imageReference.nativeElement;
+    this.addToTankTlm
+      .fromTo(
+        this.speciesImg,
+        0.5,
+        { zIndex: 500 },
+        { x: -100, y: 150, rotateY: 180 }
+      )
+      .to(this.speciesImg, 0.5, { x: 1400, zIndex: 99, ease: 'none' })
+      .to(this.speciesImg, 0, { y: 20, opacity: 0, x: 0, rotateY: 0 })
+      .to(this.speciesImg, 1, { y: 0, opacity: 1 });
   }
 
   ngOnInit() {
@@ -61,25 +72,51 @@ export class SpeciesCardComponent implements OnInit, AfterViewInit {
 
   getSpeciesSize() {
     const i = this.species.size;
-    if (i < 5) { this.size = 'X-SMALL'; return; } else
-    if (i < 15) { this.size = 'SMALL'; return; } else
-    if (i < 50) { this.size = 'MEDIUM'; return; } else
-    if (i < 100) { this.size = 'LARGE'; return; } else { this.size = 'X-LARGE'; return; }
+    if (i < 5) {
+      this.size = 'X-SMALL';
+      return;
+    } else if (i < 15) {
+      this.size = 'SMALL';
+      return;
+    } else if (i < 50) {
+      this.size = 'MEDIUM';
+      return;
+    } else if (i < 100) {
+      this.size = 'LARGE';
+      return;
+    } else {
+      this.size = 'X-LARGE';
+      return;
+    }
   }
 
-  animateAddToTank(img: any) {
+  animateAddToTank() {
     this.fishHoverRotate.kill();
     this.sideBarService.triggerSideBar();
-    const tlm = new TimelineMax();
-    tlm
-    .fromTo(img, 0.5, {  zIndex: 500 },  { x: -100, y: 150, rotateY: 180 })
-    .to(img, 0.5, {  x: 1400, zIndex: 99, ease: 'none' })
-    .to(img, 0, { y: 20, opacity: 0, x: 0, rotateY: 0 })
-    .to(img, 1, { y: 0, opacity: 1});
+    // this.addToTankTlm.restart();
+    this.createImageDuplicate();
   }
 
   addToTank() {
     this.myTankService.addToTank(this.species.id);
+  }
+
+  createImageDuplicate() {
+    const duplicate = this.speciesImg.cloneNode(true);
+    duplicate.style.position = 'absolute';
+    this.imageBubbleReference.nativeElement.appendChild(duplicate);
+    this.animateDuplicate(duplicate);
+  }
+
+  animateDuplicate(duplicate) {
+    const tlm = new TimelineMax();
+    tlm.fromTo(
+      duplicate,
+      0.5,
+      { zIndex: 500 },
+      { x: -100, y: 150, rotateY: 180 }
+    )
+    .to(duplicate, 1, { x: 1700, y: 'random(200, 300)', zIndex: 99, ease: 'none', onComplete: () => { duplicate.remove(); } });
   }
 
   swimAway() {
