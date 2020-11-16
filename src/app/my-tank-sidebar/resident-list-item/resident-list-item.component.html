@@ -17,7 +17,7 @@
         <div class="divider">|</div>
         <div class="number-recommended">{{ minGroupSize }}</div>
       </div>
-      <div class="status-item space">
+      <div class="status-item space {{ requiredSpaceResult }}" #space>
         <img alt="" class="type" src="../../../assets/images/Type-Fish.png" />
       </div>
       <div class="status-item community" [ngClass]="assessCommunity() ? 'sadFace' : 'happyFace'">

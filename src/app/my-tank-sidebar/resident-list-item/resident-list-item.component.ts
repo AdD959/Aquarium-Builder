@@ -4,6 +4,7 @@ import { Species } from 'src/app/species/species.model';
 import { SpeciesService } from 'src/app/species/species.service';
 import { ResidentListItem } from './resident-list-item.model';
 import { TimelineMax } from 'gsap';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-resident-list-item',
@@ -19,10 +20,14 @@ export class ResidentListItemComponent implements OnInit, ResidentListItem {
   public minGroupSize: number;
   public size: number;
   public wontGetEaten = true;
+  public requiredSpace: number;
+  public requiredSpaceResult: string;
+  public tankSize: number;
 
   @Input() largestFish: number;
   @Input() id: number;
   @Input() count: number;
+
 
   @ViewChild('removeBtn', { static: false }) removeBtn;
 
@@ -37,6 +42,21 @@ export class ResidentListItemComponent implements OnInit, ResidentListItem {
     this.name = this.species.name;
     this.minGroupSize = this.species.minGroupSize;
     this.size = this.species.size;
+    this.requiredSpace = this.size * 4;
+    this.tankSize = 100;
+    this.myTankService.tankSizeChange.subscribe((newSize) => {
+      this.tankSize = newSize;
+      if (this.tankSize > this.requiredSpace) {
+        this.requiredSpaceResult = 'good';
+      } else if (this.tankSize < this.requiredSpace) {
+        this.requiredSpaceResult = 'bad';
+      }
+    });
+    if (this.tankSize > this.requiredSpace) {
+      this.requiredSpaceResult = 'good';
+    } else if (this.tankSize < this.requiredSpace) {
+      this.requiredSpaceResult = 'bad';
+    }
   }
 
   ngOnViewInit() {

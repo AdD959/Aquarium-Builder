@@ -6,6 +6,7 @@ import { MyTank } from './my-tank.model';
 export class MyTankService {
   private myTank: MyTank = new MyTank(true);
   watchTank = new Subject<{}>();
+  tankSizeChange = new Subject<number>();
 
   getMyTank() {
     return this.myTank;
@@ -28,5 +29,10 @@ export class MyTankService {
     const removalIndex = this.myTank.speciesArray.indexOf(id);
     this.myTank.speciesArray.splice(removalIndex, 1);
     this.tankUpdated();
+  }
+
+  setTankSize(newSize: number) {
+    this.myTank.size = newSize;
+    this.tankSizeChange.next(newSize);
   }
 }

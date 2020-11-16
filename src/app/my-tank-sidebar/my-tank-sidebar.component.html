@@ -11,9 +11,7 @@
   <div id="tankWrapper">
     <div id="selection-wrapper">
       <div id="tank-size-wrapper">
-        <input type="number" max="999" min="10" value="100">
-        <div>X</div>
-        <input type="number" max="999" min="10" value="100">
+        <input type="number" max="1000" min="10" value="100" #gallons (change)="assessSize()">
       </div>
       <svg
         version="1.1"
@@ -424,7 +422,7 @@
         <ul>
           <li
             #smallIcon
-            (click)="selectTank(smallIcon)"
+            (click)="selectTank('small')"
             id="small"
             ngClass="{{ selectedTank == 'S' ? 'selected' : '' }}"
           >
@@ -432,7 +430,7 @@
           </li>
           <li
             #mediumIcon
-            (click)="selectTank(mediumIcon)"
+            (click)="selectTank('medium')"
             id="medium"
             ngClass="{{ selectedTank == 'M' ? 'selected' : '' }}"
           >
@@ -440,7 +438,7 @@
           </li>
           <li
             #largeIcon
-            (click)="selectTank(largeIcon)"
+            (click)="selectTank('large')"
             id="large"
             ngClass="{{ selectedTank == 'L' ? 'selected' : '' }}"
           >

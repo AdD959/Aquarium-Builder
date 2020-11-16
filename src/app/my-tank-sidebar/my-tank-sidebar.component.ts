@@ -21,10 +21,14 @@ export class MyTankSidebarComponent implements OnInit {
   tlmToBot = new TimelineMax();
   residents = [];
   residentsFiltered = [];
+  tankSize = 1;
+  smallTankLimit = 100;
+  mediumTankLimit = 400;
 
   @ViewChild('smallIcon', { static: false }) smallIcon;
   @ViewChild('mediumIcon', { static: false }) mediumIcon;
   @ViewChild('largeIcon', { static: false }) largeIcon;
+  @ViewChild('gallons', { static: false }) gallons;
 
   constructor(
     private sideBarService: SideBarService,
@@ -73,6 +77,27 @@ export class MyTankSidebarComponent implements OnInit {
     });
   }
 
+  assessSize() {
+    const newSize = this.gallons.nativeElement.value;
+    this.myTankService.setTankSize(newSize);
+    if (newSize < this.smallTankLimit) {
+      if (this.tankSize !== 1) {
+        this.selectTank('small');
+        this.tankSize = 1;
+      }
+    } else if (newSize < this.mediumTankLimit) {
+      if (this.tankSize !== 2) {
+        this.selectTank('medium');
+        this.tankSize = 2;
+      }
+    } else {
+      if (this.tankSize !== 3) {
+        this.selectTank('large');
+        this.tankSize = 3;
+      }
+    }
+  }
+
   getLargestFish() {
     let largestFish: number[] = [];
     this.residents.forEach((el) => {
@@ -96,15 +121,22 @@ export class MyTankSidebarComponent implements OnInit {
     this.filterDuplicates();
   }
 
-  selectTank(img: any) {
-    switch (img.id) {
+  selectTank(size: string) {
+    const currentGallons = this.gallons.nativeElement.value;
+    switch (size) {
       case 'small':
         this.selectedTank = 'S';
         this.selectSmall();
+        if (currentGallons > this.smallTankLimit) {
+          this.gallons.nativeElement.value = this.smallTankLimit;
+        }
         break;
       case 'medium':
         this.selectedTank = 'M';
         this.selectMed();
+        if (currentGallons > this.mediumTankLimit) {
+          this.gallons.nativeElement.value = this.mediumTankLimit;
+        }
         break;
       case 'large':
         this.selectedTank = 'L';

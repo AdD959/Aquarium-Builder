@@ -1,6 +1,6 @@
 export class MyTank {
   public id: number;
-  public size: string;
+  public size: number;
   public count: number;
   public speciesArray: number[];
 
