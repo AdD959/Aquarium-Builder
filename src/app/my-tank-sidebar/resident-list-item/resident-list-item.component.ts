@@ -19,7 +19,7 @@ export class ResidentListItemComponent implements OnInit, ResidentListItem {
   public minGroupSize: number;
   public size: number;
   public wontGetEaten = true;
-  
+
   @Input() largestFish: number;
   @Input() id: number;
   @Input() count: number;

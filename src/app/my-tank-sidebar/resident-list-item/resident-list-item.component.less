@@ -176,9 +176,26 @@
 
 .sadFace {
   background-color: crimson !important;
+
+  svg g #smile {
+    transform: rotateX(180deg) translateY(-166px);
+    transform-origin: center;
+  }
+
+  svg g #meh {
+    display: none;
+  }
 }
 
 .happyFace {
   background-color: green !important;
+
+  svg g #meh {
+    display: none;
+  }
 }
 
+.itemBorder {
+  border: solid goldenrod 3px;
+
+}

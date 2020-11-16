@@ -114,7 +114,7 @@ export class SpeciesCardComponent implements OnInit, AfterViewInit {
       duplicate,
       0.5,
       { zIndex: 500 },
-      { x: -100, y: 150, rotateY: 180 }
+      { x: -100, y: 'random(100, 200)', rotateY: 180 }
     )
     .to(duplicate, 1, { x: 1700, y: 'random(200, 300)', zIndex: 99, ease: 'none', onComplete: () => { duplicate.remove(); } });
   }
