@@ -11,7 +11,7 @@ import { SpeciesService } from '../species/species.service';
   styleUrls: ['./my-tank-sidebar.component.less'],
 })
 export class MyTankSidebarComponent implements OnInit {
-  myTankExpanded = false;
+  myTankExpanded = true;
   myTankLabelTriggered = false;
   labelLowered = false;
   selectedTank = 'M';

@@ -113,6 +113,9 @@ ul {
   justify-content: center;
   position: relative;
 }
+#my-tank-sidebar #tankWrapper #selection-wrapper #tank-size-wrapper {
+  position: absolute;
+}
 #my-tank-sidebar #tankWrapper #selection-wrapper #fishTankSelector {
   width: 80%;
   height: 100%;
