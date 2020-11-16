@@ -20,7 +20,7 @@
       <div class="status-item space">
         <img alt="" class="type" src="../../../assets/images/Type-Fish.png" />
       </div>
-      <div class="status-item community">
+      <div class="status-item community" [ngClass]="assessCommunity() ? 'sadFace' : 'happyFace'">
         <!-- Generator: Adobe Illustrator 23.0.1, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
         <svg
           version="1.1"

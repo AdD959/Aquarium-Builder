@@ -453,6 +453,7 @@
       <app-resident-list-item
       *ngFor="let resident of residentsFiltered; let i = index"
       [id]="resident.id" [count]="resident.count"
+      [largestFish]="getLargestFish()"
       ></app-resident-list-item>
     </div>
   </div>

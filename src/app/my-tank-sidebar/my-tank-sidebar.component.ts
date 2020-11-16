@@ -3,6 +3,7 @@ import { SideBarService } from '../shared/sidebar.service';
 import { TimelineMax } from 'gsap';
 import { MyTankService } from '../my-tank/my-tank.service';
 import { Subscription } from 'rxjs';
+import { SpeciesService } from '../species/species.service';
 
 @Component({
   selector: 'app-my-tank-sidebar',
@@ -27,10 +28,12 @@ export class MyTankSidebarComponent implements OnInit {
 
   constructor(
     private sideBarService: SideBarService,
-    private myTankService: MyTankService
+    private myTankService: MyTankService,
+    private speciesService: SpeciesService
   ) {
     this.residents = this.myTankService.getMySpeciesArray();
     this.filterDuplicates();
+    this.getLargestFish();
 
     this.sideBarService.toggleSideBar.subscribe(() => {
       this.myTankExpanded = true;
@@ -68,6 +71,16 @@ export class MyTankSidebarComponent implements OnInit {
         counts.push(resident);
       }
     });
+  }
+
+  getLargestFish() {
+    let largestFish: number[] = [];
+    this.residents.forEach((el) => {
+      const species = this.speciesService.getSpecies(el);
+      const speciesSize = species.size;
+      largestFish.push(speciesSize);
+    });
+    return Math.max(...largestFish);
   }
 
   openMyTank() {

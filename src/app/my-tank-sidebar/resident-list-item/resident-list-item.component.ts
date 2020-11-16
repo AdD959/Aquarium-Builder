@@ -17,7 +17,10 @@ export class ResidentListItemComponent implements OnInit, ResidentListItem {
   public species: Species;
   public img: string;
   public minGroupSize: number;
-
+  public size: number;
+  public wontGetEaten = true;
+  
+  @Input() largestFish: number;
   @Input() id: number;
   @Input() count: number;
 
@@ -33,10 +36,20 @@ export class ResidentListItemComponent implements OnInit, ResidentListItem {
     this.img = this.species.heroImg;
     this.name = this.species.name;
     this.minGroupSize = this.species.minGroupSize;
+    this.size = this.species.size;
   }
 
   ngOnViewInit() {
     const removeBtnEl = this.removeBtn.nativeELement;
+  }
+
+  assessCommunity() {
+    if (this.largestFish / this.size > 5) {
+      this.wontGetEaten = true;
+    } else {
+      this.wontGetEaten = false;
+    }
+    return this.wontGetEaten;
   }
 
   delete() {
