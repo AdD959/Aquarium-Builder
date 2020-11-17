@@ -113,6 +113,19 @@ ul {
   justify-content: center;
   position: relative;
 }
+#my-tank-sidebar #tankWrapper #selection-wrapper #rating-wrapper {
+  width: 50px;
+  position: absolute;
+  left: 36px;
+  bottom: -14px;
+  opacity: 0;
+}
+#my-tank-sidebar #tankWrapper #selection-wrapper #rating-wrapper #rating-A {
+  opacity: 0;
+}
+#my-tank-sidebar #tankWrapper #selection-wrapper #rating-wrapper #rating-B {
+  opacity: 0;
+}
 #my-tank-sidebar #tankWrapper #selection-wrapper #tank-size-wrapper {
   position: absolute;
   display: flex;

@@ -17,10 +17,10 @@
         <div class="divider">|</div>
         <div class="number-recommended">{{ minGroupSize }}</div>
       </div>
-      <div class="status-item space {{ requiredSpaceResult }}" #space>
+      <div class="status-item space {{ requiredSpaceResult }}">
         <img alt="" class="type" src="../../../assets/images/Type-Fish.png" />
       </div>
-      <div class="status-item community" [ngClass]="assessCommunity() ? 'sadFace' : 'happyFace'">
+      <div class="status-item community" [ngClass]="assessCommunity() ? 'bad' : 'good'">
         <!-- Generator: Adobe Illustrator 23.0.1, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
         <svg
           version="1.1"

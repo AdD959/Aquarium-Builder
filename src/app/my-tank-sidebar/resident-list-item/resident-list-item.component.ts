@@ -23,6 +23,7 @@ export class ResidentListItemComponent implements OnInit, ResidentListItem {
   public requiredSpace: number;
   public requiredSpaceResult: string;
   public tankSize = 200;
+  public completelySatisfied = false;
 
   @Input() largestFish: number;
   @Input() id: number;

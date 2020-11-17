@@ -32,6 +32,7 @@ export class MyTankSidebarComponent implements OnInit {
   @ViewChild('mediumIcon', { static: false }) mediumIcon;
   @ViewChild('largeIcon', { static: false }) largeIcon;
   @ViewChild('gallons', { static: false }) gallons;
+  @ViewChild('svgRating', { static: false }) svgRating;
 
   constructor(
     private sideBarService: SideBarService,
@@ -52,6 +53,22 @@ export class MyTankSidebarComponent implements OnInit {
 
     this.myTankService.watchTank.subscribe((items) => {
       this.updateList(items);
+      const statusItems = document.querySelectorAll('.status-item');
+      const count = statusItems.length;
+      let results = [];
+      statusItems.forEach((item) => {
+        if (item.classList.contains('bad')) {
+          this.svgRating.nativeElement.style.opacity = 0;
+        } else {
+          results.push(1);
+        }
+      });
+
+      console.log(results);
+      console.log('count: ' + count);
+      if (results.length >= count) {
+        this.svgRating.nativeElement.style.opacity = 1;
+      }
     });
   }
 
@@ -59,11 +76,9 @@ export class MyTankSidebarComponent implements OnInit {
 
   ngAfterViewInit(): void {
     this.source = fromEvent(this.gallons.nativeElement, 'keyup');
-    this.source.pipe(debounceTime(600)).subscribe(c =>
-    {
+    this.source.pipe(debounceTime(600)).subscribe((c) => {
       this.assessSize();
-    }
-    );
+    });
   }
 
   filterDuplicates() {
@@ -158,8 +173,17 @@ export class MyTankSidebarComponent implements OnInit {
       case 'medium':
         this.selectedTank = 'M';
         this.selectMed();
-        console.log('CG: ' + currentGallons + ' this.smallTankLimit: ' + this.smallTankLimit);
-        if ((currentGallons <= this.smallTankLimit || currentGallons >= this.mediumTankLimit) && forceCheck) {
+        console.log(
+          'CG: ' +
+            currentGallons +
+            ' this.smallTankLimit: ' +
+            this.smallTankLimit
+        );
+        if (
+          (currentGallons <= this.smallTankLimit ||
+            currentGallons >= this.mediumTankLimit) &&
+          forceCheck
+        ) {
           this.gallons.nativeElement.value = this.mediumTankLimit;
           this.myTankService.setTankSize(this.mediumTankLimit);
         }

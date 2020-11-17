@@ -131,6 +131,10 @@
 
 .good {
   background-color: green !important;
+
+  svg g #meh {
+    display: none;
+  }
 }
 
 .meh {
@@ -139,6 +143,15 @@
 
 .bad {
   background-color: crimson !important;
+
+  svg g #smile {
+    transform: rotateX(180deg) translateY(-166px);
+    transform-origin: center;
+  }
+
+  svg g #meh {
+    display: none;
+  }
 }
 
 .reworkNumbers {
@@ -173,26 +186,24 @@
   transform-origin: center;
 }
 
-.sadFace {
-  background-color: crimson !important;
+// .sadFace {
+//   background-color: crimson !important;
 
-  svg g #smile {
-    transform: rotateX(180deg) translateY(-166px);
-    transform-origin: center;
-  }
+//   svg g #smile {
+//     transform: rotateX(180deg) translateY(-166px);
+//     transform-origin: center;
+//   }
 
-  svg g #meh {
-    display: none;
-  }
-}
+//   svg g #meh {
+//     display: none;
+//   }
+// }
 
-.happyFace {
-  background-color: green !important;
+// .happyFace {
+//   background-color: green !important;
 
-  svg g #meh {
-    display: none;
-  }
-}
+
+// }
 
 .itemBorder {
   border: solid goldenrod 3px;
