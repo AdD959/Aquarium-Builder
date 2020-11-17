@@ -134,6 +134,8 @@ ul {
   -webkit-appearance: none;
   margin: 0;
   position: relative;
+  font-weight: bold;
+  -webkit-text-stroke: 2px #757575;
 }
 #my-tank-sidebar #tankWrapper #selection-wrapper #tank-size-wrapper > input::-webkit-outer-spin-button,
 #my-tank-sidebar #tankWrapper #selection-wrapper #tank-size-wrapper > input::-webkit-inner-spin-button {
@@ -143,12 +145,16 @@ ul {
 #my-tank-sidebar #tankWrapper #selection-wrapper #tank-size-wrapper::after {
   content: '(gallons)';
   position: absolute;
-  color: white;
+  color: #545454;
   bottom: -10px;
   right: -25px;
   width: 100px;
   font-size: 18px;
   z-index: 700;
+}
+#my-tank-sidebar #tankWrapper #selection-wrapper #tank-size-wrapper textarea:focus,
+#my-tank-sidebar #tankWrapper #selection-wrapper #tank-size-wrapper input:focus {
+  outline: none;
 }
 #my-tank-sidebar #tankWrapper #selection-wrapper #fishTankSelector {
   width: 80%;

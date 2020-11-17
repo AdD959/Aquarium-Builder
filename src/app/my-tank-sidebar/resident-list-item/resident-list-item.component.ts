@@ -9,7 +9,7 @@ import { Subscription } from 'rxjs';
 @Component({
   selector: 'app-resident-list-item',
   templateUrl: './resident-list-item.component.html',
-  styleUrls: ['./resident-list-item.component.less']
+  styleUrls: ['./resident-list-item.component.less'],
 })
 export class ResidentListItemComponent implements OnInit, ResidentListItem {
   public name: string;
@@ -22,19 +22,18 @@ export class ResidentListItemComponent implements OnInit, ResidentListItem {
   public wontGetEaten = true;
   public requiredSpace: number;
   public requiredSpaceResult: string;
-  public tankSize: number;
+  public tankSize = 200;
 
   @Input() largestFish: number;
   @Input() id: number;
   @Input() count: number;
-
 
   @ViewChild('removeBtn', { static: false }) removeBtn;
 
   constructor(
     private speciesService: SpeciesService,
     private myTankService: MyTankService
-  ) { }
+  ) {}
 
   ngOnInit() {
     this.species = this.speciesService.getSpecies(this.id);
@@ -43,7 +42,13 @@ export class ResidentListItemComponent implements OnInit, ResidentListItem {
     this.minGroupSize = this.species.minGroupSize;
     this.size = this.species.size;
     this.requiredSpace = this.size * 4;
-    this.tankSize = 100;
+    this.tankSize = this.myTankService.getTankSize();
+
+    if (this.tankSize > this.requiredSpace) {
+      this.requiredSpaceResult = 'good';
+    } else if (this.tankSize < this.requiredSpace) {
+      this.requiredSpaceResult = 'bad';
+    }
     this.myTankService.tankSizeChange.subscribe((newSize) => {
       this.tankSize = newSize;
       if (this.tankSize > this.requiredSpace) {
@@ -52,11 +57,6 @@ export class ResidentListItemComponent implements OnInit, ResidentListItem {
         this.requiredSpaceResult = 'bad';
       }
     });
-    if (this.tankSize > this.requiredSpace) {
-      this.requiredSpaceResult = 'good';
-    } else if (this.tankSize < this.requiredSpace) {
-      this.requiredSpaceResult = 'bad';
-    }
   }
 
   ngOnViewInit() {

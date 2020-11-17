@@ -35,4 +35,9 @@ export class MyTankService {
     this.myTank.size = newSize;
     this.tankSizeChange.next(newSize);
   }
+
+  getTankSize() {
+    console.log(this.myTank.size);
+    return this.myTank.size;
+  }
 }

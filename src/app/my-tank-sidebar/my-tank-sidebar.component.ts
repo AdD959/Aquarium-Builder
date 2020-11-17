@@ -2,8 +2,9 @@ import { Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { SideBarService } from '../shared/sidebar.service';
 import { TimelineMax } from 'gsap';
 import { MyTankService } from '../my-tank/my-tank.service';
-import { Subscription } from 'rxjs';
+import { fromEvent, Subscription } from 'rxjs';
 import { SpeciesService } from '../species/species.service';
+import { debounceTime } from 'rxjs/operators';
 
 @Component({
   selector: 'app-my-tank-sidebar',
@@ -24,6 +25,8 @@ export class MyTankSidebarComponent implements OnInit {
   tankSize = 1;
   smallTankLimit = 100;
   mediumTankLimit = 400;
+  largeTankLimit = 1000;
+  source: any;
 
   @ViewChild('smallIcon', { static: false }) smallIcon;
   @ViewChild('mediumIcon', { static: false }) mediumIcon;
@@ -54,6 +57,15 @@ export class MyTankSidebarComponent implements OnInit {
 
   ngOnInit() {}
 
+  ngAfterViewInit(): void {
+    this.source = fromEvent(this.gallons.nativeElement, 'keyup');
+    this.source.pipe(debounceTime(600)).subscribe(c =>
+    {
+      this.assessSize();
+    }
+    );
+  }
+
   filterDuplicates() {
     const counts = new Array();
     this.residentsFiltered = new Array();
@@ -78,28 +90,39 @@ export class MyTankSidebarComponent implements OnInit {
   }
 
   assessSize() {
-    const newSize = this.gallons.nativeElement.value;
+    let newSize = this.gallons.nativeElement.value;
     this.myTankService.setTankSize(newSize);
+    this.setNewTankSize(newSize);
     if (newSize < this.smallTankLimit) {
-      if (this.tankSize !== 1) {
+      if (this.tankSize === 1) {
         this.selectTank('small');
         this.tankSize = 1;
       }
     } else if (newSize < this.mediumTankLimit) {
-      if (this.tankSize !== 2) {
+      if (this.tankSize === 2) {
         this.selectTank('medium');
         this.tankSize = 2;
       }
     } else {
-      if (this.tankSize !== 3) {
+      if (this.tankSize === 3) {
         this.selectTank('large');
         this.tankSize = 3;
       }
     }
   }
 
+  setNewTankSize(newSize: number) {
+    if (newSize < this.smallTankLimit) {
+      this.tankSize = 1;
+    } else if (newSize < this.mediumTankLimit) {
+      this.tankSize = 2;
+    } else {
+      this.tankSize = 3;
+    }
+  }
+
   getLargestFish() {
-    let largestFish: number[] = [];
+    const largestFish: number[] = [];
     this.residents.forEach((el) => {
       const species = this.speciesService.getSpecies(el);
       const speciesSize = species.size;
@@ -121,26 +144,33 @@ export class MyTankSidebarComponent implements OnInit {
     this.filterDuplicates();
   }
 
-  selectTank(size: string) {
+  selectTank(size: string, forceCheck = false) {
     const currentGallons = this.gallons.nativeElement.value;
     switch (size) {
       case 'small':
         this.selectedTank = 'S';
         this.selectSmall();
-        if (currentGallons > this.smallTankLimit) {
+        if (currentGallons > this.smallTankLimit && forceCheck) {
           this.gallons.nativeElement.value = this.smallTankLimit;
+          this.myTankService.setTankSize(this.smallTankLimit);
         }
         break;
       case 'medium':
         this.selectedTank = 'M';
         this.selectMed();
-        if (currentGallons > this.mediumTankLimit) {
+        console.log('CG: ' + currentGallons + ' this.smallTankLimit: ' + this.smallTankLimit);
+        if ((currentGallons <= this.smallTankLimit || currentGallons >= this.mediumTankLimit) && forceCheck) {
           this.gallons.nativeElement.value = this.mediumTankLimit;
+          this.myTankService.setTankSize(this.mediumTankLimit);
         }
         break;
       case 'large':
         this.selectedTank = 'L';
         this.selectLarge();
+        if (currentGallons <= this.mediumTankLimit && forceCheck) {
+          this.gallons.nativeElement.value = this.largeTankLimit;
+          this.myTankService.setTankSize(this.largeTankLimit);
+        }
         break;
     }
   }
