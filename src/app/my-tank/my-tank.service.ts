@@ -7,6 +7,7 @@ export class MyTankService {
   private myTank: MyTank = new MyTank(true);
   watchTank = new Subject<{}>();
   tankSizeChange = new Subject<number>();
+  tankAnyChange = new Subject();
 
   getMyTank() {
     return this.myTank;
@@ -23,6 +24,7 @@ export class MyTankService {
 
   tankUpdated() {
     this.watchTank.next(this.myTank.speciesArray.slice());
+    this.tankAnyChange.next();
   }
 
   removeResident(id: number) {
@@ -34,10 +36,10 @@ export class MyTankService {
   setTankSize(newSize: number) {
     this.myTank.size = newSize;
     this.tankSizeChange.next(newSize);
+    this.tankAnyChange.next();
   }
 
   getTankSize() {
-    console.log(this.myTank.size);
     return this.myTank.size;
   }
 }

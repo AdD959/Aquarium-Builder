@@ -117,14 +117,16 @@ ul {
   width: 50px;
   position: absolute;
   left: 36px;
-  bottom: -14px;
+  bottom: 0px;
   opacity: 0;
-}
-#my-tank-sidebar #tankWrapper #selection-wrapper #rating-wrapper #rating-A {
-  opacity: 0;
+  transition-duration: 0.5s;
 }
 #my-tank-sidebar #tankWrapper #selection-wrapper #rating-wrapper #rating-B {
   opacity: 0;
+}
+#my-tank-sidebar #tankWrapper #selection-wrapper #rating-wrapper.visible {
+  opacity: 1;
+  bottom: -14px;
 }
 #my-tank-sidebar #tankWrapper #selection-wrapper #tank-size-wrapper {
   position: absolute;

@@ -96,15 +96,21 @@
         width: 50px;
         position: absolute;
         left: 36px;
-        bottom: -14px;
+        bottom: 0px;
         opacity: 0;
+        transition-duration: 0.5s;
 
-        #rating-A {
-          opacity: 0;
-        }
+        // #rating-A {
+          // opacity: 0;
+        // }
 
         #rating-B {
           opacity: 0;
+        }
+
+        &.visible {
+          opacity: 1;
+          bottom: -14px;
         }
       }
 

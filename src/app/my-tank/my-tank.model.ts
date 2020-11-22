@@ -7,6 +7,7 @@ export class MyTank {
   constructor(demo: boolean) {
     if (demo) {
       this.speciesArray = [0, 0, 1, 2, 3, 3, 0];
+      this.size = 200;
     } else {
       this.speciesArray = [];
     }

@@ -1,4 +1,11 @@
-import { Component, Input, OnInit, ViewChild } from '@angular/core';
+import {
+  Component,
+  EventEmitter,
+  Input,
+  OnInit,
+  Output,
+  ViewChild,
+} from '@angular/core';
 import { MyTankService } from 'src/app/my-tank/my-tank.service';
 import { Species } from 'src/app/species/species.model';
 import { SpeciesService } from 'src/app/species/species.service';
@@ -12,22 +19,28 @@ import { Subscription } from 'rxjs';
   styleUrls: ['./resident-list-item.component.less'],
 })
 export class ResidentListItemComponent implements OnInit, ResidentListItem {
-  public name: string;
-  public space: number;
-  public community: number;
-  public species: Species;
-  public img: string;
-  public minGroupSize: number;
-  public size: number;
-  public wontGetEaten = true;
-  public requiredSpace: number;
-  public requiredSpaceResult: string;
-  public tankSize = 200;
-  public completelySatisfied = false;
+  name: string;
+  space: number;
+  community: number;
+  species: Species;
+  img: string;
+  minGroupSize: number;
+  size: number;
+  requiredSpace: number;
+  requiredSpaceResult: string;
+  completelySatisfied = false;
+  perfectCount: boolean;
+  perfectSpace: boolean;
+  perfectCommunity: boolean;
+  getCountStatusVar = '';
+  assessCommunityVar: string;
 
+  @Input() tankSize: number;
   @Input() largestFish: number;
   @Input() id: number;
   @Input() count: number;
+  @Output() satisfied = new EventEmitter<number>();
+  @Output() unsatisfied = new EventEmitter<number>();
 
   @ViewChild('removeBtn', { static: false }) removeBtn;
 
@@ -43,48 +56,66 @@ export class ResidentListItemComponent implements OnInit, ResidentListItem {
     this.minGroupSize = this.species.minGroupSize;
     this.size = this.species.size;
     this.requiredSpace = this.size * 4;
-    this.tankSize = this.myTankService.getTankSize();
 
-    if (this.tankSize > this.requiredSpace) {
-      this.requiredSpaceResult = 'good';
-    } else if (this.tankSize < this.requiredSpace) {
-      this.requiredSpaceResult = 'bad';
-    }
     this.myTankService.tankSizeChange.subscribe((newSize) => {
-      this.tankSize = newSize;
-      if (this.tankSize > this.requiredSpace) {
-        this.requiredSpaceResult = 'good';
-      } else if (this.tankSize < this.requiredSpace) {
-        this.requiredSpaceResult = 'bad';
-      }
+      this.checkSize(newSize);
     });
+
+    this.getCountStatus();
+    this.assessCommunity();
+    this.checkSize();
   }
 
-  ngOnViewInit() {
-    const removeBtnEl = this.removeBtn.nativeELement;
+  ngOnViewInit() {}
+
+  checkSize(newSize?: number) {
+    if (newSize) {
+      this.tankSize = newSize;
+    }
+    if (this.tankSize >= this.requiredSpace) {
+      this.requiredSpaceResult = 'good';
+      this.perfectSpace = true;
+    } else if (this.tankSize < this.requiredSpace) {
+      this.requiredSpaceResult = 'bad';
+      this.perfectSpace = false;
+    }
+    this.checkSatisfaction();
+  }
+
+  checkSatisfaction() {
+    if ( this.perfectCount && this.perfectSpace && this.perfectCommunity) {
+      this.satisfied.emit(this.id);
+    } else {
+      this.unsatisfied.emit(this.id);
+    }
   }
 
   assessCommunity() {
     if (this.largestFish / this.size > 5) {
-      this.wontGetEaten = true;
+      this.perfectCommunity = false;
+      this.assessCommunityVar = 'bad';
     } else {
-      this.wontGetEaten = false;
+      this.perfectCommunity = true;
+      this.assessCommunityVar = 'good';
     }
-    return this.wontGetEaten;
+    this.checkSatisfaction();
   }
 
   delete() {
     this.myTankService.removeResident(this.id);
+    this.checkSatisfaction();
   }
 
   getCountStatus() {
     if (this.count >= this.minGroupSize) {
-      return 'good';
+      this.perfectCount = true;
+      this.getCountStatusVar = 'good';
+    } else if (this.count >= this.minGroupSize - 2) {
+      this.getCountStatusVar = 'meh';
+    } else {
+      this.perfectCount = false;
+      this.getCountStatusVar = 'bad';
     }
-
-    if (this.count >= this.minGroupSize - 2) {
-      return 'meh';
-    }
-    return 'bad';
+    this.checkSatisfaction();
   }
 }

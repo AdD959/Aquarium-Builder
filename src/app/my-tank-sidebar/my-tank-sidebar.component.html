@@ -505,8 +505,12 @@
     <div id="residentsList">
       <app-resident-list-item
       *ngFor="let resident of residentsFiltered; let i = index"
-      [id]="resident.id" [count]="resident.count"
+      [id]="resident.id"
+      [count]="resident.count"
       [largestFish]="getLargestFish()"
+      [tankSize]="tankSize"
+      (unsatisfied)="assessTankRemove($event)"
+      (satisfied)="assessTank($event)"
       ></app-resident-list-item>
     </div>
   </div>

@@ -1,4 +1,10 @@
-import { Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
+import {
+  AfterViewInit,
+  Component,
+  OnDestroy,
+  OnInit,
+  ViewChild,
+} from '@angular/core';
 import { SideBarService } from '../shared/sidebar.service';
 import { TimelineMax } from 'gsap';
 import { MyTankService } from '../my-tank/my-tank.service';
@@ -11,7 +17,7 @@ import { debounceTime } from 'rxjs/operators';
   templateUrl: './my-tank-sidebar.component.html',
   styleUrls: ['./my-tank-sidebar.component.less'],
 })
-export class MyTankSidebarComponent implements OnInit {
+export class MyTankSidebarComponent implements OnInit, AfterViewInit {
   myTankExpanded = true;
   myTankLabelTriggered = false;
   labelLowered = false;
@@ -22,11 +28,13 @@ export class MyTankSidebarComponent implements OnInit {
   tlmToBot = new TimelineMax();
   residents = [];
   residentsFiltered = [];
-  tankSize = 1;
+  tankSizeGroup = 1;
   smallTankLimit = 100;
   mediumTankLimit = 400;
   largeTankLimit = 1000;
   source: any;
+  tankSize: number;
+  residentsSatisfied = [];
 
   @ViewChild('smallIcon', { static: false }) smallIcon;
   @ViewChild('mediumIcon', { static: false }) mediumIcon;
@@ -38,8 +46,11 @@ export class MyTankSidebarComponent implements OnInit {
     private sideBarService: SideBarService,
     private myTankService: MyTankService,
     private speciesService: SpeciesService
-  ) {
+  ) {}
+
+  ngOnInit() {
     this.residents = this.myTankService.getMySpeciesArray();
+    this.tankSize = this.myTankService.getTankSize();
     this.filterDuplicates();
     this.getLargestFish();
 
@@ -53,32 +64,56 @@ export class MyTankSidebarComponent implements OnInit {
 
     this.myTankService.watchTank.subscribe((items) => {
       this.updateList(items);
-      const statusItems = document.querySelectorAll('.status-item');
-      const count = statusItems.length;
-      let results = [];
-      statusItems.forEach((item) => {
-        if (item.classList.contains('bad')) {
-          this.svgRating.nativeElement.style.opacity = 0;
-        } else {
-          results.push(1);
-        }
-      });
-
-      console.log(results);
-      console.log('count: ' + count);
-      if (results.length >= count) {
-        this.svgRating.nativeElement.style.opacity = 1;
-      }
     });
   }
 
-  ngOnInit() {}
-
   ngAfterViewInit(): void {
     this.source = fromEvent(this.gallons.nativeElement, 'keyup');
-    this.source.pipe(debounceTime(600)).subscribe((c) => {
+    this.source.pipe(debounceTime(600)).subscribe(() => {
       this.assessSize();
     });
+  }
+
+  assessTankRemove(id: number) {
+    if (this.residentsSatisfied.includes(id)) {
+      this.residentsSatisfied.splice(this.residentsSatisfied.indexOf(id), 1);
+    }
+
+    if (this.svgRating !== undefined) {
+      if (this.residentsFiltered.length === this.residentsSatisfied.length) {
+        this.svgRating.nativeElement.classList.add('visible');
+      } else {
+        this.svgRating.nativeElement.classList.remove('visible');
+      }
+    }
+  }
+
+  assessTank(id: number) {
+    let found = false;
+    this.residentsFiltered.filter((species, index) => {
+      if (id === species.id) {
+        found = true;
+        if (!this.residentsSatisfied.includes(id)) {
+          this.residentsSatisfied.push(id);
+        }
+      }
+    });
+
+    if (found === false) {
+      this.residentsSatisfied.splice(
+        this.residentsSatisfied.indexOf(id),
+        1
+      );
+    }
+
+    if (this.svgRating !== undefined) {
+      if (this.residentsFiltered.length === this.residentsSatisfied.length) {
+        this.svgRating.nativeElement.classList.add('visible');
+
+      } else {
+        this.svgRating.nativeElement.classList.remove('visible');
+      }
+    }
   }
 
   filterDuplicates() {
@@ -109,30 +144,30 @@ export class MyTankSidebarComponent implements OnInit {
     this.myTankService.setTankSize(newSize);
     this.setNewTankSize(newSize);
     if (newSize < this.smallTankLimit) {
-      if (this.tankSize === 1) {
+      if (this.tankSizeGroup === 1) {
         this.selectTank('small');
-        this.tankSize = 1;
+        this.tankSizeGroup = 1;
       }
     } else if (newSize < this.mediumTankLimit) {
-      if (this.tankSize === 2) {
+      if (this.tankSizeGroup === 2) {
         this.selectTank('medium');
-        this.tankSize = 2;
+        this.tankSizeGroup = 2;
       }
     } else {
-      if (this.tankSize === 3) {
+      if (this.tankSizeGroup === 3) {
         this.selectTank('large');
-        this.tankSize = 3;
+        this.tankSizeGroup = 3;
       }
     }
   }
 
   setNewTankSize(newSize: number) {
     if (newSize < this.smallTankLimit) {
-      this.tankSize = 1;
+      this.tankSizeGroup = 1;
     } else if (newSize < this.mediumTankLimit) {
-      this.tankSize = 2;
+      this.tankSizeGroup = 2;
     } else {
-      this.tankSize = 3;
+      this.tankSizeGroup = 3;
     }
   }
 
