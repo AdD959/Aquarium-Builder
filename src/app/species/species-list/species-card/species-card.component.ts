@@ -33,6 +33,8 @@ export class SpeciesCardComponent implements OnInit, AfterViewInit {
   remove = '';
   size: string;
   speciesImg;
+  disabled = false;
+
   @Input() species: Species;
   @Input() objIndex: number;
 
@@ -68,6 +70,22 @@ export class SpeciesCardComponent implements OnInit, AfterViewInit {
 
   ngOnInit() {
     this.getSpeciesSize();
+    this.checkIfDisabled();
+
+    this.myTankService.tankAnyChange.subscribe(() => {
+      if (this.myTankService.getMySpeciesArray().length === 0) {
+        this.myTankService.setWaterType('');
+      }
+      this.checkIfDisabled();
+    });
+  }
+
+  checkIfDisabled() {
+    if (this.species.waterType !== this.myTankService.getWaterType() && this.myTankService.getWaterType() !== '') {
+      this.disabled = true;
+    } else {
+      this.disabled = false;
+    }
   }
 
   getSpeciesSize() {
@@ -98,6 +116,7 @@ export class SpeciesCardComponent implements OnInit, AfterViewInit {
   }
 
   addToTank() {
+    this.myTankService.setWaterType(this.species.waterType);
     this.myTankService.addToTank(this.species.id);
   }
 
@@ -139,7 +158,7 @@ export class SpeciesCardComponent implements OnInit, AfterViewInit {
       .to(image, 1, {
         x: -window.innerWidth,
         y: 400,
-        rotate: -40,
+        rotate: -30,
         ease: 'power1.in',
         onComplete: () => {
           this.ngZone.run(() => {

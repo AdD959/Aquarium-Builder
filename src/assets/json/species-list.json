@@ -12,7 +12,8 @@
     "maxGroupSize": null,
     "tooFewFish": null,
     "idealGroupSize": 14,
-    "happyAlone": false
+    "happyAlone": false,
+    "waterType": "freshwater"
   },
   {
     "id": 1,
@@ -27,7 +28,8 @@
     "maxGroupSize": null,
     "tooFewFish": 2,
     "idealGroupSize": 8,
-    "happyAlone": true
+    "happyAlone": true,
+    "waterType": "freshwater"
   },
   {
     "id": 2,
@@ -42,7 +44,8 @@
     "maxGroupSize": 12,
     "tooFewFish": null,
     "idealGroupSize": 10,
-    "happyAlone": false
+    "happyAlone": false,
+    "waterType": "freshwater"
   },
   {
     "id": 3,
@@ -73,7 +76,8 @@
     "maxGroupSize": null,
     "tooFewFish": 2,
     "idealGroupSize": 6,
-    "happyAlone": true
+    "happyAlone": true,
+    "waterType": "freshwater"
   },
   {
     "id": 5,
@@ -88,7 +92,8 @@
     "maxGroupSize": null,
     "tooFewFish": null,
     "idealGroupSize": null,
-    "happyAlone": true
+    "happyAlone": true,
+    "waterType": "freshwater"
   },
   {
     "id": 6,
@@ -103,7 +108,8 @@
     "maxGroupSize": null,
     "tooFewFish": null,
     "idealGroupSize": 5,
-    "happyAlone": true
+    "happyAlone": true,
+    "waterType": "freshwater"
   },
   {
     "id": 7,
@@ -118,7 +124,8 @@
     "maxGroupSize": null,
     "tooFewFish": null,
     "idealGroupSize": 2,
-    "happyAlone": true
+    "happyAlone": true,
+    "waterType": "freshwater"
   },
   {
     "id": 8,
@@ -133,7 +140,8 @@
     "maxGroupSize": null,
     "tooFewFish": null,
     "idealGroupSize": 1,
-    "happyAlone": true
+    "happyAlone": true,
+    "waterType": "freshwater"
   },
   {
     "id": 9,
@@ -148,6 +156,7 @@
     "maxGroupSize": null,
     "tooFewFish": null,
     "idealGroupSize": 8,
-    "happyAlone": false
+    "happyAlone": false,
+    "waterType": "freshwater"
   }
 ]

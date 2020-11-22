@@ -4,7 +4,7 @@ import { MyTank } from './my-tank.model';
 
 @Injectable()
 export class MyTankService {
-  private myTank: MyTank = new MyTank(true);
+  private myTank: MyTank = new MyTank(false);
   watchTank = new Subject<{}>();
   tankSizeChange = new Subject<number>();
   tankAnyChange = new Subject();
@@ -41,5 +41,13 @@ export class MyTankService {
 
   getTankSize() {
     return this.myTank.size;
+  }
+
+  setWaterType(type: string) {
+    this.myTank.waterType = type;
+  }
+
+  getWaterType() {
+    return this.myTank.waterType;
   }
 }

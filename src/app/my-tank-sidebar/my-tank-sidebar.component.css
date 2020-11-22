@@ -121,6 +121,30 @@ ul {
   opacity: 0;
   transition-duration: 0.5s;
 }
+#my-tank-sidebar #tankWrapper #selection-wrapper #rating-wrapper::after {
+  content: 'Perfect Tank!';
+  position: absolute;
+  width: 108px;
+  background-color: crimson;
+  color: white;
+  height: 0px;
+  top: -28px;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  left: -58px;
+  z-index: 6000;
+  background: crimson;
+  transform: rotate(-42deg);
+  transition-duration: 0.2s;
+  overflow: hidden;
+}
+#my-tank-sidebar #tankWrapper #selection-wrapper #rating-wrapper:hover {
+  transform: rotate(10deg);
+}
+#my-tank-sidebar #tankWrapper #selection-wrapper #rating-wrapper:hover::after {
+  height: 31px;
+}
 #my-tank-sidebar #tankWrapper #selection-wrapper #rating-wrapper #rating-B {
   opacity: 0;
 }

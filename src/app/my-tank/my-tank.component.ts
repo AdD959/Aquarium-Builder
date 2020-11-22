@@ -10,15 +10,12 @@ import { MyTankService } from './my-tank.service';
 export class MyTankComponent implements OnInit {
   // @Input myTank;
   myTank: MyTank;
+  fish;
 
   constructor(private myTankService: MyTankService) { }
 
   ngOnInit() {
     this.myTank = this.myTankService.getMyTank();
+    this.fish = this.myTank.speciesArray;
   }
-
-  // removeResident(id: number) {
-  //   return;
-  // }
-
 }

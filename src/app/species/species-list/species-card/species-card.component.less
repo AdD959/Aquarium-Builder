@@ -14,6 +14,39 @@
   transition-duration: 0.2s;
   z-index: 40;
 
+  &.disabled {
+    background: linear-gradient(lightgrey 0%, grey 24%);
+
+    > .highlight > *:not(.two-group) {
+      filter: saturate(0%);
+      z-index: 100;
+    }
+
+    .add-to-tank {
+      pointer-events: none;
+      position: relative;
+
+      &::after {
+        content: 'Different Water Type!';
+        position: absolute;
+        width: 84px;
+        background-color: crimson;
+        color: white;
+        height: 31px;
+        top: -16px;
+        justify-content: center;
+        align-items: center;
+        opacity: 0.8;
+        display: flex;
+        right: 0;
+        overflow: hidden;
+        transition-duration: 0.2s;
+        padding: 8px;
+        border-radius: 4px;
+      }
+    }
+  }
+
   .more-info-wrapper {
     width: 0px;
   }

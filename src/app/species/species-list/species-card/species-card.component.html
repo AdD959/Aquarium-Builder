@@ -3,7 +3,8 @@
 class="species-wrapper"
 (mouseover)="bump(); cardBump()"
 (mouseout)="bumpReverse(); cardBumpReverse()"
-[ngClass]="remove">
+[ngClass]="[remove, disabled ? 'disabled' : '']"
+>
   <div class="highlight">
     <div class="two-group">
       <img

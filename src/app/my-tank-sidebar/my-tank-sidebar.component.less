@@ -101,8 +101,36 @@
         transition-duration: 0.5s;
 
         // #rating-A {
-          // opacity: 0;
+        // opacity: 0;
         // }
+
+        &::after {
+            content: 'Perfect Tank!';
+            position: absolute;
+            width: 108px;
+            background-color: crimson;
+            color: white;
+            height: 0px;
+            top: -28px;
+            justify-content: center;
+            align-items: center;
+            display: flex;
+            left: -58px;
+            z-index: 6000;
+            transition-duration: 0.2s;
+            background: crimson;
+            transform: rotate(-42deg);
+            transition-duration: 0.2s;
+            overflow: hidden;
+        }
+
+        &:hover {
+          transform: rotate(10deg);
+
+            &::after {
+              height: 31px;
+          }
+        }
 
         #rating-B {
           opacity: 0;
@@ -120,7 +148,6 @@
         justify-content: center;
         font-size: 2rem;
         color: white;
-
 
         > input {
           color: white;
