@@ -4,7 +4,7 @@ import { MyTank } from './my-tank.model';
 
 @Injectable()
 export class MyTankService {
-  private myTank: MyTank = new MyTank(false);
+  private myTank: MyTank = new MyTank(true);
   watchTank = new Subject<{}>();
   tankSizeChange = new Subject<number>();
   tankAnyChange = new Subject();

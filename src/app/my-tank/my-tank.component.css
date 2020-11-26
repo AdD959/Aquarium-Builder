@@ -1,0 +1,151 @@
+#myTankWrapper {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  width: 100vw;
+  height: 100%;
+  position: relative;
+  background-color: #3c3c3c;
+}
+#myTankWrapper > #Food,
+#myTankWrapper #Tanks {
+  width: 15%;
+  position: absolute;
+  right: 5%;
+  top: 10%;
+  cursor: pointer;
+}
+#myTankWrapper > #Food > #outercirc path,
+#myTankWrapper #Tanks > #outercirc path {
+  transition-duration: 0.5s;
+}
+#myTankWrapper > #Food > #innercirc path,
+#myTankWrapper #Tanks > #innercirc path {
+  transition-duration: 0.5s;
+}
+#myTankWrapper > #Food > #words,
+#myTankWrapper #Tanks > #words {
+  transform: translateY(0px) scale(1);
+}
+@keyframes rotation {
+  from {
+    transform: rotate(0deg) scale(1);
+  }
+  to {
+    transform: rotate(360deg) scale(0.9);
+  }
+}
+@keyframes antiRotation {
+  from {
+    transform: rotate(0deg) scale(1);
+  }
+  to {
+    transform: rotate(-360deg) scale(0.9);
+  }
+}
+@keyframes popOut {
+  from {
+    transform: translateY(60px) scale(0);
+  }
+  to {
+    transform: translateY(0px) scale(1);
+  }
+}
+#myTankWrapper > #Food:hover > #outercirc path,
+#myTankWrapper #Tanks:hover > #outercirc path {
+  animation: rotation 8s linear infinite;
+  transform-origin: 50% 60%;
+}
+#myTankWrapper > #Food:hover > #innercirc,
+#myTankWrapper #Tanks:hover > #innercirc {
+  animation: antiRotation 5s linear infinite;
+  transform-origin: 50% 60%;
+}
+#myTankWrapper > #Food:hover > #words,
+#myTankWrapper #Tanks:hover > #words {
+  animation: popOut 0.5s;
+  transform-origin: center;
+  animation-fill-mode: forwards;
+}
+#myTankWrapper > #Tanks {
+  width: 15%;
+  position: absolute;
+  left: 5%;
+  top: 10%;
+}
+#myTankWrapper #tank-outer {
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+#myTankWrapper #tank-outer svg {
+  width: 50vw;
+  position: relative;
+}
+#myTankWrapper #tank-outer svg image {
+  right: 0;
+  position: relative;
+  height: auto;
+  cursor: pointer;
+  min-width: 10%;
+}
+#myTankWrapper #tank-outer #tank-bottom {
+  min-height: 1000px;
+  width: 95%;
+  background: #9a6e3c;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+#myTankWrapper #tank-outer #tank-bottom > .shelf {
+  width: 95%;
+  box-sizing: border-box;
+  min-height: 400px;
+  background-color: #7b5830;
+  border: solid #6f5230;
+  margin: 20px;
+}
+#myTankWrapper #tank-outer #tank-bottom > .shelf > svg {
+  width: 100%;
+}
+#myTankWrapper #tank-outer #tank-bottom > .shelf > svg > g > g:nth-child(2) rect {
+  transition-duration: 0.5s;
+  opacity: 0;
+}
+#myTankWrapper #tank-outer #tank-bottom > .shelf > svg > g > g:nth-child(2) path {
+  transition-duration: 0.5s;
+  opacity: 0;
+  transform: scaleY(0);
+}
+#myTankWrapper #tank-outer #tank-bottom > .shelf > svg > g > :nth-child(3) {
+  transition-duration: 1s;
+  transform-origin: center center;
+  opacity: 0 !important;
+}
+#myTankWrapper #tank-outer #tank-bottom > .shelf > svg > g:hover > g:nth-child(2) rect {
+  opacity: 1;
+}
+#myTankWrapper #tank-outer #tank-bottom > .shelf > svg > g:hover > g:nth-child(2) path {
+  opacity: 1;
+  transform: scaleY(1);
+}
+#myTankWrapper #tank-outer #tank-bottom > .shelf > svg > g:hover > :nth-child(3) {
+  opacity: 0.18 !important;
+}
+#myTankWrapper #tank-outer #tank-top {
+  height: auto;
+  width: 99%;
+  margin-top: 20px;
+  border-top-right-radius: 10px;
+  border-top-left-radius: 10px;
+  background: linear-gradient(transparent 64%, #cafdf826 116%);
+  font-weight: bold;
+  font-size: 4rem;
+  z-index: 20;
+  text-align: center;
+  padding-top: 40p;
+  color: #00000000;
+  stroke: 10px;
+  -webkit-text-stroke: 2px #9a9a9a;
+}
