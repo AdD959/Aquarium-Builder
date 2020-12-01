@@ -4,6 +4,7 @@ export class MyTank {
   public count: number;
   public speciesArray: number[];
   public waterType: string;
+  public rating: number;
 
   constructor(demo: boolean) {
     if (demo) {

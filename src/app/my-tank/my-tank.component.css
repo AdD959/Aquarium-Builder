@@ -93,17 +93,38 @@
 #myTankWrapper #tank-outer #tank-bottom {
   min-height: 1000px;
   width: 95%;
-  background: #9a6e3c;
+  background: #3a281a;
   display: flex;
   flex-direction: column;
   align-items: center;
 }
+#myTankWrapper #tank-outer #tank-bottom #hover-info {
+  background: #644931;
+  width: 550px;
+  max-width: 93%;
+  height: 100px;
+  margin-bottom: 0;
+  margin-top: 20px;
+  display: flex;
+  justify-content: left;
+  align-items: center;
+  color: white;
+  border: solid 6px #644931;
+  border-radius: 25px;
+}
+#myTankWrapper #tank-outer #tank-bottom #hover-info > h1 {
+  margin: 0 20px;
+  padding: 0;
+  border-bottom: solid #252525 3px;
+}
+@media only screen and (max-width: 600px) {
+  #myTankWrapper #tank-outer #tank-bottom #hover-info {
+    flex-direction: column;
+  }
+}
 #myTankWrapper #tank-outer #tank-bottom > .shelf {
   width: 95%;
   box-sizing: border-box;
-  min-height: 400px;
-  background-color: #7b5830;
-  border: solid #6f5230;
   margin: 20px;
 }
 #myTankWrapper #tank-outer #tank-bottom > .shelf > svg {
@@ -116,7 +137,6 @@
 #myTankWrapper #tank-outer #tank-bottom > .shelf > svg > g > g:nth-child(2) path {
   transition-duration: 0.5s;
   opacity: 0;
-  transform: scaleY(0);
 }
 #myTankWrapper #tank-outer #tank-bottom > .shelf > svg > g > :nth-child(3) {
   transition-duration: 1s;
@@ -128,7 +148,6 @@
 }
 #myTankWrapper #tank-outer #tank-bottom > .shelf > svg > g:hover > g:nth-child(2) path {
   opacity: 1;
-  transform: scaleY(1);
 }
 #myTankWrapper #tank-outer #tank-bottom > .shelf > svg > g:hover > :nth-child(3) {
   opacity: 0.18 !important;

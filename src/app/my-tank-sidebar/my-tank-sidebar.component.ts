@@ -41,6 +41,8 @@ export class MyTankSidebarComponent implements OnInit, AfterViewInit {
   @ViewChild('largeIcon', { static: false }) largeIcon;
   @ViewChild('gallons', { static: false }) gallons;
   @ViewChild('svgRating', { static: false }) svgRating;
+  @ViewChild('ratingB', { static: false }) ratingB;
+  @ViewChild('ratingA', { static: false }) ratingA;
 
   constructor(
     private sideBarService: SideBarService,
@@ -75,6 +77,7 @@ export class MyTankSidebarComponent implements OnInit, AfterViewInit {
   }
 
   assessTankRemove(id: number) {
+    this.myTankService.setRating(3);
     if (this.residentsSatisfied.includes(id)) {
       this.residentsSatisfied.splice(this.residentsSatisfied.indexOf(id), 1);
     }
@@ -82,10 +85,17 @@ export class MyTankSidebarComponent implements OnInit, AfterViewInit {
     if (this.svgRating !== undefined) {
       if (this.residentsFiltered.length === this.residentsSatisfied.length) {
         this.svgRating.nativeElement.classList.add('visible');
+        this.myTankService.setRating(1);
       } else {
         this.svgRating.nativeElement.classList.remove('visible');
+        if (document.querySelector('.bad') === null) {
+          this.myTankService.setRating(3);
+        } else {
+          this.myTankService.setRating(2);
+        }
       }
     }
+    console.log(this.myTankService.getRating());
   }
 
   assessTank(id: number) {
@@ -109,11 +119,18 @@ export class MyTankSidebarComponent implements OnInit, AfterViewInit {
     if (this.svgRating !== undefined) {
       if (this.residentsFiltered.length === this.residentsSatisfied.length) {
         this.svgRating.nativeElement.classList.add('visible');
-
+        this.myTankService.setRating(1);
       } else {
         this.svgRating.nativeElement.classList.remove('visible');
+        if (document.querySelector('.bad') === null) {
+          this.myTankService.setRating(2);
+        } else {
+          this.myTankService.setRating(3);
+        }
       }
     }
+
+    console.log(this.myTankService.getRating());
   }
 
   filterDuplicates() {
@@ -187,6 +204,7 @@ export class MyTankSidebarComponent implements OnInit, AfterViewInit {
 
   closeMyTank() {
     this.myTankExpanded = false;
+    console.log(this.myTankService.getRating());
   }
 
   updateList(items) {

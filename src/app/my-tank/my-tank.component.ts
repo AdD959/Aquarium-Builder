@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, Input, OnInit } from '@angular/core';
+import { AfterViewInit, Component, Input, OnInit, ViewChild } from '@angular/core';
 import { MyTank } from './my-tank.model';
 import { TimelineMax } from 'gsap';
 import { MyTankService } from './my-tank.service';
@@ -24,6 +24,9 @@ export class MyTankComponent implements OnInit, AfterViewInit {
   tankLog: number;
   tankSizeChange: Subscription;
   calc: number;
+
+  @ViewChild('hoverInfo', { static: false }) hoverInfo;
+  @ViewChild('hoverInfoTitle', { static: false }) hoverInfoTitle;
 
   constructor(
     private myTankService: MyTankService,
@@ -55,6 +58,7 @@ export class MyTankComponent implements OnInit, AfterViewInit {
     this.initBubbleTlm();
     this.initFishMovement();
     this.setStartingPos();
+    this.showInfo('medal');
   }
 
   setPineappleSize(newSize: number) {
@@ -131,6 +135,31 @@ export class MyTankComponent implements OnInit, AfterViewInit {
       return 'left';
     } else {
       return 'right';
+    }
+  }
+
+  showInfo(foodType: string) {
+    switch (foodType) {
+      case ('worms'):
+        this.hoverInfoTitle.nativeElement.innerHTML = 'Worms';
+        this.hoverInfo.nativeElement.innerHTML = 'One or more fish in your tank require a surplus of iron/protein.';
+        break;
+      case ('flakes'):
+        this.hoverInfoTitle.nativeElement.innerHTML = 'Flakes';
+        this.hoverInfo.nativeElement.innerHTML = 'One or more fish in your tank require flakes. This is a general food type for smaller fish species and top-dwellers.';
+        break;
+      case ('pellets'):
+        this.hoverInfoTitle.nativeElement.innerHTML = 'Pellets';
+        this.hoverInfo.nativeElement.innerHTML = 'One or more fish in your tank require pellets, a food type required for larger fish species.';
+        break;
+      case ('algae'):
+        this.hoverInfoTitle.nativeElement.innerHTML = 'Algae';
+        this.hoverInfo.nativeElement.innerHTML = 'One or more fish in your tank require algae flakes, a food type suggested for bottom-dwellers such as catfish and loaches.';
+        break;
+      case ('medal'):
+        this.hoverInfoTitle.nativeElement.innerHTML = 'Tank Rating';
+        this.hoverInfo.nativeElement.innerHTML = 'Your tank rating is based on three key elements: space, community and number of fish of the same species.';
+        break;
     }
   }
 }

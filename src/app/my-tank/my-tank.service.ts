@@ -50,4 +50,12 @@ export class MyTankService {
   getWaterType() {
     return this.myTank.waterType;
   }
+
+  getRating() {
+    return this.myTank.rating;
+  }
+
+  setRating(rating: number) {
+    this.myTank.rating = rating;
+  }
 }
