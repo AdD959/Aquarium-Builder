@@ -1,6 +1,7 @@
 import {
   AfterViewInit,
   Component,
+  ElementRef,
   OnDestroy,
   OnInit,
   ViewChild,
@@ -47,7 +48,8 @@ export class MyTankSidebarComponent implements OnInit, AfterViewInit {
   constructor(
     private sideBarService: SideBarService,
     private myTankService: MyTankService,
-    private speciesService: SpeciesService
+    private speciesService: SpeciesService,
+    private elem: ElementRef
   ) {}
 
   ngOnInit() {
@@ -86,16 +88,45 @@ export class MyTankSidebarComponent implements OnInit, AfterViewInit {
       if (this.residentsFiltered.length === this.residentsSatisfied.length) {
         this.svgRating.nativeElement.classList.add('visible');
         this.myTankService.setRating(1);
+        // console.log('assessTankRemove - setting  rating to 1: ' + this.myTankService.getRating());
       } else {
         this.svgRating.nativeElement.classList.remove('visible');
-        if (document.querySelector('.bad') === null) {
-          this.myTankService.setRating(3);
-        } else {
+        if (this.elem.nativeElement.querySelector('.bad') === null) {
           this.myTankService.setRating(2);
+        // console.log('assessTankRemove - setting  rating to 2: ' + this.myTankService.getRating());
+
+        } else {
+          console.log(this.elem.nativeElement.querySelector('.bad'));
+          this.myTankService.setRating(3);
+        // console.log('assessTankRemove - setting  rating to 3: ' + this.myTankService.getRating());
+
         }
       }
     }
-    console.log(this.myTankService.getRating());
+    this.setRatingOpacity();
+  }
+
+  setRatingOpacity() {
+    if (this.ratingA != undefined && this.ratingB != undefined) {
+      switch (this.myTankService.getRating()) {
+        case 1:
+          this.ratingA.nativeElement.style.opacity = 1;
+          this.ratingB.nativeElement.style.opacity = 0;
+          // console.log('case 1');
+          break;
+        case 2:
+          this.svgRating.nativeElement.classList.add('visible');
+          this.ratingA.nativeElement.style.opacity = 0;
+          this.ratingB.nativeElement.style.opacity = 1;
+          // console.log('case 2');
+          break;
+        case 3:
+          this.ratingA.nativeElement.style.opacity = 0;
+          this.ratingB.nativeElement.style.opacity = 0;
+          // console.log('case 3');
+          break;
+      }
+    }
   }
 
   assessTank(id: number) {
@@ -120,17 +151,24 @@ export class MyTankSidebarComponent implements OnInit, AfterViewInit {
       if (this.residentsFiltered.length === this.residentsSatisfied.length) {
         this.svgRating.nativeElement.classList.add('visible');
         this.myTankService.setRating(1);
+        // console.log('assessTank - setting  rating to 1: ' + this.myTankService.getRating());
+
       } else {
         this.svgRating.nativeElement.classList.remove('visible');
-        if (document.querySelector('.bad') === null) {
+        if (this.elem.nativeElement.querySelector('.bad') === null) {
           this.myTankService.setRating(2);
+        // console.log('assessTank - setting  rating to 2: ' + this.myTankService.getRating());
+
         } else {
           this.myTankService.setRating(3);
+        // console.log('assessTank - setting  rating to 3: ' + this.myTankService.getRating());
+
         }
       }
     }
+    this.setRatingOpacity();
 
-    console.log(this.myTankService.getRating());
+    // console.log('assesstank: ' + this.myTankService.getRating());
   }
 
   filterDuplicates() {
@@ -226,12 +264,7 @@ export class MyTankSidebarComponent implements OnInit, AfterViewInit {
       case 'medium':
         this.selectedTank = 'M';
         this.selectMed();
-        console.log(
-          'CG: ' +
-            currentGallons +
-            ' this.smallTankLimit: ' +
-            this.smallTankLimit
-        );
+
         if (
           (currentGallons <= this.smallTankLimit ||
             currentGallons >= this.mediumTankLimit) &&

@@ -145,9 +145,6 @@ ul {
 #my-tank-sidebar #tankWrapper #selection-wrapper #rating-wrapper:hover::after {
   height: 31px;
 }
-#my-tank-sidebar #tankWrapper #selection-wrapper #rating-wrapper #rating-B {
-  opacity: 0;
-}
 #my-tank-sidebar #tankWrapper #selection-wrapper #rating-wrapper.visible {
   opacity: 1;
   bottom: -14px;
