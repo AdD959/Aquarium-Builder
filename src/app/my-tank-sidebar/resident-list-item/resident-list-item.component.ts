@@ -9,7 +9,7 @@ import {
 import { MyTankService } from 'src/app/my-tank/my-tank.service';
 import { Species } from 'src/app/species/species.model';
 import { SpeciesService } from 'src/app/species/species.service';
-import { ResidentListItem } from './resident-list-item.model';
+import { ResidentListItem, State } from './resident-list-item.model';
 import { TimelineMax } from 'gsap';
 import { Subscription } from 'rxjs';
 
@@ -19,35 +19,32 @@ import { Subscription } from 'rxjs';
   styleUrls: ['./resident-list-item.component.less'],
 })
 export class ResidentListItemComponent implements OnInit, ResidentListItem {
-  name: string;
-  space: number;
-  community: number;
-  species: Species;
-  img: string;
-  minGroupSize: number;
-  size: number;
-  requiredSpace: number;
-  requiredSpaceResult: string;
-  completelySatisfied = false;
-  perfectCount: boolean;
-  perfectSpace: boolean;
-  perfectCommunity: boolean;
-  getCountStatusVar = '';
-  assessCommunityVar: string;
-
   @Input() tankSize: number;
   @Input() largestFish: number;
   @Input() id: number;
   @Input() count: number;
-  @Output() satisfied = new EventEmitter<number>();
-  @Output() unsatisfied = new EventEmitter<number>();
 
-  @ViewChild('removeBtn', { static: false }) removeBtn;
+  @Output() stateOverall = new EventEmitter<{id: number, status: State}>();
+  @Output() removeFromTank = new EventEmitter<number>();
 
   constructor(
-    private speciesService: SpeciesService,
-    private myTankService: MyTankService
+    private myTankService: MyTankService,
+    private speciesService: SpeciesService
   ) {}
+
+  name: string;
+  space: number;
+  community: number;
+  img: string;
+  stateCount: State;
+  stateSpace: State;
+  stateCommunity: State;
+  species: Species;
+  minGroupSize: number;
+  size: number;
+  requiredSpace: number;
+  acceptedSpace: number;
+  status: State;
 
   ngOnInit() {
     this.species = this.speciesService.getSpecies(this.id);
@@ -56,66 +53,91 @@ export class ResidentListItemComponent implements OnInit, ResidentListItem {
     this.minGroupSize = this.species.minGroupSize;
     this.size = this.species.size;
     this.requiredSpace = this.size * 4;
+    this.acceptedSpace = this.size * 3;
+    this.tankSize = this.myTankService.getTankSize();
+    this.assess();
 
-    this.myTankService.tankSizeChange.subscribe((newSize) => {
-      this.checkSize(newSize);
+    this.myTankService.tankAnyChange.subscribe(() => {
+      this.assess();
     });
-
-    this.getCountStatus();
-    this.assessCommunity();
-    this.checkSize();
   }
 
   ngOnViewInit() {}
 
-  checkSize(newSize?: number) {
-    if (newSize) {
-      this.tankSize = newSize;
-    }
-    if (this.tankSize >= this.requiredSpace) {
-      this.requiredSpaceResult = 'good';
-      this.perfectSpace = true;
-    } else if (this.tankSize < this.requiredSpace) {
-      this.requiredSpaceResult = 'bad';
-      this.perfectSpace = false;
-    }
-    this.checkSatisfaction();
-  }
-
-  checkSatisfaction() {
-    if ( this.perfectCount && this.perfectSpace && this.perfectCommunity) {
-      this.satisfied.emit(this.id);
-    } else {
-      this.unsatisfied.emit(this.id);
-    }
-  }
-
-  assessCommunity() {
-    if (this.largestFish / this.size > 5) {
-      this.perfectCommunity = false;
-      this.assessCommunityVar = 'bad';
-    } else {
-      this.perfectCommunity = true;
-      this.assessCommunityVar = 'good';
-    }
-    this.checkSatisfaction();
-  }
-
   delete() {
     this.myTankService.removeResident(this.id);
-    this.checkSatisfaction();
+    this.removeSpeciesFromTank();
+    // this.assess();
   }
 
-  getCountStatus() {
+  assess() {
+    this.stateCount = this.checkCount();
+    this.stateSpace = this.checkSpace();
+    this.stateCommunity = this.checkCommunity();
+    this.stateOverall.emit(this.returnAssessment());
+  }
+
+  checkCount() {
     if (this.count >= this.minGroupSize) {
-      this.perfectCount = true;
-      this.getCountStatusVar = 'good';
+      return State.Good;
     } else if (this.count >= this.minGroupSize - 2) {
-      this.getCountStatusVar = 'meh';
+      return State.Moderate;
     } else {
-      this.perfectCount = false;
-      this.getCountStatusVar = 'bad';
+      return State.Bad;
     }
-    this.checkSatisfaction();
+  }
+
+  checkSpace() {
+    this.tankSize = this.myTankService.getTankSize();
+
+    if (this.tankSize >= this.requiredSpace) {
+      return State.Good;
+    } else if (this.tankSize >= this.acceptedSpace) {
+      return State.Moderate;
+    } else {
+      return State.Bad;
+    }
+  }
+
+  checkCommunity() {
+    if (this.largestFish / this.size > 5) {
+      return State.Bad;
+    } else {
+      return State.Good;
+    }
+  }
+
+  returnAssessment() {
+    let assessmentValue = 0;
+    let states = [this.stateCount, this.stateSpace, this.stateCommunity];
+
+    states.forEach((state) => {
+      switch (state) {
+        case State.Good:
+          assessmentValue += 2;
+          break;
+        case State.Moderate:
+          assessmentValue += 1;
+          break;
+        case State.Bad:
+          assessmentValue -= 1;
+          break;
+      }
+    });
+
+    // console.log(this.name + ': ' + assessmentValue);
+
+    switch (true) {
+      case assessmentValue === 6:
+        return { id: this.id, status: State.Good };
+      case assessmentValue > 3:
+        return { id: this.id, status: State.Moderate };
+      default:
+        return { id: this.id, status: State.Bad };
+    }
+  }
+
+  removeSpeciesFromTank() {
+    this.removeFromTank.emit(this.id);
   }
 }

@@ -8,6 +8,8 @@ export class MyTankService {
   watchTank = new Subject<{}>();
   tankSizeChange = new Subject<number>();
   tankAnyChange = new Subject();
+  speciesSatisfied = new Subject<number>();
+  speciesUnsatisfied = new Subject<number>();
 
   getMyTank() {
     return this.myTank;
