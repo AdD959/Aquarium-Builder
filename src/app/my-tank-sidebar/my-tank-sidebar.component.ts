@@ -95,7 +95,6 @@ export class MyTankSidebarComponent implements OnInit, AfterViewInit {
           this.ribbons.nativeElement.classList.remove('gradeB');
           this.ratingA.nativeElement.style.opacity = 1;
           this.ratingB.nativeElement.style.opacity = 0;
-          console.log('case 1');
           break;
         case 2:
           this.svgRating.nativeElement.classList.add('visible');
@@ -104,13 +103,11 @@ export class MyTankSidebarComponent implements OnInit, AfterViewInit {
           this.ribbons.nativeElement.classList.add('gradeB');
           this.ratingA.nativeElement.style.opacity = 0;
           this.ratingB.nativeElement.style.opacity = 1;
-          console.log('case 2');
           break;
         case 3:
           this.svgRating.nativeElement.classList.remove('visible');
           this.ratingA.nativeElement.style.opacity = 0;
           this.ratingB.nativeElement.style.opacity = 0;
-          console.log('case 3');
           break;
       }
     }
@@ -121,7 +118,6 @@ export class MyTankSidebarComponent implements OnInit, AfterViewInit {
     var ratingsGood = [];
     var ratingsModerate = [];
     var ratingsBad = [];
-    console.log(this.residentStatusList[0].status);
     for (var i = 0; i < total; i++) {
       switch (this.residentStatusList[i].status) {
         case State.Good:
@@ -135,9 +131,6 @@ export class MyTankSidebarComponent implements OnInit, AfterViewInit {
           break;
       }
     }
-    console.log('ratings total: ' + total);
-    console.log('ratingsGood: ' + ratingsGood.length);
-    console.log('ratingsBad: ' + ratingsBad.length);
 
     if (ratingsGood.length === total) {
       this.myTankService.setRating(1);
@@ -146,9 +139,6 @@ export class MyTankSidebarComponent implements OnInit, AfterViewInit {
     } else {
       this.myTankService.setRating(2);
     }
-
-    console.log('tank rating: ' + this.myTankService.getRating());
-    console.log('');
 
     this.setRatingOpacity();
   }
@@ -159,10 +149,8 @@ export class MyTankSidebarComponent implements OnInit, AfterViewInit {
         return e.id;
       })
       .indexOf(id);
-    this.residentStatusList = this.residentStatusList.splice(
-      this.residentStatusList[pos],
-      1
-    );
+
+    this.residentStatusList.splice(pos, 1);
     this.setRating();
   }
 
@@ -186,6 +174,7 @@ export class MyTankSidebarComponent implements OnInit, AfterViewInit {
     } else {
       this.residentStatusList.push(species);
     }
+
     this.setRating();
     this.setRatingOpacity();
   }

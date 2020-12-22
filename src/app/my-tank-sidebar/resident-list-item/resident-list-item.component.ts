@@ -67,6 +67,7 @@ export class ResidentListItemComponent implements OnInit, ResidentListItem {
   delete() {
     this.myTankService.removeResident(this.id);
     this.removeSpeciesFromTank();
+    this.myTankService.tankUpdated();
     // this.assess();
   }
 
@@ -124,8 +125,6 @@ export class ResidentListItemComponent implements OnInit, ResidentListItem {
           break;
       }
     });
-
-    // console.log(this.name + ': ' + assessmentValue);
 
     switch (true) {
       case assessmentValue === 6:

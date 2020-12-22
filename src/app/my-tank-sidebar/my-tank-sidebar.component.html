@@ -508,8 +508,8 @@
       [id]="resident.id"
       [count]="resident.count"
       [largestFish]="getLargestFish()"
-      (stateOverall)="assessTank($event)"
       (removeFromTank)="removeDeletedSpecies($event)"
+      (stateOverall)="assessTank($event)"
       ></app-resident-list-item>
     </div>
   </div>

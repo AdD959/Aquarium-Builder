@@ -26,13 +26,12 @@ export class MyTankService {
 
   tankUpdated() {
     this.watchTank.next(this.myTank.speciesArray.slice());
-    this.tankAnyChange.next();
+    // this.tankAnyChange.next();
   }
 
   removeResident(id: number) {
     const removalIndex = this.myTank.speciesArray.indexOf(id);
     this.myTank.speciesArray.splice(removalIndex, 1);
-    this.tankUpdated();
   }
 
   setTankSize(newSize: number) {
