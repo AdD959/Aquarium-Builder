@@ -20,7 +20,6 @@ export class MyTankComponent implements OnInit, AfterViewInit {
   pineappleTlm = new TimelineMax();
   fishTlmRight = new TimelineMax();
   images = [];
-  tankSize: number;
   tankLog: number;
   tankSizeChange: Subscription;
   calc: number;
@@ -30,6 +29,7 @@ export class MyTankComponent implements OnInit, AfterViewInit {
   @ViewChild('RatingB', { static: false }) ratingB;
   @ViewChild('RatingA', { static: false }) ratingA;
   @ViewChild('medalGroup', { static: false }) medalGroup;
+  @ViewChild('gallons', { static: false }) tankSize: number;
 
   constructor(
     private myTankService: MyTankService,

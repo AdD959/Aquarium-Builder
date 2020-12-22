@@ -22,7 +22,7 @@ import { state } from '@angular/animations';
   styleUrls: ['./my-tank-sidebar.component.less'],
 })
 export class MyTankSidebarComponent implements OnInit, AfterViewInit {
-  myTankExpanded = true;
+  myTankExpanded = false;
   myTankLabelTriggered = false;
   labelLowered = false;
   selectedTank = 'M';

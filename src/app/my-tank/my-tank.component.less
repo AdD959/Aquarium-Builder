@@ -112,19 +112,50 @@
       flex-direction: column;
       align-items: center;
 
+      #bottom-cover {
+        display: flex;
+        align-items: center;
+        margin: 20px 0;
+        gap: 20px;
+        position: relative;
+
+        > input {
+          line-height: 5rem;
+          width: 230px;
+          font-size: 5rem;
+          text-align: center;
+          background-color: aliceblue;
+          border-radius: 5px;
+          stroke: 10px;
+          -webkit-text-stroke: 2px #3c3c3c;
+          color: transparent;
+          caret-color: #3c3c3c;
+        }
+
+        &::after {
+          content: "Tank size (gallons)";
+          background-color: crimson;
+          color: white;
+          padding: 10px;
+          position: absolute;
+          right: -40px;
+          top: 0;
+          transform: rotate(30deg);
+        }
+      }
+
       #hover-info {
         background: #644931;
         width: 550px;
         max-width: 93%;
         height: 100px;
         margin-bottom: 0;
-        margin-top: 20px;
         display: flex;
         justify-content: left;
         align-items: center;
         color: white;
         border: solid 6px #644931;
-        border-radius: 25px;
+        border-radius: 5px;
 
         > h1 {
           margin: 0 20px;
@@ -141,6 +172,7 @@
         width: 95%;
         box-sizing: border-box;
         margin: 20px;
+        margin-top: 0;
 
         > svg {
           width: 100%;
