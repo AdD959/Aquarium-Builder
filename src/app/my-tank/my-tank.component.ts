@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, Input, OnInit, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, Input, OnInit, Renderer2, ViewChild } from '@angular/core';
 import { MyTank } from './my-tank.model';
 import { TimelineMax } from 'gsap';
 import { MyTankService } from './my-tank.service';
@@ -27,10 +27,15 @@ export class MyTankComponent implements OnInit, AfterViewInit {
 
   @ViewChild('hoverInfo', { static: false }) hoverInfo;
   @ViewChild('hoverInfoTitle', { static: false }) hoverInfoTitle;
+  @ViewChild('RatingB', { static: false }) ratingB;
+  @ViewChild('RatingA', { static: false }) ratingA;
+  @ViewChild('medalGroup', { static: false }) medalGroup;
 
   constructor(
     private myTankService: MyTankService,
-    private speciesService: SpeciesService) { }
+    private speciesService: SpeciesService,
+    private elRef: ElementRef,
+    private renderer: Renderer2) { }
 
   ngOnInit() {
     this.myTank = this.myTankService.getMyTank();
@@ -59,6 +64,33 @@ export class MyTankComponent implements OnInit, AfterViewInit {
     this.initFishMovement();
     this.setStartingPos();
     this.showInfo('medal');
+    this.getTankRatingVars();
+  }
+
+  getTankRatingVars() {
+    const rating = this.myTank.rating;
+    console.log(this.ratingA.nativeElement);
+    if (rating === 1) {
+      this.ratingA.nativeElement.classList.remove('hidden');
+      this.ratingB.nativeElement.classList.add('hidden');
+      this.medalGroup.nativeElement.classList.remove('hidden');
+      this.medalGroup.nativeElement.classList.remove('b-theme');
+      this.medalGroup.nativeElement.classList.remove('f-theme');
+
+    } else if (rating === 2) {
+      this.ratingA.nativeElement.classList.add('hidden');
+      this.ratingB.nativeElement.classList.remove('hidden');
+      this.medalGroup.nativeElement.classList.remove('hidden');
+      this.medalGroup.nativeElement.classList.add('b-theme');
+      this.medalGroup.nativeElement.classList.remove('f-theme');
+
+    } else {
+      this.ratingA.nativeElement.classList.add('hidden');
+      this.ratingB.nativeElement.classList.remove('hidden');
+      this.medalGroup.nativeElement.classList.remove('hidden');
+      this.medalGroup.nativeElement.classList.add('f-theme');
+      this.medalGroup.nativeElement.classList.remove('b-theme');
+    }
   }
 
   setPineappleSize(newSize: number) {
@@ -74,7 +106,7 @@ export class MyTankComponent implements OnInit, AfterViewInit {
       x: 'random(50, 1000)',
       y: 'random(200, 500)'
     });
-    this.fishTlmLeft.to('.fish', null, {
+    this.fishTlmLeft.to('.fish', {
       y: '+=50',
       x: '+=' + 'random(0, 200)',
       duration: 'random(5, 10)',

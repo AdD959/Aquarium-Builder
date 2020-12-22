@@ -130,6 +130,33 @@
 #myTankWrapper #tank-outer #tank-bottom > .shelf > svg {
   width: 100%;
 }
+#myTankWrapper #tank-outer #tank-bottom > .shelf > svg .hidden {
+  opacity: 0;
+}
+#myTankWrapper #tank-outer #tank-bottom > .shelf > svg .b-theme > :first-child > path {
+  fill: #29abe2 !important;
+}
+#myTankWrapper #tank-outer #tank-bottom > .shelf > svg .b-theme > :first-child > path:nth-child(1) {
+  fill: #0572a0 !important;
+}
+#myTankWrapper #tank-outer #tank-bottom > .shelf > svg .b-theme > :first-child > #rating-badge > g:first-child > path:first-child {
+  fill: #bfbfbf !important;
+}
+#myTankWrapper #tank-outer #tank-bottom > .shelf > svg .b-theme > :first-child > #rating-badge > g:first-child > circle {
+  fill: #999999 !important;
+}
+#myTankWrapper #tank-outer #tank-bottom > .shelf > svg .f-theme > :first-child > path {
+  fill: #29abe2 !important;
+}
+#myTankWrapper #tank-outer #tank-bottom > .shelf > svg .f-theme > :first-child > path:nth-child(1) {
+  fill: #0572a0 !important;
+}
+#myTankWrapper #tank-outer #tank-bottom > .shelf > svg .f-theme > :first-child > #rating-badge > g:first-child > path:first-child {
+  fill: #bfbfbf !important;
+}
+#myTankWrapper #tank-outer #tank-bottom > .shelf > svg .f-theme > :first-child > #rating-badge > g:first-child > circle {
+  fill: #999999 !important;
+}
 #myTankWrapper #tank-outer #tank-bottom > .shelf > svg > g > g:nth-child(2) rect {
   transition-duration: 0.5s;
   opacity: 0;
