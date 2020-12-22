@@ -8,7 +8,7 @@ export class MyTank {
 
   constructor(demo: boolean) {
     if (demo) {
-      this.speciesArray = [0, 0, 1, 2, 3, 3, 0];
+      this.speciesArray = [0, 3, 3];
     } else {
       this.speciesArray = [];
     }

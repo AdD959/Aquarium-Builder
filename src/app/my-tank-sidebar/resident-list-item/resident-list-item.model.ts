@@ -1,3 +1,5 @@
+import { Species } from 'src/app/species/species.model';
+
 export class ResidentListItem {
   public id: number;
   public name: string;
@@ -5,7 +7,17 @@ export class ResidentListItem {
   public space: number;
   public community: number;
   public img: string;
+  public stateCount: State;
+  public stateSpace: State;
+  public species: Species;
 
   constructor() {}
 
+}
+
+
+export enum State {
+  Good = 'good',
+  Moderate = 'moderate',
+  Bad = 'bad'
 }

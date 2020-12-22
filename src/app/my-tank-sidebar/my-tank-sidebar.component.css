@@ -121,8 +121,26 @@ ul {
   opacity: 0;
   transition-duration: 0.5s;
 }
+#my-tank-sidebar #tankWrapper #selection-wrapper #rating-wrapper .gradeB {
+  fill: #bfbfbf !important;
+}
+#my-tank-sidebar #tankWrapper #selection-wrapper #rating-wrapper .gradeB > *:first-child {
+  stop-color: #8a8a8a !important;
+}
+#my-tank-sidebar #tankWrapper #selection-wrapper #rating-wrapper .gradeB > polygon {
+  fill: #29abe2 !important;
+}
+#my-tank-sidebar #tankWrapper #selection-wrapper #rating-wrapper .gradeB > *:last-child {
+  stop-color: #575757 !important;
+}
+#my-tank-sidebar #tankWrapper #selection-wrapper #rating-wrapper .gradeA > *:first-child {
+  stop-color: #F7B828 !important;
+}
+#my-tank-sidebar #tankWrapper #selection-wrapper #rating-wrapper .gradeA > *:last-child {
+  stop-color: #FFD03A !important;
+}
 #my-tank-sidebar #tankWrapper #selection-wrapper #rating-wrapper::after {
-  content: 'Perfect Tank!';
+  content: 'Tank Rating!';
   position: absolute;
   width: 108px;
   background-color: crimson;

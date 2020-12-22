@@ -4,6 +4,7 @@ import {
   ElementRef,
   OnDestroy,
   OnInit,
+  Renderer2,
   ViewChild,
 } from '@angular/core';
 import { SideBarService } from '../shared/sidebar.service';
@@ -12,6 +13,8 @@ import { MyTankService } from '../my-tank/my-tank.service';
 import { fromEvent, Subscription } from 'rxjs';
 import { SpeciesService } from '../species/species.service';
 import { debounceTime } from 'rxjs/operators';
+import { State } from './resident-list-item/resident-list-item.model';
+import { state } from '@angular/animations';
 
 @Component({
   selector: 'app-my-tank-sidebar',
@@ -19,7 +22,7 @@ import { debounceTime } from 'rxjs/operators';
   styleUrls: ['./my-tank-sidebar.component.less'],
 })
 export class MyTankSidebarComponent implements OnInit, AfterViewInit {
-  myTankExpanded = false;
+  myTankExpanded = true;
   myTankLabelTriggered = false;
   labelLowered = false;
   selectedTank = 'M';
@@ -35,7 +38,8 @@ export class MyTankSidebarComponent implements OnInit, AfterViewInit {
   largeTankLimit = 1000;
   source: any;
   tankSize: number;
-  residentsSatisfied = [];
+  residentStatusList = [];
+  unhappyResidentsCount = 0;
 
   @ViewChild('smallIcon', { static: false }) smallIcon;
   @ViewChild('mediumIcon', { static: false }) mediumIcon;
@@ -44,6 +48,9 @@ export class MyTankSidebarComponent implements OnInit, AfterViewInit {
   @ViewChild('svgRating', { static: false }) svgRating;
   @ViewChild('ratingB', { static: false }) ratingB;
   @ViewChild('ratingA', { static: false }) ratingA;
+  @ViewChild('radialGrad', { static: false }) radialGrad;
+  @ViewChild('radiusColor', { static: false }) radiusColor;
+  @ViewChild('ribbons', { static: false }) ribbons;
 
   constructor(
     private sideBarService: SideBarService,
@@ -78,97 +85,98 @@ export class MyTankSidebarComponent implements OnInit, AfterViewInit {
     });
   }
 
-  assessTankRemove(id: number) {
-    this.myTankService.setRating(3);
-    if (this.residentsSatisfied.includes(id)) {
-      this.residentsSatisfied.splice(this.residentsSatisfied.indexOf(id), 1);
-    }
-
-    if (this.svgRating !== undefined) {
-      if (this.residentsFiltered.length === this.residentsSatisfied.length) {
-        this.svgRating.nativeElement.classList.add('visible');
-        this.myTankService.setRating(1);
-        // console.log('assessTankRemove - setting  rating to 1: ' + this.myTankService.getRating());
-      } else {
-        this.svgRating.nativeElement.classList.remove('visible');
-        if (this.elem.nativeElement.querySelector('.bad') === null) {
-          this.myTankService.setRating(2);
-        // console.log('assessTankRemove - setting  rating to 2: ' + this.myTankService.getRating());
-
-        } else {
-          console.log(this.elem.nativeElement.querySelector('.bad'));
-          this.myTankService.setRating(3);
-        // console.log('assessTankRemove - setting  rating to 3: ' + this.myTankService.getRating());
-
-        }
-      }
-    }
-    this.setRatingOpacity();
-  }
-
   setRatingOpacity() {
     if (this.ratingA != undefined && this.ratingB != undefined) {
       switch (this.myTankService.getRating()) {
         case 1:
+          this.svgRating.nativeElement.classList.add('visible');
+          this.radialGrad.nativeElement.classList.remove('gradeB');
+          this.radiusColor.nativeElement.classList.remove('gradeB');
+          this.ribbons.nativeElement.classList.remove('gradeB');
           this.ratingA.nativeElement.style.opacity = 1;
           this.ratingB.nativeElement.style.opacity = 0;
-          // console.log('case 1');
           break;
         case 2:
           this.svgRating.nativeElement.classList.add('visible');
+          this.radialGrad.nativeElement.classList.add('gradeB');
+          this.radiusColor.nativeElement.classList.add('gradeB');
+          this.ribbons.nativeElement.classList.add('gradeB');
           this.ratingA.nativeElement.style.opacity = 0;
           this.ratingB.nativeElement.style.opacity = 1;
-          // console.log('case 2');
           break;
         case 3:
+          this.svgRating.nativeElement.classList.remove('visible');
           this.ratingA.nativeElement.style.opacity = 0;
           this.ratingB.nativeElement.style.opacity = 0;
-          // console.log('case 3');
           break;
       }
     }
   }
 
-  assessTank(id: number) {
-    let found = false;
-    this.residentsFiltered.filter((species, index) => {
-      if (id === species.id) {
-        found = true;
-        if (!this.residentsSatisfied.includes(id)) {
-          this.residentsSatisfied.push(id);
-        }
-      }
-    });
-
-    if (found === false) {
-      this.residentsSatisfied.splice(
-        this.residentsSatisfied.indexOf(id),
-        1
-      );
-    }
-
-    if (this.svgRating !== undefined) {
-      if (this.residentsFiltered.length === this.residentsSatisfied.length) {
-        this.svgRating.nativeElement.classList.add('visible');
-        this.myTankService.setRating(1);
-        // console.log('assessTank - setting  rating to 1: ' + this.myTankService.getRating());
-
-      } else {
-        this.svgRating.nativeElement.classList.remove('visible');
-        if (this.elem.nativeElement.querySelector('.bad') === null) {
-          this.myTankService.setRating(2);
-        // console.log('assessTank - setting  rating to 2: ' + this.myTankService.getRating());
-
-        } else {
-          this.myTankService.setRating(3);
-        // console.log('assessTank - setting  rating to 3: ' + this.myTankService.getRating());
-
-        }
+  setRating() {
+    var total = this.residentStatusList.length;
+    var ratingsGood = [];
+    var ratingsModerate = [];
+    var ratingsBad = [];
+    for (var i = 0; i < total; i++) {
+      switch (this.residentStatusList[i].status) {
+        case State.Good:
+          ratingsGood.push(State.Good);
+          break;
+        case State.Moderate:
+          ratingsModerate.push(State.Moderate);
+          break;
+        case State.Bad:
+          ratingsBad.push(State.Bad);
+          break;
       }
     }
+
+    if (ratingsGood.length === total) {
+      this.myTankService.setRating(1);
+    } else if (ratingsBad.length > 0) {
+      this.myTankService.setRating(3);
+    } else {
+      this.myTankService.setRating(2);
+    }
+
     this.setRatingOpacity();
+  }
 
-    // console.log('assesstank: ' + this.myTankService.getRating());
+  removeDeletedSpecies(id: number) {
+    var pos = this.residentStatusList
+      .map((e) => {
+        return e.id;
+      })
+      .indexOf(id);
+
+    this.residentStatusList.splice(pos, 1);
+    this.setRating();
+  }
+
+  assessTank(species: { id: number; status: State }) {
+    //searchList for this species
+    if (this.residentStatusList.length > 0) {
+      //loop through the list if its got more than 1 item
+      var found = false;
+      for (var i = 0; i < this.residentStatusList.length; i++) {
+        //check if current species is already in list, if so update
+        if (this.residentStatusList[i].id === species.id) {
+          this.residentStatusList[i].status = species.status;
+          found = true;
+        }
+      }
+
+      if (found === false) {
+        this.residentStatusList.push(species);
+      }
+      // Add the first species to the list if the list is empty
+    } else {
+      this.residentStatusList.push(species);
+    }
+
+    this.setRating();
+    this.setRatingOpacity();
   }
 
   filterDuplicates() {
@@ -242,7 +250,6 @@ export class MyTankSidebarComponent implements OnInit, AfterViewInit {
 
   closeMyTank() {
     this.myTankExpanded = false;
-    console.log(this.myTankService.getRating());
   }
 
   updateList(items) {

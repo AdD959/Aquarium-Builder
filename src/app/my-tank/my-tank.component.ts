@@ -74,7 +74,7 @@ export class MyTankComponent implements OnInit, AfterViewInit {
       x: 'random(50, 1000)',
       y: 'random(200, 500)'
     });
-    this.fishTlmLeft.to('.fish', {
+    this.fishTlmLeft.to('.fish', null, {
       y: '+=50',
       x: '+=' + 'random(0, 200)',
       duration: 'random(5, 10)',
