@@ -7,21 +7,19 @@
       <h2>{{ name }}</h2>
     </div>
     <div class="status">
-      <div class="status-item count"
-      [ngClass]="[getCountStatusVar, minGroupSize ? '' : 'reworkNumbers']"
-      >
+      <div class="status-item count" [ngClass]="[this.stateCount, this.minGroupSize ? '' : 'reworkNumbers']">
         <div class="number-current"
         [ngClass]="count > 9 ? 'adjusted' : ''"
         >
           {{ count }}
         </div>
         <div class="divider">|</div>
-        <div class="number-recommended">{{ minGroupSize }}</div>
+        <div class="number-recommended">{{ this.minGroupSize }}</div>
       </div>
-      <div class="status-item space {{ requiredSpaceResult }}">
+      <div class="status-item space " [ngClass]="this.stateSpace">
         <img alt="" class="type" src="../../../assets/images/Type-Fish.png" />
       </div>
-      <div class="status-item community {{ assessCommunityVar }}">
+      <div class="status-item community" [ngClass]="this.stateCommunity">
         <!-- Generator: Adobe Illustrator 23.0.1, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
         <svg
           version="1.1"
