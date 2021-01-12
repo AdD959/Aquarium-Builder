@@ -3,7 +3,9 @@ import { MyTank } from './my-tank.model';
 import { TimelineMax } from 'gsap';
 import { MyTankService } from './my-tank.service';
 import { SpeciesService } from '../species/species.service';
-import { Subscription } from 'rxjs';
+import { fromEvent, Subscription } from 'rxjs';
+import { debounceTime } from 'rxjs/operators';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-my-tank',
@@ -23,19 +25,22 @@ export class MyTankComponent implements OnInit, AfterViewInit {
   tankLog: number;
   tankSizeChange: Subscription;
   calc: number;
+  source: any;
+  tankSize: number;
 
   @ViewChild('hoverInfo', { static: false }) hoverInfo;
   @ViewChild('hoverInfoTitle', { static: false }) hoverInfoTitle;
   @ViewChild('RatingB', { static: false }) ratingB;
   @ViewChild('RatingA', { static: false }) ratingA;
   @ViewChild('medalGroup', { static: false }) medalGroup;
-  @ViewChild('gallons', { static: false }) tankSize: number;
+  @ViewChild('gallons', { static: false }) gallons;
 
   constructor(
     private myTankService: MyTankService,
     private speciesService: SpeciesService,
     private elRef: ElementRef,
-    private renderer: Renderer2) { }
+    private renderer: Renderer2,
+    private router: Router) { }
 
   ngOnInit() {
     this.myTank = this.myTankService.getMyTank();
@@ -65,6 +70,12 @@ export class MyTankComponent implements OnInit, AfterViewInit {
     this.setStartingPos();
     this.showInfo('medal');
     this.getTankRatingVars();
+    this.gallons.nativeElement.value = this.myTankService.getTankSize();
+    this.source = fromEvent(this.gallons.nativeElement, 'keyup');
+    this.source.pipe(debounceTime(600)).subscribe(() => {
+      let newSize = this.gallons.nativeElement.value;
+      this.myTankService.setTankSize(newSize);
+    });
   }
 
   getTankRatingVars() {
@@ -99,6 +110,10 @@ export class MyTankComponent implements OnInit, AfterViewInit {
       scale: this.calc,
       transformOrigin: "50% 100%"
     });
+  }
+
+  redirectToStores() {
+    this.router.navigate(['/stores'])
   }
 
   setStartingPos() {

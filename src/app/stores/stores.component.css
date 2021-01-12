@@ -1,0 +1,98 @@
+:host {
+  width: 100%;
+}
+.test {
+  width: 500px;
+  height: 300px;
+}
+section {
+  width: 100%;
+  text-align: center;
+  background-color: #c3c3c3;
+}
+section svg#Layer_1 {
+  width: 100%;
+  height: 100vh;
+}
+section svg#Layer_1 #mapGroup > path {
+  fill: #a2a2a2;
+}
+section svg#Layer_1 #mapGroup > path#GB,
+section svg#Layer_1 #mapGroup > path#US,
+section svg#Layer_1 #mapGroup > path#AU {
+  fill: #428bca;
+  cursor: pointer;
+}
+section svg#Layer_1 #mapGroup > path#GB:hover,
+section svg#Layer_1 #mapGroup > path#US:hover,
+section svg#Layer_1 #mapGroup > path#AU:hover {
+  fill: #4e9fe6;
+}
+section #listWrapper {
+  position: absolute;
+  left: 0;
+  right: 0;
+  margin-left: auto;
+  margin-right: auto;
+  bottom: 100px;
+  background-color: lightgray;
+  width: 300px;
+  padding-top: 10px;
+}
+section #listWrapper #recommendBtn {
+  position: absolute;
+  right: 0;
+  top: -25px;
+  font-size: small;
+  background: lightgray;
+  padding: 5px;
+  border-top-left-radius: 10px;
+  z-index: 3;
+  transition-duration: 0.2s;
+  pointer-events: none;
+  cursor: pointer;
+}
+section #listWrapper #recommendBtn.recommendBtn-reverse {
+  right: 73px;
+  z-index: 2;
+  background: #9cbef1;
+  pointer-events: initial;
+}
+section #listWrapper #ourStoresBtn {
+  position: absolute;
+  right: 132px;
+  top: -25px;
+  font-size: small;
+  background: #9cbef1;
+  padding: 5px;
+  border-top-left-radius: 10px;
+  padding-right: 10px;
+  z-index: 2;
+  cursor: pointer;
+  transition-duration: 0.2s;
+  pointer-events: initial;
+}
+section #listWrapper #ourStoresBtn.ourStoresBtn-reverse {
+  right: 0;
+  z-index: 3;
+  background: lightgray;
+  pointer-events: none;
+}
+section #listWrapper > ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+section #listWrapper > ul > li {
+  margin: 0 0 10px 0;
+  background-color: whitesmoke;
+  width: 90%;
+  text-align: left;
+  padding: 5px;
+}
+section #listWrapper > ul.hidden {
+  display: none;
+}

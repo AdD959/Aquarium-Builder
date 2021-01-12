@@ -83,6 +83,7 @@ export class MyTankSidebarComponent implements OnInit, AfterViewInit {
     this.source.pipe(debounceTime(600)).subscribe(() => {
       this.assessSize();
     });
+    this.gallons.nativeElement.value = this.myTankService.getTankSize();
   }
 
   setRatingOpacity() {
