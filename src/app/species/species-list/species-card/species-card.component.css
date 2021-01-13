@@ -26,6 +26,9 @@ ul {
 .active {
   background-color: #193c5a;
 }
+:host {
+  display: block;
+}
 .species-wrapper {
   padding: 20px;
   border-radius: 10px;

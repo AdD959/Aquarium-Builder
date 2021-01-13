@@ -6,48 +6,59 @@
     <img [src]="species.heroImg" alt="" />
   </div>
   <div #infoWrapper class="infoWrapper">
-    <div class="topRow">
-      <div>
-        <h1>{{ species.name }}</h1>
-        <div class="buttonWrapper" (click)="animateAddToTank()">
-          <svg version="1.1" id="addBtn" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-          viewBox="0 0 920.9 921" style="enable-background:new 0 0 920.9 921;" xml:space="preserve">
-       <style type="text/css">
-         .st0{fill:#FFFFFF;}
-       </style>
-       <g id="decor">
-         <circle cx="460.9" cy="53.5" r="53.5"/>
-         <circle cx="665" cy="108.6" r="53.5"/>
-         <circle cx="813.9" cy="258.7" r="53.5"/>
-         <circle cx="867.4" cy="463.1" r="53.5"/>
-         <circle cx="811.2" cy="666.9" r="53.5"/>
-         <circle cx="660.4" cy="815" r="53.5"/>
-         <circle cx="455.7" cy="867.5" r="53.5"/>
-         <circle cx="252.3" cy="810.2" r="53.5"/>
-         <circle cx="104.9" cy="658.7" r="53.5"/>
-         <circle cx="53.5" cy="453.7" r="53.5"/>
-         <circle cx="111.8" cy="250.5" r="53.5"/>
-         <circle cx="264.1" cy="104" r="53.5"/>
-       </g>
-       <g id="mainbutton">
-         <circle cx="460.9" cy="461" r="328.5"/>
-       </g>
-       <g id="cross">
-         <polygon class="st0" points="644.9,414 508,414 508,277 413.9,277 413.9,414 276.9,414 276.9,508 413.9,508 413.9,645 508,645
-           508,508 644.9,508 	"/>
-       </g>
-
-       </svg>
-        </div>
-      </div>
-      <div id="photographs">
-        <img
-          *ngFor="let photo of photoUrls; let i = index"
-          [src]="photo"
-          alt="image not visible"
-          (click)="zoomToggle(i)"
-          [class.zoomed]="zoomed[i]"
-        />
+    <div id="photographs">
+      <img
+        *ngFor="let photo of photoUrls; let i = index"
+        [src]="photo"
+        alt="image not visible"
+        (click)="zoomToggle(i)"
+        [class.zoomed]="zoomed[i]"
+      />
+    </div>
+    <div class="buttonWrapper">
+      <h1>{{ species.name }}</h1>
+      <div id="addBtnWrapper">
+        <svg  (click)="animateAddToTank()"
+          version="1.1"
+          id="addBtn"
+          xmlns="http://www.w3.org/2000/svg"
+          xmlns:xlink="http://www.w3.org/1999/xlink"
+          x="0px"
+          y="0px"
+          viewBox="0 0 920.9 921"
+          style="enable-background: new 0 0 920.9 921"
+          xml:space="preserve"
+        >
+          <style type="text/css">
+            .st0 {
+              fill: #ffffff;
+            }
+          </style>
+          <g id="decor">
+            <circle cx="460.9" cy="53.5" r="53.5" />
+            <circle cx="665" cy="108.6" r="53.5" />
+            <circle cx="813.9" cy="258.7" r="53.5" />
+            <circle cx="867.4" cy="463.1" r="53.5" />
+            <circle cx="811.2" cy="666.9" r="53.5" />
+            <circle cx="660.4" cy="815" r="53.5" />
+            <circle cx="455.7" cy="867.5" r="53.5" />
+            <circle cx="252.3" cy="810.2" r="53.5" />
+            <circle cx="104.9" cy="658.7" r="53.5" />
+            <circle cx="53.5" cy="453.7" r="53.5" />
+            <circle cx="111.8" cy="250.5" r="53.5" />
+            <circle cx="264.1" cy="104" r="53.5" />
+          </g>
+          <g id="mainbutton">
+            <circle cx="460.9" cy="461" r="328.5" />
+          </g>
+          <g id="cross">
+            <polygon
+              class="st0"
+              points="644.9,414 508,414 508,277 413.9,277 413.9,414 276.9,414 276.9,508 413.9,508 413.9,645 508,645
+             508,508 644.9,508 	"
+            />
+          </g>
+        </svg>
       </div>
     </div>
     <h2>{{ species.difficulty }}</h2>
@@ -58,7 +69,7 @@
         <li>Extra Requirements</li>
       </ul>
     </nav>
-    <p>
+    <p id="description">
       Lorem ipsum dolor sit amet consectetur adipisicing elit. Impedit labore
       non iure debitis mollitia molestias voluptate provident qui, voluptatum,
       ea praesentium voluptas perferendis! Veniam cum voluptatibus est tenetur
@@ -72,4 +83,3 @@
   </div>
 </div>
 <app-my-tank-sidebar></app-my-tank-sidebar>
-

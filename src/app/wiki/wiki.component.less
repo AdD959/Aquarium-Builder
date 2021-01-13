@@ -1,5 +1,10 @@
 @import '../../styles.less';
 
+:host {
+  width: 100%;
+  height: 100%;
+}
+
 #wikiWrapper {
   height: 100vh;
   width: 100%;
@@ -33,105 +38,109 @@
 
   .infoWrapper {
     justify-content: flex-start;
-    margin-top: 100px;
     display: flex;
     width: 60%;
     height: 100%;
     flex-direction: column;
+    align-items: center;
+    justify-content: center;
 
-    .topRow {
+    #description {
+      width: 500px;
+    }
+
+    h1 {
+      display: inline;
+      margin: 0;
+    }
+
+    h2 {
+      margin: 10px 0 20px;
+    }
+
+    > div {
       display: flex;
-      justify-content: space-between;
+      align-items: center;
 
-      h1 {
-        display: inline;
-      }
-
-      > div {
-        > .buttonWrapper {
-          width: 0;
+      &.buttonWrapper {
+        #addBtnWrapper::after {
+          content: 'Add to tank!';
+          position: absolute;
+          width: 108px;
+          background-color: crimson;
+          color: white;
           height: 0;
-          position: relative;
-          display: inline;
+          top: 30px;
+          right: -105px;
+          justify-content: center;
+          align-items: center;
+          opacity: 0.8;
+          display: flex;
+          overflow: hidden;
+          transition-duration: 0.2s;
+        }
+      }
+      &:hover {
+        #addBtnWrapper::after {
+          height: 31px;
+        }
+      }
+    }
 
-          &::after {
-            content: 'Add to tank!';
-            position: absolute;
-            width: 108px;
-            background-color: crimson;
-            color: white;
-            height: 0;
-            top: -62px;
-            justify-content: center;
-            align-items: center;
-            opacity: 0.8;
-            display: flex;
-            left: 41px;
-            overflow: hidden;
-            transition-duration: 0.2s;
-          }
+    svg#addBtn {
+      width: 50px;
+      fill: white;
+      cursor: pointer;
+      position: relative;
+      bottom: 20px;
 
-          &:hover {
-            &::after {
-              height: 31px;
-            }
-          }
+      @keyframes rotating {
+        from {
+          transform: rotate(0deg) scale(0.8);
+        }
+        to {
+          transform: rotate(180deg) scale(0.8);
         }
       }
 
-      svg#addBtn {
-        width: 50px;
-        fill: white;
-        cursor: pointer;
-        position: relative;
-
-        @keyframes rotating {
-          from {
-            transform: rotate(0deg) scale(0.8);
-          }
-          to {
-            transform: rotate(180deg) scale(0.8);
-          }
-        }
-
-        #cross > polygon {
-          fill: #0099b5;
-        }
-
-        #decor {
-          transform-origin: center center;
-          transform: scale(0.8);
-          position: relative;
-        }
-
-        &:hover > #decor {
-          animation: rotating 3s linear infinite;
-        }
+      #cross > polygon {
+        fill: #0099b5;
       }
 
-      #photographs {
-        display: flex;
-        justify-content: flex-end;
+      #decor {
+        transform-origin: center center;
+        transform: scale(0.8);
         position: relative;
-        margin: 0 0 0 auto;
+      }
 
-        > img {
-          width: 125px;
-          height: 125px;
-          -o-object-fit: cover;
-          margin: -8px;
-          object-fit: cover;
-          border-radius: 70px;
-          box-sizing: border-box;
-          cursor: zoom-in;
+      &:hover > #decor {
+        animation: rotating 3s linear infinite;
+      }
+    }
 
-          &.zoomed {
-            width: 400px;
-            height: 400px;
-            float: left;
-            position: fixed;
-            border-radius: 60px;
-          }
+    #photographs {
+      display: flex;
+      justify-content: flex-end;
+      position: relative;
+      flex-direction: row;
+      margin-bottom: 40px;
+
+      > img {
+        width: 125px;
+        height: 125px;
+        -o-object-fit: cover;
+        margin: -8px;
+        object-fit: cover;
+        border-radius: 70px;
+        box-sizing: border-box;
+        cursor: zoom-in;
+
+        &.zoomed {
+          width: 400px;
+          height: 400px;
+          float: left;
+          position: fixed;
+          border-radius: 60px;
         }
       }
     }

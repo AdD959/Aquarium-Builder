@@ -1,9 +1,44 @@
+<div id="searchSection">
+  <h1>Search</h1>
+  <input type="text" (keyup)="filter()" #name/>
+  <div class="filters-wrapper">
+    <div class="filter-by-wrapper">
+      <label for="fresh">Fresh Water/ Tropical</label>
+      <input type="checkbox" name="fresh" (change)="filter()" #fresh checked/>
+    </div>
+    <div class="filter-by-wrapper">
+      <label for="salt">Salt Water/ Marine</label>
+      <input type="checkbox" name="salt" (change)="filter()" #salt checked/>
+    </div>
+    <div class="filter-by-wrapper">
+      <label for="sizeLabel">Size</label>
+      <select name="sizeLabel" (change)="filter()" #size>
+        <option value="0">Any</option>
+        <option value="XS">Extra Small</option>
+        <option value="S">Small</option>
+        <option value="M">Medium</option>
+        <option value="L">Large</option>
+        <option value="XL">Extra Large</option>
+      </select>
+    </div>
+    <div class="filter-by-wrapper">
+      <label for="difficultyLabel">Difficulty</label>
+      <select name="difficultyLabel" (change)="filter()" #difficulty>
+        <option value="0">Any</option>
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5">5</option>
+      </select>
+    </div>
+  </div>
+</div>
 <section class="species-list">
   <app-species-card
-  *ngFor="let speciesCard of speciesList; let i = index"
-  [species]="speciesCard"
-  [objIndex]="i"
-  #cardList
+    *ngFor="let speciesCard of speciesList; let i = index"
+    [species]="speciesCard"
+    [objIndex]="i"
+    #cardList
   ></app-species-card>
 </section>
-
