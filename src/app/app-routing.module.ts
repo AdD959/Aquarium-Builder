@@ -11,7 +11,7 @@ import { WikiComponent } from './wiki/wiki.component';
 
 const routes: Routes = [
   { path: '', component: SpeciesComponent, pathMatch: 'full' },
-  { path: 'build', component: BuildComponent },
+  { path: 'build', component: SpeciesComponent },
   { path: 'buy', component: BuyComponent },
   { path: 'wiki', component: WikiComponent },
   { path: 'my-tank', component: MyTankComponent },

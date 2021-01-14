@@ -1,12 +1,12 @@
 <div id="navWrapper">
   <div id="siteNav">
     <ul>
-      <li routerLink="/wiki" routerLinkActive="active"><a>Wiki</a></li>
       <li routerLink="/build" routerLinkActive="active"><a>Build</a></li>
-      <li routerLink="/buy" routerLinkActive="active"><a>Buy</a></li>
+      <li routerLink="/my-tank" routerLinkActive="active"><a>My Tank</a></li>
+      <li routerLink="/stores" routerLinkActive="active"><a>Stores</a></li>
     </ul>
   </div>
-  <a href="#" id="siteTitle">{{ siteName }}</a>
+  <div id="siteTitle" routerLink="/" routerLinkActive="active">{{ siteName }} </div>
   <div id="userNav" appDropdown>
     <a id="options">Options</a>
     <ul>

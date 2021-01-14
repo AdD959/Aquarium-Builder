@@ -23,6 +23,6 @@ ul {
 .closedDropdown > ul {
   display: none;
 }
-.active {
+.active:not(#siteTitle) {
   background-color: #193c5a;
 }

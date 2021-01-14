@@ -29,6 +29,8 @@ export class WikiComponent implements OnInit, AfterViewInit {
   fishBgMove = new TimelineMax();
   hoverTlm = new TimelineMax({ paused: true });
   moveTlm = new TimelineMax({ paused: true });
+  difficultyStars = [];
+  tankSize: string;
 
   @ViewChild('speciesImage', { static: false }) speciesImage;
   @ViewChild('wikiWrapper', { static: false }) wikiWrapper: ElementRef;
@@ -49,6 +51,22 @@ export class WikiComponent implements OnInit, AfterViewInit {
   ngOnInit() {
     this.species = this.speciesService.getSpecies(this.id);
     this.getPhotos(this.id);
+    this.tankSize = this.setTankSize();
+    this.difficultyStars = Array(this.species.difficulty)
+      .fill(0)
+      .map((x, i) => i);
+  }
+
+  setTankSize() {
+    let requiredSpace = Math.ceil((this.species.size * 3) / 10) * 10;
+    let spaceName = () => {
+      if (requiredSpace <= 100) {
+        return 'small';
+      } else if (requiredSpace <= 400) {
+        return 'medium';
+      } else return 'large';
+    }
+    return `${requiredSpace}gal (${spaceName()})`;
   }
 
   // NeedsBackendDev
@@ -183,6 +201,44 @@ export class WikiComponent implements OnInit, AfterViewInit {
             each: 0.2,
           },
           ease: 'power2.out',
+        },
+        1
+      )
+      .fromTo(
+        '#difficulty-rating > *',
+        1,
+        {
+          opacity: 0,
+          y: 100,
+        },
+        {
+          opacity: 1,
+          y: 0,
+          stagger: {
+            each: 0.3,
+          },
+          ease: 'power2.out',
+        },
+        1
+      )
+      .fromTo(
+        '.wiki-bubble',
+        1,
+        {
+          opacity: 1,
+          y: 100,
+          x: 'random(700,1000)',
+        },
+        {
+          y: -1000,
+          stagger: {
+            each: 0.2,
+          },
+          duration: 3,
+          repeatRefresh: true,
+          ease: 'none',
+          repeat: -1,
+          repeatDelay: 10,
         },
         1
       );

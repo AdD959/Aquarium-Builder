@@ -89,23 +89,23 @@ export class SpeciesCardComponent implements OnInit, AfterViewInit {
   }
 
   getSpeciesSize() {
-    const i = this.species.size;
-    if (i < 5) {
-      this.size = 'X-SMALL';
-      return;
-    } else if (i < 15) {
-      this.size = 'SMALL';
-      return;
-    } else if (i < 50) {
-      this.size = 'MEDIUM';
-      return;
-    } else if (i < 100) {
-      this.size = 'LARGE';
-      return;
-    } else {
-      this.size = 'X-LARGE';
-      return;
-    }
+    // const i = this.species.size;
+    // if (i < 5) {
+    //   this.size = 'X-SMALL';
+    //   return;
+    // } else if (i < 15) {
+    //   this.size = 'SMALL';
+    //   return;
+    // } else if (i < 50) {
+    //   this.size = 'MEDIUM';
+    //   return;
+    // } else if (i < 100) {
+    //   this.size = 'LARGE';
+    //   return;
+    // } else {
+    //   this.size = 'X-LARGE';
+    //   return;
+    // }
   }
 
   animateAddToTank() {
@@ -162,7 +162,7 @@ export class SpeciesCardComponent implements OnInit, AfterViewInit {
         ease: 'power1.in',
         onComplete: () => {
           this.ngZone.run(() => {
-            this.router.navigate(['/wiki', { id: this.objIndex }]);
+            this.router.navigate(['/wiki', { id: this.species.id }]);
           });
         },
       })

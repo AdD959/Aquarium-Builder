@@ -41,8 +41,20 @@ ul {
   color: white;
   overflow: hidden;
 }
+#wikiWrapper .wiki-bubble {
+  position: absolute;
+  width: 15px;
+  bottom: 0;
+  opacity: 0;
+}
 #wikiWrapper.saltwater {
   background: #2a6894;
+}
+#wikiWrapper.saltwater .wiki-bubble > circle {
+  fill: #2a6894;
+}
+#wikiWrapper:not(.saltwater) .wiki-bubble > circle {
+  fill: #9bdeec !important;
 }
 #wikiWrapper .imgWrapper {
   display: flex;
@@ -66,12 +78,53 @@ ul {
   align-items: center;
   justify-content: center;
 }
+#wikiWrapper .infoWrapper #tank-size h2 {
+  margin: 0;
+  font-size: 16px;
+}
+#wikiWrapper .infoWrapper #tank-size h3 {
+  margin: 0;
+  margin-left: 10px;
+}
+#wikiWrapper .infoWrapper #difficulty-rating {
+  display: flex;
+  gap: 5px;
+  margin: 0 0 30px 0;
+  position: relative;
+  padding: 5px;
+}
+#wikiWrapper .infoWrapper #difficulty-rating > img {
+  width: 20px;
+  transition-duration: 0.5s;
+}
+#wikiWrapper .infoWrapper #difficulty-rating::after {
+  content: 'Difficulty Rating';
+  position: absolute;
+  width: 127px;
+  background-color: crimson;
+  color: white;
+  height: 0;
+  top: -2px;
+  right: -137px;
+  justify-content: center;
+  align-items: center;
+  opacity: 0.8;
+  display: flex;
+  overflow: hidden;
+  transition-duration: 0.2s;
+}
+#wikiWrapper .infoWrapper #difficulty-rating:hover > img {
+  transform: rotate(90deg) !important;
+}
+#wikiWrapper .infoWrapper #difficulty-rating:hover::after {
+  height: 31px;
+}
 #wikiWrapper .infoWrapper #description {
   width: 500px;
+  text-align: justify;
 }
 #wikiWrapper .infoWrapper h1 {
   display: inline;
-  margin: 0;
 }
 #wikiWrapper .infoWrapper h2 {
   margin: 10px 0 20px;
@@ -80,6 +133,11 @@ ul {
   display: flex;
   align-items: center;
 }
+#wikiWrapper .infoWrapper > div.buttonWrapper #addBtnWrapper {
+  position: absolute;
+  right: -55px;
+  bottom: 30px;
+}
 #wikiWrapper .infoWrapper > div.buttonWrapper #addBtnWrapper::after {
   content: 'Add to tank!';
   position: absolute;
@@ -87,8 +145,8 @@ ul {
   background-color: crimson;
   color: white;
   height: 0;
-  top: 30px;
-  right: -105px;
+  top: 11px;
+  right: -113px;
   justify-content: center;
   align-items: center;
   opacity: 0.8;
@@ -96,7 +154,7 @@ ul {
   overflow: hidden;
   transition-duration: 0.2s;
 }
-#wikiWrapper .infoWrapper > div:hover #addBtnWrapper::after {
+#wikiWrapper .infoWrapper > div.buttonWrapper #addBtnWrapper:hover::after {
   height: 31px;
 }
 #wikiWrapper .infoWrapper svg#addBtn {
@@ -104,7 +162,6 @@ ul {
   fill: white;
   cursor: pointer;
   position: relative;
-  bottom: 20px;
 }
 @keyframes rotating {
   from {

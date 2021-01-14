@@ -19,6 +19,7 @@ import { ResidentListItemComponent } from './my-tank-sidebar/resident-list-item/
 import { MyTankComponent } from './my-tank/my-tank.component';
 import { MyTankService } from './my-tank/my-tank.service';
 import { StoresComponent } from './stores/stores.component';
+import { IntroComponent } from './intro/intro.component';
 
 
 @NgModule({
@@ -35,7 +36,8 @@ import { StoresComponent } from './stores/stores.component';
     MyTankSidebarComponent,
     ResidentListItemComponent,
     MyTankComponent,
-    StoresComponent
+    StoresComponent,
+    IntroComponent
   ],
   imports: [
     BrowserModule,

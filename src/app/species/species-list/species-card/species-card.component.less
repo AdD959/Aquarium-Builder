@@ -102,6 +102,7 @@
       h1 {
         margin: 10px 0px;
         font-weight: normal;
+        font-size: 25px;
       }
 
       h2 {
@@ -152,19 +153,47 @@
       align-items: center;
       justify-content: space-between;
 
+      .water-type {
+        font-size: 12px;
+        font-style: italic;
+        margin-top: -18px;
+        margin-left: -8px;
+      }
+
       .difficulty-rating {
-        margin-top: 10px;
+        margin-top: 18px;
         height: 100%;
         display: flex;
         align-items: center;
+        position: relative;
+
+        &:hover {
+          > svg {
+            transform: rotate(90deg);
+            transform-origin: center;
+          }
+        }
+
+        &::after {
+          content: 'Difficulty';
+          position: absolute;
+          top: -7px;
+          font-size: 12px;
+          left: 3px;
+        }
 
         .d-rating {
-          width: 10px;
-          height: 10px;
-          border: solid white 2px;
+          width: 15px;
           border-radius: 100%;
-          margin: 0 3px;
+          margin: 0 2px;
           margin-top: 10px;
+          transition-duration: 0.5s;
+
+          &.inactive-star {
+            > path {
+              fill: lightgray !important;
+            }
+          }
         }
       }
 
@@ -182,10 +211,88 @@
           line-height: 10px;
           margin: 0;
         }
+
+        > .addBtn {
+          width: 50px;
+          fill: white;
+          cursor: pointer;
+          position: relative;
+
+          @keyframes rotating {
+            0% {
+              transform: rotate(0deg) scale(0.8);
+            }
+            50% {
+              transform: rotate(180deg) scale(1);
+            }
+
+            100% {
+              transform: rotate(360deg) scale(0.8);
+            }
+          }
+
+          #cross > polygon {
+            fill: #0099b5 !important;
+          }
+
+          #decor {
+            transform-origin: center center;
+            transform: scale(0.8);
+            position: relative;
+          }
+
+          &:hover > #decor {
+            animation: rotating 3s linear infinite;
+          }
+        }
       }
 
       .species-size {
         margin: 15px 0 0 0;
+        position: relative;
+
+        &:hover {
+          > img.not {
+            opacity: 0;
+          }
+        }
+
+        > img {
+          position: absolute;
+          right: -5px;
+          bottom: -19px;
+          width: 85px;
+          transform: rotate(-19deg);
+          transition-duration: 0.5s;
+          filter: invert(100%) !important;
+
+          &.not {
+            opacity: 0.2;
+          }
+        }
+
+        #large-scale {
+        }
+
+        #medium-scale {
+          transform: rotate(-19deg) scale(0.6);
+          right: 2px;
+          bottom: -22px;
+        }
+
+        #small-scale {
+          transform: rotate(-19deg) scale(0.3);
+          right: 7px;
+          bottom: -25px;
+        }
+
+        &::after {
+          content: 'Size';
+          position: absolute;
+          top: 6px;
+          right: -8px;
+          font-size: 12px;
+        }
       }
     }
   }

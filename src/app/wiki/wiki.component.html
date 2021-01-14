@@ -61,7 +61,7 @@
         </svg>
       </div>
     </div>
-    <h2>{{ species.difficulty }}</h2>
+    <div id="difficulty-rating"><img *ngFor="let item of difficultyStars" src="../../assets/images/Various/star-rating.svg" alt=""></div>
     <nav>
       <ul id="tabs">
         <li>Food</li>
@@ -78,8 +78,34 @@
       voluptatum. Consectetur labore nulla quisquam magni animi impedit eius
       incidunt natus!
     </p>
-    <h2>Tank Size</h2>
-    <h3>Large</h3>
+    <div id="tank-size">
+      <h2>Minimum Tank Size:</h2>
+      <h3>{{ tankSize }}</h3>
+    </div>
   </div>
+<svg version="1.1" class="wiki-bubble" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 viewBox="0 0 28 28" style="enable-background:new 0 0 28 28;" xml:space="preserve">
+<circle style="fill:#1780C1;" cx="14" cy="14" r="14"/>
+</svg>
+<svg version="1.1" class="wiki-bubble" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 viewBox="0 0 28 28" style="enable-background:new 0 0 28 28;" xml:space="preserve">
+<circle style="fill:#1780C1;" cx="14" cy="14" r="14"/>
+</svg>
+<svg version="1.1" class="wiki-bubble" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 viewBox="0 0 28 28" style="enable-background:new 0 0 28 28;" xml:space="preserve">
+<circle style="fill:#1780C1;" cx="14" cy="14" r="14"/>
+</svg>
+<svg version="1.1" class="wiki-bubble" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 viewBox="0 0 28 28" style="enable-background:new 0 0 28 28;" xml:space="preserve">
+<circle style="fill:#1780C1;" cx="14" cy="14" r="14"/>
+</svg>
+<svg version="1.1" class="wiki-bubble" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 viewBox="0 0 28 28" style="enable-background:new 0 0 28 28;" xml:space="preserve">
+<circle style="fill:#1780C1;" cx="14" cy="14" r="14"/>
+</svg>
+<svg version="1.1" class="wiki-bubble" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 viewBox="0 0 28 28" style="enable-background:new 0 0 28 28;" xml:space="preserve">
+<circle style="fill:#1780C1;" cx="14" cy="14" r="14"/>
+</svg>
 </div>
 <app-my-tank-sidebar></app-my-tank-sidebar>

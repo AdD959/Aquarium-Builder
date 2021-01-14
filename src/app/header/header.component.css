@@ -7,7 +7,9 @@ body {
   background: #E2DDDE;
   overflow-x: hidden;
   height: 100%;
-  border: solid red;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
 }
 a {
   text-decoration: none;
@@ -21,7 +23,7 @@ ul {
 .closedDropdown > ul {
   display: none;
 }
-.active {
+.active:not(#siteTitle) {
   background-color: #193c5a;
 }
 div#navWrapper {
@@ -31,7 +33,7 @@ div#navWrapper {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  position: relative;
+  position: fixed;
   z-index: 999;
 }
 div#navWrapper #siteTitle {
@@ -39,6 +41,7 @@ div#navWrapper #siteTitle {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+  cursor: pointer;
 }
 div#navWrapper > div {
   box-sizing: content-box;

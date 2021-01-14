@@ -23,7 +23,7 @@ ul {
 .closedDropdown > ul {
   display: none;
 }
-.active {
+.active:not(#siteTitle) {
   background-color: #193c5a;
 }
 :host {
@@ -117,6 +117,7 @@ ul {
 .species-wrapper .highlight .species-info h1 {
   margin: 10px 0px;
   font-weight: normal;
+  font-size: 25px;
 }
 .species-wrapper .highlight .species-info h2 {
   margin: 10px 0px;
@@ -158,19 +159,39 @@ ul {
   align-items: center;
   justify-content: space-between;
 }
+.species-wrapper .highlight .two-group .water-type {
+  font-size: 12px;
+  font-style: italic;
+  margin-top: -18px;
+  margin-left: -8px;
+}
 .species-wrapper .highlight .two-group .difficulty-rating {
-  margin-top: 10px;
+  margin-top: 18px;
   height: 100%;
   display: flex;
   align-items: center;
+  position: relative;
+}
+.species-wrapper .highlight .two-group .difficulty-rating:hover > svg {
+  transform: rotate(90deg);
+  transform-origin: center;
+}
+.species-wrapper .highlight .two-group .difficulty-rating::after {
+  content: 'Difficulty';
+  position: absolute;
+  top: -7px;
+  font-size: 12px;
+  left: 3px;
 }
 .species-wrapper .highlight .two-group .difficulty-rating .d-rating {
-  width: 10px;
-  height: 10px;
-  border: solid white 2px;
+  width: 15px;
   border-radius: 100%;
-  margin: 0 3px;
+  margin: 0 2px;
   margin-top: 10px;
+  transition-duration: 0.5s;
+}
+.species-wrapper .highlight .two-group .difficulty-rating .d-rating.inactive-star > path {
+  fill: lightgray !important;
 }
 .species-wrapper .highlight .two-group .add-to-tank {
   height: 30px;
@@ -186,8 +207,69 @@ ul {
   line-height: 10px;
   margin: 0;
 }
+.species-wrapper .highlight .two-group .add-to-tank > .addBtn {
+  width: 50px;
+  fill: white;
+  cursor: pointer;
+  position: relative;
+}
+@keyframes rotating {
+  0% {
+    transform: rotate(0deg) scale(0.8);
+  }
+  50% {
+    transform: rotate(180deg) scale(1);
+  }
+  100% {
+    transform: rotate(360deg) scale(0.8);
+  }
+}
+.species-wrapper .highlight .two-group .add-to-tank > .addBtn #cross > polygon {
+  fill: #0099b5 !important;
+}
+.species-wrapper .highlight .two-group .add-to-tank > .addBtn #decor {
+  transform-origin: center center;
+  transform: scale(0.8);
+  position: relative;
+}
+.species-wrapper .highlight .two-group .add-to-tank > .addBtn:hover > #decor {
+  animation: rotating 3s linear infinite;
+}
 .species-wrapper .highlight .two-group .species-size {
   margin: 15px 0 0 0;
+  position: relative;
+}
+.species-wrapper .highlight .two-group .species-size:hover > img.not {
+  opacity: 0;
+}
+.species-wrapper .highlight .two-group .species-size > img {
+  position: absolute;
+  right: -5px;
+  bottom: -19px;
+  width: 85px;
+  transform: rotate(-19deg);
+  transition-duration: 0.5s;
+  filter: invert(100%) !important;
+}
+.species-wrapper .highlight .two-group .species-size > img.not {
+  opacity: 0.2;
+}
+.species-wrapper .highlight .two-group .species-size #medium-scale {
+  transform: rotate(-19deg) scale(0.6);
+  right: 2px;
+  bottom: -22px;
+}
+.species-wrapper .highlight .two-group .species-size #small-scale {
+  transform: rotate(-19deg) scale(0.3);
+  right: 7px;
+  bottom: -25px;
+}
+.species-wrapper .highlight .two-group .species-size::after {
+  content: 'Size';
+  position: absolute;
+  top: 6px;
+  right: -8px;
+  font-size: 12px;
 }
 .species-wrapper:hover {
   transform: translateY(-5px);
