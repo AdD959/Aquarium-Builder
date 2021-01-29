@@ -28,20 +28,56 @@ ul {
 }
 div#navWrapper {
   width: 100%;
-  background-color: #428bca;
-  color: white;
+  background-color: #fff;
+  color: #1787ca;
   display: flex;
   justify-content: space-between;
   align-items: center;
   position: fixed;
   z-index: 999;
+  font-weight: bold;
 }
 div#navWrapper #siteTitle {
   position: absolute;
-  top: 50%;
+  top: -46%;
   left: 50%;
   transform: translate(-50%, -50%);
   cursor: pointer;
+  letter-spacing: 1px;
+  z-index: 5;
+  color: #fff;
+  font-size: 30px;
+  transition-duration: 0.2s;
+}
+div#navWrapper #siteTitle:hover {
+  top: 80%;
+}
+div#navWrapper #siteTitle:hover:before {
+  transform: translate(-60%, -50%) rotate(10deg);
+}
+div#navWrapper #siteTitle:before {
+  content: url(../../assets/images/goldfish-common.svg);
+  position: absolute;
+  bottom: -58px;
+  width: 60px;
+  left: 50%;
+  transform: translate(-50%, -50%) rotate(5deg);
+  transition-duration: 1s;
+  transform-origin: center;
+}
+div#navWrapper #siteTitle:after {
+  content: '';
+  position: absolute;
+  bottom: -53px;
+  background-color: #00619a;
+  width: 121%;
+  height: 200px;
+  left: 50%;
+  right: 50%;
+  transform: translateX(-50%);
+  z-index: -1;
+  border: solid #fff 5px;
+  box-sizing: content-box;
 }
 div#navWrapper > div {
   box-sizing: content-box;
@@ -66,6 +102,53 @@ div#navWrapper > div > a:hover {
 }
 div#navWrapper > div#siteNav > ul {
   display: flex;
+}
+div#navWrapper > div#siteNav > ul > li {
+  position: relative;
+}
+div#navWrapper > div#siteNav > ul > li:before {
+  content: '';
+  width: 5px;
+  height: 5px;
+  position: absolute;
+  background-color: #1787ca;
+  left: 50%;
+  right: 50%;
+  transform: translateX(-50%) rotate(45deg);
+  bottom: -2.5px;
+}
+div#navWrapper > div#siteNav > ul > li:after {
+  content: '';
+  position: absolute;
+  width: 0%;
+  transition-duration: 0.1s;
+  height: 2px;
+  background-color: #fff;
+  bottom: -10px;
+  left: 50%;
+  right: 50%;
+  transform: translateX(-50%);
+}
+div#navWrapper > div#siteNav > ul > li:hover:after {
+  width: 90%;
+}
+div#navWrapper > div#userNav > #options {
+  position: relative;
+}
+div#navWrapper > div#userNav > #options:after {
+  content: '';
+  position: absolute;
+  width: 0%;
+  transition-duration: 0.1s;
+  height: 2px;
+  background-color: #fff;
+  bottom: -10px;
+  left: 50%;
+  right: 50%;
+  transform: translateX(-50%);
+}
+div#navWrapper > div#userNav > #options:hover:after {
+  width: 90%;
 }
 div#navWrapper > div#userNav > ul {
   position: absolute;

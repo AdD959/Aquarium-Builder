@@ -1,3 +1,17 @@
+section {
+  background-color: #1787ca;
+  background: linear-gradient(0deg, #012941, #cbefc4);
+  position: relative;
+}
+section .wiki-bubble {
+  position: absolute;
+  width: 30px;
+  top: 400vh;
+  opacity: 0.2;
+}
+section .wiki-bubble circle {
+  fill: #fff !important;
+}
 #site-title {
   font-size: 60px;
   display: flex;
@@ -5,10 +19,52 @@
   align-items: center;
   height: 100vh;
   text-align: center;
+  color: #1787ca;
+  overflow: hidden;
+  position: relative;
+}
+#site-title:after {
+  content: "";
+  height: 250%;
+  width: 300px;
+  background-color: #fff;
+  position: absolute;
+  opacity: 0.2;
+  animation: moveFirst 2s;
+  transform: translateX(2000px);
+}
+@keyframes moveFirst {
+  0% {
+    transform: rotate(45deg) translateX(900px);
+  }
+  100% {
+    transform: rotate(45deg) translateX(-1500px);
+  }
+}
+#site-title:before {
+  content: "";
+  height: 250%;
+  width: 150px;
+  background-color: #fff;
+  position: absolute;
+  opacity: 0.2;
+  animation: moveSecond 2s;
+  transform: translateX(2000px);
+}
+@keyframes moveSecond {
+  0% {
+    transform: rotate(45deg) translateX(1300px);
+  }
+  100% {
+    transform: rotate(45deg) translateX(-1100px);
+  }
 }
 #intro-text {
   font-size: 50px;
+  color: #fff;
 }
 #intro-text .stop-section {
   height: 100vh;
+  display: flex;
+  justify-content: center;
 }

@@ -1,4 +1,6 @@
 import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
+import { TimelineMax, gsap } from 'gsap';
+
 
 @Component({
   selector: 'app-intro',
@@ -13,16 +15,38 @@ export class IntroComponent implements OnInit, AfterViewInit {
   ngOnInit() {}
 
   ngAfterViewInit() {
-    document.body.style.transform = 'translate3d(0px,0px,0px)';
 
     this.introSection.nativeElement.addEventListener('scroll', function (e) {
-      console.log('test');
       document.body.scrollTop = 0;
     });
     this.introSection.nativeElement.addEventListener(
       'wheel',
       this.wheelListener
     );
+
+    const timeline = gsap.timeline();
+
+    timeline.fromTo(
+      '.wiki-bubble',
+      4,
+      {
+        opacity: 0,
+        y: 100,
+        x: 'random(0,2000)',
+        scale: 'random(0.5, 3)'
+      },
+      {
+        y: -4000,
+        stagger: {
+          each: 0.25,
+        },
+        repeatRefresh: true,
+        opacity: 0.4,
+        ease: 'none',
+        repeat: -1
+      },
+      1
+    ).seek(4);
   }
 
   pageHeight = window.innerHeight - 115;

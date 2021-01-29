@@ -26,7 +26,7 @@ export class MyTankService {
 
   tankUpdated() {
     this.watchTank.next(this.myTank.speciesArray.slice());
-    // this.tankAnyChange.next();
+    this.tankAnyChange.next();
   }
 
   removeResident(id: number) {

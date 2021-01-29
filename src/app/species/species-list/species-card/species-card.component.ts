@@ -33,7 +33,7 @@ export class SpeciesCardComponent implements OnInit, AfterViewInit {
   remove = '';
   size: string;
   speciesImg;
-  disabled = false;
+  disabledStatus = false;
 
   @Input() species: Species;
   @Input() objIndex: number;
@@ -82,9 +82,9 @@ export class SpeciesCardComponent implements OnInit, AfterViewInit {
 
   checkIfDisabled() {
     if (this.species.waterType !== this.myTankService.getWaterType() && this.myTankService.getWaterType() !== '') {
-      this.disabled = true;
+      this.disabledStatus = true;
     } else {
-      this.disabled = false;
+      this.disabledStatus = false;
     }
   }
 

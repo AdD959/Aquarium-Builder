@@ -22,11 +22,12 @@
 .listItem .main {
   width: 90%;
   background-color: #428bca;
-  height: 60px;
+  height: auto;
   border-radius: 5px;
   display: flex;
   align-items: center;
   justify-content: space-between;
+  padding: 5px;
 }
 .listItem .main .species {
   display: flex;
@@ -50,7 +51,7 @@
   font-size: 16px;
   color: white;
   font-weight: normal;
-  margin-left: 10px;
+  margin: 0 0 0 10px;
 }
 .listItem .main .status {
   display: flex;
